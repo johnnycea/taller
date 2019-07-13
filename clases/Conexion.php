@@ -11,15 +11,15 @@
 
     function __construct(){
 
-      // $this->servidor= "146.66.99.89";
-      // $this->usuario= "daemmulc_stock";
-      // $this->clave= "stock123";
-      // $this->bd= "daemmulc_stock";
-
-      $this->servidor= "127.0.0.1";
-      $this->usuario= "root";
-      $this->clave= "johnnyjohnny";
-      $this->bd= "bd_taller";
+      $this->servidor= "146.66.99.89";
+      $this->usuario= "daemmulc_inguz";
+      $this->clave= "inguz_789";
+      $this->bd= "daemmulc_inguz";
+      //
+      // $this->servidor= "127.0.0.1";
+      // $this->usuario= "root";
+      // $this->clave= "johnnyjohnny";
+      // $this->bd= "bd_taller";
 
 
     }
