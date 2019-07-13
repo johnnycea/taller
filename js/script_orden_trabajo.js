@@ -63,6 +63,18 @@ function guardarDatosOrden(){
 		});
 }
 
+function agregarDetalleOrden(){
+alert("esto hay que programar jaja jeje juju");
+		$.ajax({
+			url:"./metodos_ajax/orden_trabajo/",
+			method:"POST",
+			data: $("#formulario_modal_detalle_orden").serialize(),
+			success:function(respuesta){
+             alert(respuesta);
+			}
+		});
+}
+
 
 
 function listarFacturas(texto_buscar){
