@@ -1,10 +1,11 @@
 <?php
 require_once 'Conexion.php';
 
-class Orden_trabajo{
+class OrdenTrabajo{
 
  private $id_orden;
  private $descripcion_diagnostico;
+ private $kilometraje;
  private $patente;
  private $rut_cliente;
  private $fecha_recepcion;
@@ -14,12 +15,16 @@ class Orden_trabajo{
  private $iva_venta;
  private $porcentaje_descuento;
  private $usuario_creador;
+ private $trabajador;
 
  public function setIdOrden($id_orden){
    $this->id_orden = $id_orden;
  }
  public function setDescripcionDiagnostico($descripcion_diagnostico){
    $this->descripcion_diagnostico = $descripcion_diagnostico;
+ }
+ public function setKilometraje($kilometraje){
+   $this->kilometraje = $kilometraje;
  }
  public function setPatente($patente){
    $this->patente = $patente;
@@ -48,12 +53,15 @@ class Orden_trabajo{
  public function setUsuarioCreador($usuario_creador){
    $this->usuario_creador = $usuario_creador;
  }
+ public function setTrabajador($parametro){
+   $this->trabajador = $parametro;
+ }
 
  public function consultarUltimaOrdenPendiente(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from tb_orden_trabajo where id_estado = 1 order by fecha desc limit 1");
+    $resultado_consulta = $Conexion->query("select * from tb_orden_trabajo where id_estado = 1 order by fecha_recepcion desc limit 1");
     return $resultado_consulta;
  }
 
@@ -79,36 +87,30 @@ class Orden_trabajo{
      }
  }
 
- public function crearPedido(){
+ public function ObtenerCodigoNuevaOrden(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("insert into tb_pedidos(id_venta,id_usuario_repartidor) values(".$this->id_venta.",".$this->repartidor.");");
-    return $resultado_consulta;
- }
- public function obtenerPedidos(){
-    $Conexion = new Conexion();
-    $Conexion = $Conexion->conectar();
+    @session_start();
 
-    $resultado_consulta = $Conexion->query("select * from vista_pedidos");
-    // echo $resultado_consulta;
-    return $resultado_consulta;
- }
+    if($resultado = $Conexion->query("insert into tb_orden_trabajo(usuario_creador) values(".$_SESSION['run'].");")){
 
- public function obtener_cmb_Proveedor(){
-    $Conexion = new Conexion();
-    $Conexion = $Conexion->conectar();
+          $resultadoNuevoId = $Conexion->query("SELECT LAST_INSERT_ID() as id_creado");
+          $resultadoNuevoId = $resultadoNuevoId->fetch_array();
+          return $resultadoNuevoId['id_creado'];
+      }else{
+        echo "ERROR";
+      }
 
-    $resultado_consulta = $Conexion->query("select * from tb_proveedores".$this->rut_proveedor);
-    return $resultado_consulta;
  }
 
- public function crearProveedor(){
+ public function actualizarDatosOrden(){
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert INTO tb_proveedores (`rut_proveedor`,`dv`,`razon_social`,`direccion`,`telefono`,`giro`,`correo`) VALUES ('".$this->rut_proveedor."', '".$this->dv."', '".$this->razon_social."', '".$this->direccion."', '".$this->telefono."', '".$this->giro."', '".$this->correo."')";
+   $consulta = "update tb_orden_trabajo SET `descripcion_diagnostico` = '".$this->descripcion_diagnostico."', `kilometraje` = ".$this->kilometraje.", `rut_trabajador` = ".$this->trabajador." WHERE (`id_orden` = '".$this->id_orden."');";
    $resultado= $conexion->query($consulta);
+   // echo $consulta;
    return $resultado;
  }
 

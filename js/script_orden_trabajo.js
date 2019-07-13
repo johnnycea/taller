@@ -1,4 +1,5 @@
 
+
 function cargarInformacionClientes(texto_buscar){
 
 	$("#txt_nombre").val('Cargando...');
@@ -46,6 +47,22 @@ function cargarVehiculo(texto_buscar){
 		});
 }
 
+function guardarDatosOrden(){
+
+   var txt_id_orden = $("#txt_id_orden").val();
+   var txt_descripcion = $("#txt_descripcion").val();
+   var txt_kilometraje = $("#txt_kilometraje").val();
+   var cmb_trabajador = $("#cmb_trabajador").val();
+
+		$.ajax({
+			url:"./metodos_ajax/orden_trabajo/guardar_diagnostico.php?txt_descripcion="+txt_descripcion+"&txt_kilometraje="+txt_kilometraje+"&txt_id_orden="+txt_id_orden+"&cmb_trabajador="+cmb_trabajador,
+			method:"POST",
+			success:function(respuesta){
+				console.log("respuesta actualiza orden :"+respuesta);
+			}
+		});
+}
+
 
 
 function listarFacturas(texto_buscar){
@@ -60,19 +77,7 @@ function listarFacturas(texto_buscar){
 			}
 		});
 }
-function listarDetalleFacturas(){
 
-   var id_factura = $("#txt_id_factura").val();
-
-		$.ajax({
-			url:"./metodos_ajax/facturas/mostrar_listado_detalle_facturas.php?id_factura="+id_factura,
-			method:"POST",
-			success:function(respuesta){
-				// alert(respuesta);
-				 $("#contenedor_listado_detalle_facturas").html(respuesta);
-			}
-		});
-}
 
 
 function guardarFactura(){

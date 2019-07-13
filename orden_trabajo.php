@@ -2,11 +2,28 @@
 @session_start();
 require_once 'comun.php';
 require_once './clases/Usuario.php';
-require_once './clases/Orden_trabajo.php';
+require_once './clases/OrdenTrabajo.php';
+require_once './clases/Trabajador.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
+
+$OrdenTrabajo = new OrdenTrabajo();
+$numero_orden;
+
+$consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
+
+ if($consulta_orden->num_rows>0){
+     //recibe el id de esa ORDEN
+     $consulta_orden = $consulta_orden->fetch_array();
+     $numero_orden = $consulta_orden['id_orden'];
+ }
+ else{
+  $numero_orden = $OrdenTrabajo->ObtenerCodigoNuevaOrden();
+ }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +62,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                           <button type="button" onclick="limpiarFormularioOrden();" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
                         </div>
                         <div id="" class="col-12 col-md-4" >
-                              <input placeholder="Buscar factura" onkeyup="listarOrden(this.value)" class="form-control" type="text" name="txt_buscar_orden" id="txt_buscar_orden" value="">
+                              <input placeholder="" onkeyup="listarOrden(this.value)" class="form-control" type="text" name="txt_buscar_orden" id="txt_buscar_orden" value="">
                         </div>
 
                     </div>
@@ -80,7 +97,7 @@ $usuario= $usuario->obtenerUsuarioActual();
            <!-- <input type="hidden" name="txt_id_orden" id="txt_id_orden" value=""> -->
            <div class="form-group col-4 col-md-12">
                <label for="title" class="control-label">N° Orden:</label>
-               <input readonly value="" class="form-control col-6" type="text" id="txt_id_orden" name="txt_id_orden">
+               <input readonly class="form-control col-6" type="text" value="<?php echo $numero_orden; ?>" id="txt_id_orden" name="txt_id_orden">
            </div>
 
            <div class=" ">
@@ -137,31 +154,66 @@ $usuario= $usuario->obtenerUsuarioActual();
                 <h5 class="modal-title" id="myModalLabel">Vehiculo</h5>
               </div>
 
-               <div class="form-group col-12" >
+              <div class="row">
 
+                    <div class="form-group col-12" >
                       <label for="title" class="col-12 control-label">Patente:</label>
                       <input type="text"  required class="form-control" onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
-               </div>
+                    </div>
 
-               <div class="form-group col-12" >
+                    <div class="form-group col-12" >
+                      <label for="title" class="col-12 control-label">Marca:</label>
+                      <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
+                    </div>
 
-                       <label for="title" class="col-12 control-label">Marca:</label>
-                       <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
+                    <div class="form-group col-12" >
+                      <label for="title" class="col-12 control-label">Modelo:</label>
+                      <input type="text" required class="form-control" name="txt_modelo" id="txt_modelo" value="">
+                    </div>
 
-               </div>
-               <div class="form-group col-12" >
+                    <div class="form-group col-12" >
+                      <label for="title" class="col-12 control-label">Año:</label>
+                      <input type="text" required class="form-control" name="txt_anio" id="txt_anio" value="">
+                    </div>
 
-                       <label for="title" class="col-12 control-label">Modelo:</label>
-                       <input type="text" required class="form-control" name="txt_modelo" id="txt_modelo" value="">
+              </div>
 
-               </div>
-               <div class="form-group col-12" >
+          </div>
 
-                       <label for="title" class="col-12 control-label">Año:</label>
-                       <input type="text" required class="form-control" name="txt_anio" id="txt_anio" value="">
 
-               </div>
+          <div class="row" id="">
 
+              <!-- DETALLE ORDEN DE TRABAJO -->
+              <!-- onblur="alert('')" -->
+             <div class="row">
+
+                 <div class="form-group col-12" >
+                   <label for="title" class="col-12 control-label">Descripcion Diagnostico:</label>
+                   <input type="text" onblur="guardarDatosOrden()" required class="form-control" name="txt_descripcion" id="txt_descripcion" value="">
+                 </div>
+
+                 <div class="form-group col-12" >
+                   <label for="title" class="col-12 control-label">Kilometraje:</label>
+                   <input type="text" onblur="guardarDatosOrden()" required class="form-control" name="txt_kilometraje" id="txt_kilometraje" value="">
+                 </div>
+
+                 <div class="form-group col-12" >
+                   <label for="estado">Realizado por:</label>
+                        <select onChange="guardarDatosOrden()" class="form-control" required name="cmb_trabajador" id="cmb_trabajador">
+                          <option value="" selected disabled>Seleccione trabajador:</option>
+                           <?php
+                               require_once './clases/Usuario.php';
+                               $trabajadores= new Usuario();
+                               $filasTrabajadores= $trabajadores->obtener_Trabajadores();
+
+                               foreach($filasTrabajadores as $tipo){
+                                   echo '<option value="'.$tipo['rut'].'" >'.$tipo['nombre'].'</option>';
+                               }
+                            ?>
+                       </select>
+                 </div>
+
+             </div>
           </div>
 
                 <div class="form-group" >

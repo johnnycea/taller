@@ -37,6 +37,13 @@ class Usuario{
     $this->clave= $parametro;
   }
 
+  public function obtener_Trabajadores(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $resultado_consulta = $Conexion->query("select * FROM tb_usuarios where tipo_usuario=3 and estado=1");
+     return $resultado_consulta;
+  }
 
   public function crearUsuario(){
     $conexion = new Conexion();
@@ -86,7 +93,7 @@ class Usuario{
 
     $consulta;
 
-    $resultado= $conexion->query("select * from tb_actividad where rut_usuario=".$this->run);
+    $resultado= $conexion->query("select * from tb_orden_trabajo where rut_usuario=".$this->run);
     //consulta si el usuario tiene actividades registradas
       if($resultado->num_rows>0){
           //si entra aqui, se cambia el estado a eliminado
@@ -103,6 +110,7 @@ class Usuario{
       }
 
   }
+
 
   public function listarUsuariosActivosInactivos(){
     $conexion = new Conexion();
