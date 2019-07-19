@@ -17,6 +17,17 @@ class OrdenTrabajo{
  private $usuario_creador;
  private $trabajador;
 
+ // detalle OrdenTrabajo
+
+ private $id_detalle;
+ private $descripcion;
+ private $cantidad;
+ private $valor_unitario;
+ private $valor_total;
+ private $tipo_detalle;
+ private $usuarioCreadorDetalle;
+
+//set Orden de trabajo
  public function setIdOrden($id_orden){
    $this->id_orden = $id_orden;
  }
@@ -57,6 +68,25 @@ class OrdenTrabajo{
    $this->trabajador = $parametro;
  }
 
+// set Detalle Orden de trabajo
+ public function setIdDetalle($parametro){
+   $this->id_detalle = $parametro;
+ }
+ public function setDescripcionDetalle($parametro){
+   $this->descripcion_detalle = $parametro;
+ }
+ public function setCantidad($parametro){
+   $this->cantidad = $parametro;
+ }
+ public function setValorUnitario($parametro){
+   $this->valor_unitario = $parametro;
+ }
+ public function setValorTotal($parametro){
+   $this->valor_total = $parametro;
+ }
+ public function setTipoDetalle($parametro){
+   $this->tipo_detalle = $parametro;
+ }
  public function consultarUltimaOrdenPendiente(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -85,6 +115,37 @@ class OrdenTrabajo{
      }else{
        return false;
      }
+ }
+
+ public function crearDetalleOrden(){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+   @session_start();
+   $consulta = "insert INTO tb_detalle_orden (`id_orden`, `descripcion`, `cantidad`, `valor_unitario`, `tipo_detalle`, `usuario_creador`)
+                  VALUES (".$this->id_orden.", '".$this->descripcion_detalle."',
+                   ".$this->cantidad.", ".$this->valor_unitario.",".$this->tipo_detalle.", ".$_SESSION['run'].")";
+   // echo $consulta;
+   $resultado= $conexion->query($consulta);
+   return $resultado;
+ }
+
+ public function vistaDetalleOrden(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select * from vista_detalle_orden where id_orden=".$this->id_orden;
+    // echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
+    return $resultado_consulta;
+ }
+ public function vistaOrden(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select * from vista_orden where id_orden=".$this->id_orden;
+    echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
+    return $resultado_consulta;
  }
 
  public function ObtenerCodigoNuevaOrden(){
@@ -130,30 +191,21 @@ class OrdenTrabajo{
        return $resultado;
    }
 
-   public function eliminarProveedor(){
+
+   public function eliminarDetalleOrden(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
 
-     //CONSULTA SI EL PROVEEDOR TIENE FACTURAS EN EL SISTEMA
-     $consultaFacturasProveedor = $Conexion->query("select * from tb_facturas where id_proveedor=".$this->rut_proveedor);
-     if($consultaFacturasProveedor->num_rows==0){
-       //entra si el proveedor no tiene facturas, por lo tanto se elimina
-           if($Conexion->query("DELETE FROM tb_proveedores where rut_proveedor=".$this->rut_proveedor)){
-               return true;
-           }else{
-               return false;
-           }
+     $consulta = "delete from tb_detalle_orden where (`id_detalle` = ".$this->id_detalle.") and (`id_orden` = ".$this->id_orden.")";
+     // echo $consulta;
+     if($Conexion->query($consulta)){
+         return true;
      }else{
-       //entra si el proveedor SI TIENE facturas, SE CAMBIA ESTADO A "ELIMINADO"
-           if($Conexion->query("Update tb_proveedores set estado_proveedor=3 where rut_proveedor=".$this->rut_proveedor)){
-               return true;
-           }else{
-               return false;
-           }
+         echo $consulta;
+         // return false;
      }
 
    }
 
-
-}
+ }
  ?>

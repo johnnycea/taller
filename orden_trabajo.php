@@ -59,7 +59,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                     <div class="row">
 
                         <div id="" class="col-12 col-md-4 " >
-                          <button type="button" onclick="limpiarFormularioOrden();" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
+                          <button type="button" onclick="" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
                         </div>
                         <div id="" class="col-12 col-md-4" >
                               <input placeholder="" onkeyup="listarOrden(this.value)" class="form-control" type="text" name="txt_buscar_orden" id="txt_buscar_orden" value="">
@@ -108,6 +108,8 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                       </div>
                       <div class="card-body fondo_gris">
 
+                        <form id="formulario_modal_cliente" class="" action="javascript:crearCliente()" method="post">
+
                                 <div class="row">
 
                                      <div class="col-md-6" >
@@ -151,6 +153,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                      </div>
 
                                 </div>
+                              </form>
                         </div>
                    </div>
 
@@ -213,7 +216,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                             </div>
 
                                             <div class=" col-12" >
-                                              <label for="estado">Realiza:</label>
+                                              <label for="estado">Realizado:</label>
                                                    <select onChange="guardarDatosOrden()" class="form-control form-control-sm" required name="cmb_trabajador" id="cmb_trabajador">
                                                      <option value="" selected disabled>Trabajador:</option>
                                                       <?php
@@ -254,7 +257,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                             </div> -->
                                                             <div class="card-body fondo_negro">
 
-                                                              <form id="formulario_modal_detalle_orden" class="" action="javascript:agregarDetalleOrden()" method="post">
+                                                              <form id="formulario_modal_detalle_orden" class="" action="javascript:crearDetalleOrden()" method="post">
                                                                   <div class="row">
 
 
@@ -266,11 +269,19 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                           </div>
 
                                                                           <div class=" col-md-4" >
-                                                                            <label for="title" class="col-12 control-label">Tipo :</label>
-                                                                            <select class="form-control form-control-sm" name="cmb_tipo_detalle_orden" id="cmb_tipo_detalle_orden">
-                                                                              <option value="1">Mano de Obra</option>
-                                                                              <option value="2">Repuesto</option>
-                                                                            </select>
+                                                                             <label for="title" class="col-12 control-label">Tipo:</label>
+                                                                                 <select onChange="guardarDatosOrden()" class="form-control form-control-sm" required name="cmb_tipo_detalle_orden" id="cmb_tipo_detalle_orden">
+                                                                                   <option value="" selected disabled>Tipo Detalle:</option>
+                                                                                    <?php
+                                                                                        require_once './clases/TipoDetalle.php';
+                                                                                        $tipo_detalle= new TipoDetalle();
+                                                                                        $filasTipoDetalle= $tipo_detalle->obtenerTipoDetalle();
+
+                                                                                        foreach($filasTipoDetalle as $tipo){
+                                                                                            echo '<option value="'.$tipo['id_tipo_detalle'].'" >'.$tipo['descripcion_tipo_detalle'].'</option>';
+                                                                                        }
+                                                                                     ?>
+                                                                                </select>
                                                                           </div>
 
                                                                           <div class=" col-md-3" >
@@ -279,7 +290,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                           </div>
 
                                                                           <div class=" col-md-3" >
-                                                                            <label for="title" class="col-12 control-label">Cant</label>
+                                                                            <label for="title" class="col-12 control-label">Cantidad:</label>
                                                                             <input type="number"  required class="form-control form-control-sm" name="txt_cantidad_detalle_orden" id="txt_cantidad_detalle_orden" value="0">
                                                                           </div>
 
@@ -300,36 +311,12 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                 <div><hr></div>
 
-                                                                 <div class="table-responsive">
-                                                                   <table class="table bg-white table-sm table-stripped table-bordered table-hover">
-                                                                     <thead class="thead-dark">
-                                                                       <th>Tipo</th>
-                                                                       <th>Item</th>
-                                                                       <th>Valor</th>
-                                                                       <th>Cantidad</th>
-                                                                       <th>Total</th>
-                                                                       <th></th>
-                                                                     </thead>
-                                                                     <tbody>
-                                                                       <tr class="table-default">
-                                                                         <td>Repuesto</td>
-                                                                         <td>Cambiar Repuesto de no se que</td>
-                                                                         <td>$5.000</td>
-                                                                         <td>3</td>
-                                                                         <td>$15.000</td>
-                                                                         <td><button class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button></td>
-                                                                       </tr>
-                                                                       <tr>
-                                                                         <td>Mano de Obra</td>
-                                                                         <td>Cambiar Repuesto de no se que</td>
-                                                                         <td>$5.000</td>
-                                                                         <td>3</td>
-                                                                         <td>$15.000</td>
-                                                                         <td><button class="btn btn-danger btn-block"><i class="fas fa-trash"></i></button></td>
-                                                                       </tr>
-                                                                     </tbody>
-                                                                   </table>
-                                                                 </div>
+                                                  <div id='contenedor_detalle_orden' class="table-responsive"></div>
+                                                  <!-- <script type="text/javascript">
+
+                                                  listarDetalleOrden();
+                                                  </script> -->
+
                                                 </div>
 
 
