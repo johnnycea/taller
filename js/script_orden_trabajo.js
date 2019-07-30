@@ -66,15 +66,13 @@ function guardarDatosOrden(){
 
 
 function listarOrden(){
-	var id_orden = $("#txt_id_orden").val();
-	alert("Id_orden: "+id_orden);
 
 		$.ajax({
-			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php?id_orden="+id_orden,
-			// url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php,
+			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php?",
 			method:"POST",
 			success:function(respuesta){
-				 alert(respuesta);
+				 // alert(respuesta);
+				 
 				 $("#contenedor_listado_orden").html(respuesta);
 			}
 		});

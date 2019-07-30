@@ -20,14 +20,9 @@ require_once '../../clases/OrdenTrabajo.php';
      </thead>
      <tbody>';
 
-       $Funciones = new Funciones();
-
-      $id_orden = $_REQUEST['id_orden'];
-      echo '<script> id_orden = '.$id_orden.'; </script>';
 
        $OrdenTrabajo = new OrdenTrabajo();
-       $OrdenTrabajo->setIdOrden($id_orden);
-       $listadoOrdenTrabajo = $OrdenTrabajo->vistaOrden();
+       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo();
 
          while($filas = $listadoOrdenTrabajo->fetch_array()){
 
