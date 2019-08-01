@@ -8,9 +8,7 @@ $Funciones = new Funciones();
 $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
 $txt_dv = $Funciones->limpiarTexto($_REQUEST['txt_dv']);
 $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
-$txt_apellidos = $Funciones->limpiarTexto($_REQUEST['txt_apellidos']);
-$txt_calle = $Funciones->limpiarTexto($_REQUEST['txt_calle']);
-$txt_numero = $Funciones->limpiarNumeroEntero($_REQUEST['txt_numero']);
+$txt_direccion = $Funciones->limpiarTexto($_REQUEST['txt_direccion']);
 $txt_comuna= $Funciones->limpiarTexto($_REQUEST['txt_comuna']);
 $txt_giro= $Funciones->limpiarTexto($_REQUEST['txt_giro']);
 $txt_telefono = $Funciones->limpiarNumeroEntero($_REQUEST['txt_telefono']);
@@ -20,14 +18,12 @@ $Cliente = new Cliente();
 $Cliente->setRutCliente($txt_rut_cliente);
 $Cliente->setDv($txt_dv);
 $Cliente->setNombre($txt_nombre);
-$Cliente->setApellidos($txt_apellidos);
-$Cliente->setCalle($txt_calle);
-$Cliente->setNumeroCalle($txt_numero);
+$Cliente->setDireccion($txt_direccion);
 $Cliente->setComuna($txt_comuna);
 $Cliente->setGiro($txt_giro);
 $Cliente->setTelefono($txt_telefono);
 
-$consultaExisteCliente = $Cliente->obtenerClienteRegistrados();
+$consultaExisteCliente = $Cliente->obtenerCliente();
 //
 if($consultaExisteCliente->num_rows==0){
 //Si no devuelve nada, se debe crear nuevo producto

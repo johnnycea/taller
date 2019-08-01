@@ -20,7 +20,7 @@ function crearCliente(){
 				method:"POST",
 				data: $("#formulario_modal_cliente").serialize(),
 				success:function(respuesta){
-					  // alert(respuesta);
+					  alert(respuesta);
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 $("#modal_cliente").modal('hide');
@@ -45,9 +45,7 @@ function cargarInformacionClientes(id){
   var txt_rut = $("#txt_rut_"+id).html();
   var txt_dv = $("#txt_dv_"+id).html();
 	var txt_nombre = $("#txt_nombre_"+id).html();
-	var txt_apellidos = $("#txt_apellidos_"+id).html();
-	var txt_calle = $("#txt_calle_"+id).html();
-	var txt_numero = $("#txt_numero_calle_"+id).html();
+	var txt_direccion = $("#txt_direccion_"+id).html();
 	var txt_comuna = $("#txt_comuna_"+id).html();
 	var txt_giro = $("#txt_giro_"+id).html();
 	var txt_telefono = $("#txt_telefono_"+id).html();
@@ -56,9 +54,7 @@ function cargarInformacionClientes(id){
  $('#txt_rut_cliente').val(txt_rut);
  $('#txt_dv').val(txt_dv);
 	$('#txt_nombre').val(txt_nombre);
-	$('#txt_apellidos').val(txt_apellidos);
-	$('#txt_calle').val(txt_calle);
-	$('#txt_numero').val(txt_numero);
+	$('#txt_direccion').val(txt_direccion);
 	$('#txt_comuna').val(txt_comuna);
 	$('#txt_giro').val(txt_giro);
 	$('#txt_telefono').val(txt_telefono);

@@ -7,8 +7,7 @@ class Cliente{
  private $dv;
  private $nombre;
  private $apellidos;
- private $calle;
- private $numero_calle;
+ private $direccion;
  private $comuna;
  private $giro;
  private $telefono;
@@ -25,12 +24,12 @@ class Cliente{
  public function setApellidos($parametro){
    $this->apellidos = $parametro;
  }
- public function setCalle($parametro){
-   $this->calle = $parametro;
+ public function setDireccion($parametro){
+   $this->direccion = $parametro;
  }
- public function setNumeroCalle($numero_calle){
-   $this->numero_calle = $numero_calle;
- }
+ // public function setNumeroCalle($numero_calle){
+ //   $this->numero_calle = $numero_calle;
+ // }
  public function setComuna($comuna){
    $this->comuna = $comuna;
  }
@@ -66,7 +65,7 @@ class Cliente{
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "insert into tb_clientes (`rut_cliente`, `dv`, `nombre`, `apellidos`, `calle`, `numero_calle`, `comuna`, `giro`,`telefono`) VALUES ('".$this->rut_cliente."', '".$this->dv."', '".$this->nombre."', '".$this->apellidos."', '".$this->calle."', '".$this->numero_calle."', '".$this->comuna."','".$this->giro."','".$this->telefono."')";
+   $consulta = "insert into tb_clientes (`rut_cliente`, `dv`, `nombre`, `direccion`, `comuna`, `giro`,`telefono`) VALUES ('".$this->rut_cliente."', '".$this->dv."', '".$this->nombre."', '".$this->direccion."', '".$this->comuna."','".$this->giro."','".$this->telefono."')";
    $resultado= $conexion->query($consulta);
    return $resultado;
  }
@@ -77,9 +76,7 @@ class Cliente{
 
        $consulta="update tb_clientes SET
        nombre = '".$this->nombre."',
-       apellidos = '".$this->apellidos."',
-       calle = '".$this->calle."',
-       numero_calle = '".$this->numero_calle."',
+       direccion = '".$this->direccion."',
        comuna = '".$this->comuna."',
        giro = '".$this->giro."',
        telefono = '".$this->telefono."'

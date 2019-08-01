@@ -79,20 +79,20 @@ $usuario= $usuario->obtenerUsuarioActual();
                             <input type="text"  required class="form-control" name="txt_nombre" id="txt_nombre" value="">
                           </div>
 
-                          <div class="form-group col-12 col-md-6" >
+                          <!-- <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Apellidos:</label>
                             <input type="text" required class="form-control" name="txt_apellidos" id="txt_apellidos" value="">
-                          </div>
+                          </div> -->
 
                           <div class="form-group col-12 col-md-6" >
-                            <label for="title" class="col-12 control-label">Calle:</label>
-                            <input type="text" required class="form-control" name="txt_calle" id="txt_calle" value="">
+                            <label for="title" class="col-12 control-label">Direccion:</label>
+                            <input type="text" required class="form-control" name="txt_direccion" id="txt_direccion" value="">
                           </div>
 
-                          <div class="form-group col-12 col-md-6" >
+                          <!-- <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Número:</label>
                             <input type="text" required class="form-control" name="txt_numero" id="txt_numero" value="">
-                          </div>
+                          </div> -->
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Comuna:</label>

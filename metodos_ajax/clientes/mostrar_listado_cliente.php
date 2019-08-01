@@ -9,9 +9,7 @@ require_once '../../clases/Cliente.php';
                   <th>Rut</th>
                   <th>Dv</th>
                   <th>Nombre</th>
-                  <th>Apellidos</th>
-                  <th>Calle</th>
-                  <th>Número calle</th>
+                  <th>Direccion</th>
                   <th>Comuna</th>
                   <th>Giro</th>
                   <th>Teléfono</th>
@@ -32,9 +30,7 @@ require_once '../../clases/Cliente.php';
                                   <td><span id="txt_rut_'.$filas['rut_cliente'].'" >'.$filas['rut_cliente'].'</span></td>
                                   <td><span id="txt_dv_'.$filas['rut_cliente'].'" >'.$filas['dv'].'</span></td>
                                   <td><span id="txt_nombre_'.$filas['rut_cliente'].'" >'.$filas['nombre'].'</span></td>
-                                  <td><span id="txt_apellidos_'.$filas['rut_cliente'].'" >'.$filas['apellidos'].'</span></td>
-                                  <td><span id="txt_calle_'.$filas['rut_cliente'].'" >'.$filas['calle'].'</span></td>
-                                  <td><span id="txt_numero_calle_'.$filas['rut_cliente'].'" >'.$filas['numero_calle'].'</span></td>
+                                  <td><span id="txt_direccion_'.$filas['rut_cliente'].'" >'.$filas['direccion'].'</span></td>
                                   <td><span id="txt_comuna_'.$filas['rut_cliente'].'" >'.$filas['comuna'].'</span></td>
                                   <td><span id="txt_giro_'.$filas['rut_cliente'].'" >'.$filas['giro'].'</span></td>
                                   <td><span id="txt_telefono_'.$filas['rut_cliente'].'" >'.$filas['telefono'].'</span></td>
