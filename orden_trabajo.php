@@ -114,7 +114,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-6" >
                                          <label for="title" class="col-12 control-label">Rut:</label>
-                                        <input type="text" class="form-control form-control-sm"  placeholder="11222333-0" max="10" onkeyup="cargarInformacionClientes(this.value)" id="txt_rut_cliente" name="txt_rut_cliente">
+                                        <input type="text" class="form-control form-control-sm"  placeholder="11222333-0" max="10" onblur="cargarInformacionClientes(this.value)" id="txt_rut_cliente" name="txt_rut_cliente">
                                      </div>
 
                                      <div class="col-md-6" >
@@ -170,22 +170,22 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                   <div class="row">
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Patente:</label>
-                                        <input type="text"  required class="form-control form-control-sm" onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
+                                        <input type="text"  required class="form-control form-control-sm" onblur="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Marca:</label>
-                                        <input type="text" required class="form-control form-control-sm" name="txt_marca" id="txt_marca" value="">
+                                        <input type="text" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_marca" id="txt_marca" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Modelo:</label>
-                                        <input type="text" required class="form-control form-control-sm" name="txt_modelo" id="txt_modelo" value="">
+                                        <input type="text" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_modelo" id="txt_modelo" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Año:</label>
-                                        <input type="number" required class="form-control form-control-sm" name="txt_anio" id="txt_anio" value="">
+                                        <input type="number" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_anio" id="txt_anio" value="">
                                       </div>
 
                                   </div>
@@ -212,7 +212,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                             <div class=" col-12" >
                                               <label for="title" class="col-12 control-label">Kilometraje:</label>
-                                              <input type="text" onblur="guardarDatosOrden()" required class="form-control form-control-sm" name="txt_kilometraje" id="txt_kilometraje" value="">
+                                              <input type="number" onblur="guardarDatosOrden()" required class="form-control form-control-sm" name="txt_kilometraje" id="txt_kilometraje" value="">
                                             </div>
 
                                             <div class=" col-12" >

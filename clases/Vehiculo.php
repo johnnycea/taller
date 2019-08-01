@@ -54,7 +54,7 @@ class Vehiculo{
    $conexion = $conexion->conectar();
 
    $consulta = "insert into tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('".$this->patente."', '".$this->marca."', '".$this->modelo."', '".$this->anio."')";
-   // echo $consulta;
+   echo $consulta;
    $resultado= $conexion->query($consulta);
    return $resultado;
  }

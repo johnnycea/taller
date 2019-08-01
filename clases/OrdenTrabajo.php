@@ -138,6 +138,7 @@ class OrdenTrabajo{
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
  }
+ 
  public function mostrarOrdenesTrabajo(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();

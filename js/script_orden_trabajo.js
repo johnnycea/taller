@@ -44,6 +44,22 @@ function guardarDatosCliente(){
 		});
 }
 
+function guardarDatosVehiculo(){
+
+   var patente = $("#txt_patente").val();
+   var marca = $("#txt_marca").val();
+   var modelo = $("#txt_modelo").val();
+   var anio = $("#txt_anio").val();
+
+		$.ajax({
+			url:"./metodos_ajax/vehiculo/ingresar_modificar_vehiculo.php?txt_patente="+patente+"&txt_marca="+marca+"&txt_modelo="+modelo+"&txt_anio="+anio,
+			method:"POST",
+			success:function(respuesta){
+				alert(respuesta);
+			}
+		});
+}
+
 function cargarModificarOrden(id){
 
 	$("#txt_id_orden").val(id);
@@ -66,9 +82,9 @@ function cargarModificarOrden(id){
 	$('#cmb_trabajador').val(txt_trabajador);
 
 	$('#txt_patente').val(txt_patente);
-	$('#txt_patente').keyup();
+	$('#txt_patente').blur();
 	$('#txt_rut_cliente').val(txt_rut_cliente);
-	$('#txt_rut_cliente').keyup();
+	$('#txt_rut_cliente').blur();
 	$('#txt_id_estado').val(txt_id_estado);
 
 }

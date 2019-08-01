@@ -7,8 +7,6 @@ require_once '../../clases/Vehiculo.php';
 $Funciones = new Funciones();
 $txt_patente = $Funciones->limpiarTexto($_REQUEST['texto_buscar']);
 
-
-
 $Vehiculo = new Vehiculo();
 $Vehiculo->setPatente($txt_patente);
 $listadoVehiculo = $Vehiculo->obtenerVehiculo();
@@ -22,6 +20,7 @@ if($listadoVehiculo->num_rows != 0){//si existe el vehiculo, recibe sus datos
        $vehiculo_encontrado['marca'] = $filas['marca'];
        $vehiculo_encontrado['modelo'] = $filas['modelo'];
        $vehiculo_encontrado['anio'] = $filas['anio'];
+       $vehiculo_encontrado['quepaso'] = "lo_encontro";
      }
 
 }else{//si el vehiculo no existe crea su patente
@@ -31,8 +30,16 @@ if($listadoVehiculo->num_rows != 0){//si existe el vehiculo, recibe sus datos
   $vehiculo_encontrado['anio'] = "";
 
   //AQUI HAY QUE PONER LA FUNCION QUE CREE EL VEHICULO SOLO CON SU PATENTE
+  $conexion = new Conexion();
+  $conexion = $conexion->conectar();
 
-  
+  if($conexion->query("insert into tb_vehiculos(patente) values('".$txt_patente."')")){
+
+      $vehiculo_encontrado['quepaso'] = "se_agrego";
+  }else{
+      $vehiculo_encontrado['quepaso'] = "no_se_agrego";
+  }
+
 }
 
  echo json_encode($vehiculo_encontrado);
