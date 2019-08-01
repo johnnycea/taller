@@ -54,7 +54,7 @@ class Cliente{
        return false;
      }
  }
- public function obtenerClienteRegistrados(){
+ public function obtenerCliente(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
