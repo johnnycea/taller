@@ -31,11 +31,11 @@ require_once '../../clases/OrdenTrabajo.php';
 
                           echo '<tr>
 
-                                <td><span id="_" >'.$filas['tipo_detalle'].'</span></td>
-                                  <td><span id="_'.$filas['id_detalle'].'">'.$filas['descripcion'].'</span></td>
-                                  <td><span id="_" >'.$filas['cantidad'].'</span></td>
-                                  <td><span id="_'.$filas['id_detalle'].'" >$'.number_format($filas['valor'],0,",",".").'</span></td>
-                                  <td><span id="_'.$filas['id_detalle'].'" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
+                                <td><span id="columna_tipo_detalle_" >'.$filas['tipo_detalle'].'</span></td>
+                                  <td><span id="columna_descripcion_detalle_'.$filas['id_detalle'].'">'.$filas['descripcion'].'</span></td>
+                                  <td><span id="columna_cantidad_" >'.$filas['cantidad'].'</span></td>
+                                  <td><span id="columna_valor_'.$filas['id_detalle'].'" >$'.number_format($filas['valor'],0,",",".").'</span></td>
+                                  <td><span id="columna_valor_total_'.$filas['id_detalle'].'" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
                                 <td>
                                     <button class="btn btn-danger btn-block" onclick="eliminarDetalleOrden('.$filas['id_detalle'].','.$filas['id_orden'].')" ><i class="fas fa-trash-alt"></i></button></td>
                                   </td>

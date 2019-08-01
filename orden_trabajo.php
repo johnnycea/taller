@@ -139,7 +139,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-12" >
                                        <label for="title" class="col-12 control-label">Direccion:</label>
-                                       <input type="text" class="form-control form-control-sm" id="txt_calle" name="txt_calle">
+                                       <input type="text" class="form-control form-control-sm" id="txt_direccion" name="txt_direccion">
                                      </div>
 
                                      <!-- <div class="col-md-12" >
