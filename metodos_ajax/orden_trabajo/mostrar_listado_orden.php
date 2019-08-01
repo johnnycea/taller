@@ -9,12 +9,9 @@ require_once '../../clases/OrdenTrabajo.php';
      <thead class="" align=center>
 
         <th>Codigo</th>
-        <th>Patente</th>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Rut</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Vehiculo</th>
         <th>Estado</th>
         <th>Modificar</th>
      </thead>
@@ -28,21 +25,22 @@ require_once '../../clases/OrdenTrabajo.php';
 
                echo '<tr align=center>
                        <td><span id="columna_id_orden_'.$filas['id_orden'].'" >'.$filas['id_orden'].'</span></td>
-                           <span id="columna_descripcion_'.$filas['id_orden'].'" >'.$filas['descripcion_diagnostico'].'</span>
-                           <span id="columna_kilometraje_'.$filas['id_orden'].'" >'.$filas['kilometraje'].'</span>
-                           <span id="columna_trabajador_'.$filas['id_orden'].'" >'.$filas['trabajador'].'</span>
-                       <td><span id="columna_patente_'.$filas['id_orden'].'" >'.$filas['patente'].'</span></td>
-                       <td><span id="columna_marca_'.$filas['id_orden'].'" >'.$filas['marca'].'</span></td>
-                       <td><span id="columna_modelo_'.$filas['id_orden'].'" >'.$filas['modelo'].'</span></td>
-                           <span id="columna_anio_'.$filas['id_orden'].'" >'.$filas['anio'].'</span>
-                       <td><span id="columna_rut_cliente_'.$filas['id_orden'].'" >'.$filas['cliente'].'</span></td>
-                       <td><span id="columna_nombre_'.$filas['id_orden'].'" >'.$filas['nombre'].'</span></td>
-                       <td><span id="columna_apellido_'.$filas['id_orden'].'" >'.$filas['apellido'].'</span></td>
-                           <span id="columna_telefono_'.$filas['id_orden'].'" >'.$filas['telefono'].'</span>
-                           <span id="columna_comuna_'.$filas['id_orden'].'" >'.$filas['comuna'].'</span>
-                           <span id="columna_direccion_'.$filas['id_orden'].'" >'.$filas['direccion'].'</span>
-                           <span id="columna_giro_'.$filas['id_orden'].'" >'.$filas['giro'].'</span>
-                       <span id="columna_estado_'.$filas['id_orden'].'" >'.$filas['id_estado'].'</span>
+                       <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$filas['fecha_recepcion'].'</span></td>
+                           <span class="d-none" id="columna_descripcion_'.$filas['id_orden'].'" >'.$filas['descripcion_diagnostico'].'</span>
+                           <span class="d-none" id="columna_kilometraje_'.$filas['id_orden'].'" >'.$filas['kilometraje'].'</span>
+                           <span class="d-none" id="columna_trabajador_'.$filas['id_orden'].'" >'.$filas['trabajador'].'</span>
+                       <span class="d-none" id="columna_rut_cliente_'.$filas['id_orden'].'" >'.$filas['cliente'].'</span>
+                       <td><span id="columna_nombre_'.$filas['id_orden'].'" >'.$filas['nombre'].' '.$filas['apellido'].'</span></td>
+                           <span class="d-none" id="columna_apellido_'.$filas['id_orden'].'" >'.$filas['apellido'].'</span>
+                           <span class="d-none" id="columna_telefono_'.$filas['id_orden'].'" >'.$filas['telefono'].'</span>
+                           <span class="d-none" id="columna_comuna_'.$filas['id_orden'].'" >'.$filas['comuna'].'</span>
+                           <span class="d-none" id="columna_direccion_'.$filas['id_orden'].'" >'.$filas['direccion'].'</span>
+                           <span class="d-none" id="columna_giro_'.$filas['id_orden'].'" >'.$filas['giro'].'</span>
+                        <td><span id="columna_patente_'.$filas['id_orden'].'" >'.$filas['patente'].' '.$filas['marca'].' '.$filas['modelo'].'</span></td>
+                            <span class="d-none" id="columna_marca_'.$filas['id_orden'].'" >'.$filas['marca'].'</span>
+                            <span class="d-none" id="columna_modelo_'.$filas['id_orden'].'" >'.$filas['modelo'].'</span>
+                            <span class="d-none" id="columna_anio_'.$filas['id_orden'].'" >'.$filas['anio'].'</span>
+                       <span class="d-none" id="columna_estado_'.$filas['id_orden'].'" >'.$filas['id_estado'].'</span>
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>
                              <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
