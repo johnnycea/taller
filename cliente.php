@@ -69,10 +69,10 @@ $usuario= $usuario->obtenerUsuarioActual();
                                  <input type="text"  required class="form-control" name="txt_rut_cliente" id="txt_rut_cliente" value="">
                           </div>
 
-                          <div class="form-group col-4" >
+                          <!-- <div class="form-group col-4" >
                                  <label for="title" class="col-12 control-label">Dv:</label>
                                  <input type="text"  required class="form-control" name="txt_dv" id="txt_dv" value="">
-                          </div>
+                          </div> -->
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Nombre:</label>

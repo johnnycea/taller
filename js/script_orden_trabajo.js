@@ -14,11 +14,32 @@ function cargarInformacionClientes(texto_buscar){
 			method:"POST",
 			dataType:"json",
 			success:function(respuesta){
+
+				// alert(respuesta.quepaso);
+
 				 $("#txt_nombre").val(respuesta.nombre);
 				 $("#txt_direccion").val(respuesta.direccion);
 				 $("#txt_comuna").val(respuesta.comuna);
 				 $("#txt_giro").val(respuesta.giro);
 				 $("#txt_telefono").val(respuesta.telefono);
+			}
+		});
+}
+
+function guardarDatosCliente(){
+
+   var rut = $("#txt_rut_cliente").val();
+   var nombre = $("#txt_nombre").val();
+   var telefono = $("#txt_telefono").val();
+   var comuna = $("#txt_comuna").val();
+   var direccion = $("#txt_direccion").val();
+   var giro = $("#txt_giro").val();
+
+		$.ajax({
+			url:"./metodos_ajax/clientes/ingresar_modificar_cliente.php?txt_rut_cliente="+rut+"&txt_nombre="+nombre+"&txt_telefono="+telefono+"&txt_comuna="+comuna+"&txt_direccion="+direccion+"&txt_giro="+giro,
+			method:"POST",
+			success:function(respuesta){
+				// alert(respuesta);
 			}
 		});
 }

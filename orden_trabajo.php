@@ -119,7 +119,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-6" >
                                          <label for="title" class="col-12 control-label">Nombre:</label>
-                                        <input type="text" class="form-control form-control-sm" id="txt_nombre" name="txt_nombre">
+                                        <input type="text" onblur="guardarDatosCliente()" class="form-control form-control-sm" id="txt_nombre" name="txt_nombre">
                                      </div>
             <!--
                                      <div class="col-md-12" >
@@ -129,17 +129,17 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-6" >
                                          <label for="title" class="col-12 control-label">Telefono:</label>
-                                        <input type="text" class="form-control form-control-sm" id="txt_telefono" name="txt_telefono">
+                                        <input type="text" onblur="guardarDatosCliente()" class="form-control form-control-sm" id="txt_telefono" name="txt_telefono">
                                      </div>
 
                                      <div class="col-md-6" >
                                          <label for="title" class="col-12 control-label">Comuna:</label>
-                                        <input type="text" class="form-control form-control-sm" id="txt_comuna" name="txt_comuna">
+                                        <input type="text" onblur="guardarDatosCliente()" class="form-control form-control-sm" id="txt_comuna" name="txt_comuna">
                                      </div>
 
                                      <div class="col-md-12" >
                                        <label for="title" class="col-12 control-label">Direccion:</label>
-                                       <input type="text" class="form-control form-control-sm" id="txt_direccion" name="txt_direccion">
+                                       <input type="text" onblur="guardarDatosCliente()" class="form-control form-control-sm" id="txt_direccion" name="txt_direccion">
                                      </div>
 
                                      <!-- <div class="col-md-12" >
@@ -149,7 +149,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-12" >
                                          <label for="title" class="col-12 control-label">Giro:</label>
-                                        <input type="text" class="form-control form-control-sm" id="txt_giro" name="txt_giro">
+                                        <input type="text" onblur="guardarDatosCliente()" class="form-control form-control-sm" id="txt_giro" name="txt_giro">
                                      </div>
 
                                 </div>

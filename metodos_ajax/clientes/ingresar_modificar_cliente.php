@@ -6,17 +6,20 @@ require_once '../../clases/Conexion.php';
 $Funciones = new Funciones();
 
 $txt_rut_cliente = $Funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
-$txt_dv = $Funciones->limpiarTexto($_REQUEST['txt_dv']);
 $txt_nombre = $Funciones->limpiarTexto($_REQUEST['txt_nombre']);
 $txt_direccion = $Funciones->limpiarTexto($_REQUEST['txt_direccion']);
 $txt_comuna= $Funciones->limpiarTexto($_REQUEST['txt_comuna']);
 $txt_giro= $Funciones->limpiarTexto($_REQUEST['txt_giro']);
 $txt_telefono = $Funciones->limpiarNumeroEntero($_REQUEST['txt_telefono']);
 
+$posicionGuion = strpos($txt_rut_cliente,'-');
+$soloRut = substr($txt_rut_cliente,0,$posicionGuion);
+$digito_verificador = substr($txt_rut_cliente,$posicionGuion+1,$posicionGuion+2);
+
 
 $Cliente = new Cliente();
-$Cliente->setRutCliente($txt_rut_cliente);
-$Cliente->setDv($txt_dv);
+$Cliente->setRutCliente($soloRut);
+$Cliente->setDv($digito_verificador);
 $Cliente->setNombre($txt_nombre);
 $Cliente->setDireccion($txt_direccion);
 $Cliente->setComuna($txt_comuna);
