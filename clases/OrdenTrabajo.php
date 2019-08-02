@@ -138,12 +138,22 @@ class OrdenTrabajo{
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
  }
- 
+
  public function mostrarOrdenesTrabajo(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $consulta ="select * from vista_orden ";
+    $consulta ="select * from vista_orden";
+    // echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
+    return $resultado_consulta;
+ }
+
+ public function obtenerOrdenTrabajo(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select * from tb_orden_trabajo where id_orden=".$this->id_orden;
     // echo $consulta;
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
