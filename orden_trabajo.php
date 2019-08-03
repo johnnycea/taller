@@ -46,33 +46,100 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
   <div class="container contenedor-principal" >
 
-       <div class="col-12">
-          <div class="col-12">
+       <div class="row">
 
-                <div>
-                  <h4>Ordenes de trabajo</h4>
-                </div>
-
-                <div><hr></div>
+          <div class="col-3">
 
                 <div class="container">
-                    <div class="row">
 
-                        <div id="" class="col-12 col-md-4 " >
-                          <button type="button" onclick="" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
-                        </div>
-                        <div id="" class="col-12 col-md-4" >
-                              <input placeholder="" onkeyup="listarOrden(this.value)" class="form-control" type="text" name="txt_buscar_orden" id="txt_buscar_orden" value="">
-                        </div>
+                  <div class="card bg-dark text-white">
+                      <div class="card-header">
+                        <h5><i class="fas fa-file-alt"></i> Buscar Ordenes</h5>
+                      </div>
+                      <div class="card-body fondo_gris">
 
-                    </div>
+                          <div class="row">
+
+                               <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Codigo:</label>
+                                  <input type="text" class="form-control form-control-sm" id="txt_codigo_orden_buscar" name="txt_codigo_orden_buscar">
+                               </div>
+                               <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Fecha Inicio:</label>
+                                  <input type="date" class="form-control form-control-sm" id="txt_fecha_inicio_buscar" name="txt_fecha_inicio_buscar">
+                               </div>
+                               <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Fecha Fin:</label>
+                                   <input type="date" class="form-control form-control-sm" id="txt_fecha_fin_buscar" name="txt_fecha_fin_buscar">
+                               </div>
+                               <div class="col-12" >
+                                 <label for="title" class="col-12 control-label">Cliente:</label>
+                                 <input type="text" class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                               </div>
+                               <div class="col-12" >
+                                 <label for="title" class="col-12 control-label">Patente:</label>
+                                 <input type="text" class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                               </div>
+                               <div class="col-12" >
+                                 <label for="title" class="col-12 control-label">Estado:</label>
+                                 <select class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                                    <option value="">Todas</option>
+                                    <option value="">En proceso</option>
+                                    <option value="">Por pagar</option>
+                                    <option value="">Pagado</option>
+                                 </select>
+                               </div>
+                               <div class="col-12" >
+                                 <label for="title" class="col-12 control-label">Trabajador:</label>
+                                 <select class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                                    <option value="">Todos</option>
+                                    <option value="">Johnna</option>
+                                 </select>
+                               </div>
+
+                          </div>
+
+                      </div>
+                    </div><!-- cierre de card general de busqueda-->
                 </div>
 
-                <div><hr></div>
-
-                <div id='contenedor_listado_orden' class="table-responsive"></div>
 
             </div>
+
+            <div class="col-9">
+              <div class="card bg-dark text-white">
+                  <div class="card-header">
+                    <div class="row">
+
+                      <div class="col-9">
+                        <h5><i class="fas fa-file-alt"></i> Ordenes de Trabajo</h5>
+                      </div>
+                      <div class="col-3 " >
+                        <button type="button" onclick="" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="card-body fondo_gris">
+
+                     <div id='contenedor_listado_orden' class="table-responsive"></div>
+                     <h1>COSAS QUE HAY QUE HACER</h1>
+
+                     <ul>
+                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS</li>
+                       <li>*EN SECCION BUSCAR: CAMBIAR LOS INPUT DATE POR DATEPICKER</li>
+                       <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO PATENTE SOLO SE PERMITAN LETRAS Y NUMEROS (HAY FUNCION EN funciones.js)</li>
+                       <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO RUT CLIENTE SOLO SE PERMITAN NUMEROS Y LA "K" (HAY FUNCION EN funciones.js)</li>
+                       <li>*PROGRAMAR LA BUSQUEDA</li>
+                       <li>*CAMBIAR PARA QUE NUNCA SE MUESTREN LAS ORDENES EN ESTADO VACIA</li>
+                       <li>*HACER INFORMES</li>
+                       <li>*DARLE ESTILO A LA IMPRESION DE LA ORDEN</li>
+                     </ul>
+
+                  </div>
+              </div>
+            </div>
+
         </div>
 
   </div>
