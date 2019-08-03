@@ -98,6 +98,8 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
       </div>
       <div class="modal-body">
 
+
+
            <div class="row">
 
               <div class="col-5">
@@ -170,22 +172,22 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                   <div class="row">
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Patente:</label>
-                                        <input type="text"  required class="form-control form-control-sm" onblur="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
+                                        <input type="text"  required class="form-control form-control-sm" onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Marca:</label>
-                                        <input type="text" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_marca" id="txt_marca" value="">
+                                        <input type="text" onblur="guardarDatosVehiculo()"  class="form-control form-control-sm" name="txt_marca" id="txt_marca" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Modelo:</label>
-                                        <input type="text" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_modelo" id="txt_modelo" value="">
+                                        <input type="text" onblur="guardarDatosVehiculo()"  class="form-control form-control-sm" name="txt_modelo" id="txt_modelo" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Año:</label>
-                                        <input type="number" onblur="guardarDatosVehiculo()" required class="form-control form-control-sm" name="txt_anio" id="txt_anio" value="">
+                                        <input type="number" onblur="guardarDatosVehiculo()"  class="form-control form-control-sm" name="txt_anio" id="txt_anio" value="">
                                       </div>
 
                                   </div>

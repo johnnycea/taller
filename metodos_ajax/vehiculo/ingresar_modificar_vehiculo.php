@@ -30,7 +30,7 @@ if($consultaExisteVehiculo->num_rows==0){
 }else{
 //si tiene id se modifca
   if($Vehiculo->modificarVehiculo()){
-    echo "1";
+    echo "1: modifica los datos";
   }else{
     echo "2";
   }

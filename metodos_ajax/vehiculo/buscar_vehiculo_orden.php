@@ -27,17 +27,23 @@ if($listadoVehiculo->num_rows != 0){//si existe el vehiculo, recibe sus datos
 
   $vehiculo_encontrado['marca'] = "";
   $vehiculo_encontrado['modelo'] = "";
-  $vehiculo_encontrado['anio'] = "";
+  $vehiculo_encontrado['anio'] = "0";
 
-  //AQUI HAY QUE PONER LA FUNCION QUE CREE EL VEHICULO SOLO CON SU PATENTE
-  $conexion = new Conexion();
-  $conexion = $conexion->conectar();
+  //preguntar si es un numero valido de pantente (si tiene 6 digitos lo guarda)
+  if(strlen($txt_patente)==6){
 
-  if($conexion->query("insert into tb_vehiculos(patente) values('".$txt_patente."')")){
 
-      $vehiculo_encontrado['quepaso'] = "se_agrego";
-  }else{
-      $vehiculo_encontrado['quepaso'] = "no_se_agrego";
+      //AQUI HAY QUE PONER LA FUNCION QUE CREE EL VEHICULO SOLO CON SU PATENTE
+      $conexion = new Conexion();
+      $conexion = $conexion->conectar();
+
+      if($conexion->query("insert into tb_vehiculos(patente) values('".$txt_patente."')")){
+
+          $vehiculo_encontrado['quepaso'] = "se_agrego";
+      }else{
+          $vehiculo_encontrado['quepaso'] = "no_se_agrego";
+      }
+
   }
 
 }

@@ -28,6 +28,7 @@ function cargarInformacionClientes(texto_buscar){
 
 function guardarDatosCliente(){
 
+
    var rut = $("#txt_rut_cliente").val();
    var nombre = $("#txt_nombre").val();
    var telefono = $("#txt_telefono").val();
@@ -39,7 +40,7 @@ function guardarDatosCliente(){
 			url:"./metodos_ajax/clientes/ingresar_modificar_cliente.php?txt_rut_cliente="+rut+"&txt_nombre="+nombre+"&txt_telefono="+telefono+"&txt_comuna="+comuna+"&txt_direccion="+direccion+"&txt_giro="+giro,
 			method:"POST",
 			success:function(respuesta){
-				// alert(respuesta);
+				console.log(respuesta);
 			}
 		});
 }
@@ -55,7 +56,8 @@ function guardarDatosVehiculo(){
 			url:"./metodos_ajax/vehiculo/ingresar_modificar_vehiculo.php?txt_patente="+patente+"&txt_marca="+marca+"&txt_modelo="+modelo+"&txt_anio="+anio,
 			method:"POST",
 			success:function(respuesta){
-				alert(respuesta);
+				// alert(respuesta);
+				console.log(respuesta);
 			}
 		});
 }
@@ -82,7 +84,7 @@ function cargarModificarOrden(id){
 	$('#cmb_trabajador').val(txt_trabajador);
 
 	$('#txt_patente').val(txt_patente);
-	$('#txt_patente').blur();
+	$('#txt_patente').keyup();
 	$('#txt_rut_cliente').val(txt_rut_cliente);
 	$('#txt_rut_cliente').blur();
 	$('#txt_id_estado').val(txt_id_estado);
@@ -100,9 +102,8 @@ function cargarVehiculo(texto_buscar){
 			method:"POST",
 			dataType:"json",
 			success:function(respuesta){
-				// console.log(respuesta);
-				// alert(respuesta);
-				// alert(respuesta.marca+" modelo: "+respuesta.modelo+" anio:"+respuesta.anio );
+				// alert(respuesta.quepaso);
+
 				 $("#txt_marca").val(respuesta.marca);
 				 $("#txt_modelo").val(respuesta.modelo);
 				 $("#txt_anio").val(respuesta.anio);
