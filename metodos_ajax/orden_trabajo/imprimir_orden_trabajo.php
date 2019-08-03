@@ -62,17 +62,7 @@ require_once '../../clases/Vehiculo.php';
   $anio = $resultado_vehiculo['anio'];
   // echo "vehiculo".$patente .$marca .$modelo .$anio;
 
-  $DetalleOrden = new OrdenTrabajo();
-  $DetalleOrden->setIdOrden($id_orden);
-  $consultaDetalleOrden = $DetalleOrden->vistaDetalleOrden();
-    while($resultado_detalle_orden = $consultaDetalleOrden->fetch_array()){
 
-  $descripcion = $resultado_detalle_orden['descripcion'];
-  $cantidad = $resultado_detalle_orden['cantidad'];
-  $valor_unitario = $resultado_detalle_orden['valor'];
-  $tipo_detalle = $resultado_detalle_orden['tipo_detalle'];
-  echo "detalle".$descripcion .$cantidad .$valor_unitario .$tipo_detalle;
-}
 
 
 ?>
@@ -129,25 +119,37 @@ require_once '../../clases/Vehiculo.php';
         </tr>
     	</table>
 
-              <!-- <table class="table table-bordered  table-dark table-sm">
-                <thead class="thead-dark">
-                  <th>Tipo</th>
-                  <th>Item</th>
-                  <th>Cantidad</th>
-                  <th>Valor</th>
-                  <th>Total</th>
-                  <th style="width:30px;"></th>
-                </thead>
-                <tbody>';
 
-                     <tr>
-                        <td><span>'.$resultado_detalle_orden['tipo_detalle'].'</span></td>
-                        <td><span>'.$resultado_detalle_orden['descripcion'].'</span></td>
-                        <td><span>'.$resultado_detalle_orden['cantidad'].'</span></td>
-                        <td><span>$'.number_format($resultado_detalle_orden['valor'],0,",",".").'</span></td>
-                        <td><span>$'.number_format($resultado_detalle_orden['valor_total'],0,",",".").'</span></td>
+<?php
 
-                     </tr> -->
+$DetalleOrden = new OrdenTrabajo();
+$DetalleOrden->setIdOrden($id_orden);
+$consultaDetalleOrden = $DetalleOrden->vistaDetalleOrden();
+
+  echo ' <table border="1" class="table table-bordered  table-dark table-sm">
+      <thead class="thead-dark">
+        <th>Tipo</th>
+        <th>Item</th>
+        <th>Cantidad</th>
+        <th>Valor</th>
+        <th>Total</th>
+        <th style="width:30px;"></th>
+      </thead>
+      <tbody>';
+
+      while($resultado_detalle_orden = $consultaDetalleOrden->fetch_array()){
+           echo '<tr>
+              <td><span>'.$resultado_detalle_orden['tipo_detalle'].'</span></td>
+              <td><span>'.$resultado_detalle_orden['descripcion'].'</span></td>
+              <td><span>'.$resultado_detalle_orden['cantidad'].'</span></td>
+              <td><span>$'.number_format($resultado_detalle_orden['valor'],0,",",".").'</span></td>
+              <td><span>$'.number_format($resultado_detalle_orden['valor_total'],0,",",".").'</span></td>
+
+           </tr> ';
+       }
+       echo '</tbody>
+         </table>';
+ ?>
 
             </body>
 <script type="text/javascript" src="../../js/jquery-3.1.0.min.js"></script>
