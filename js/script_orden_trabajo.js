@@ -1,5 +1,5 @@
 
-listarOrden();
+$(document).ready(listarOrden);
 
 function cargarInformacionClientes(texto_buscar){
 
@@ -131,12 +131,13 @@ function guardarDatosOrden(){
 function listarOrden(){
 
 		$.ajax({
-			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php?",
+			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php",
 			method:"POST",
+			data: $("#formulario_buscar_ordenes").serialize(),
 			success:function(respuesta){
-				 // alert(respuesta);
 
 				 $("#contenedor_listado_orden").html(respuesta);
+
 			}
 		});
 }
@@ -177,17 +178,6 @@ function crearDetalleOrden(){
 				}
 			});
 	}
-
-
-
-
-// function limpiarFormularioOrden(){
-//    $("#formulario_modal_orden")[0].reset();
-// 	 $('#txt_id_factura').attr("readonly",false);
-// 	 $("#formulario_modal_orden").attr("action","javascript:crearOrden()");
-//
-// }
-
 
 
 function eliminarDetalleOrden(id_detalle,id_orden){

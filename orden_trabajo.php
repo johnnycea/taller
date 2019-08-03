@@ -60,42 +60,46 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                           <div class="row">
 
-                               <div class="col-12" >
-                                   <label for="title" class="col-12 control-label">Codigo:</label>
-                                  <input type="text" class="form-control form-control-sm" id="txt_codigo_orden_buscar" name="txt_codigo_orden_buscar">
-                               </div>
-                               <div class="col-12" >
-                                   <label for="title" class="col-12 control-label">Fecha Inicio:</label>
-                                  <input type="date" class="form-control form-control-sm" id="txt_fecha_inicio_buscar" name="txt_fecha_inicio_buscar">
-                               </div>
-                               <div class="col-12" >
-                                   <label for="title" class="col-12 control-label">Fecha Fin:</label>
-                                   <input type="date" class="form-control form-control-sm" id="txt_fecha_fin_buscar" name="txt_fecha_fin_buscar">
-                               </div>
-                               <div class="col-12" >
-                                 <label for="title" class="col-12 control-label">Cliente:</label>
-                                 <input type="text" class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
-                               </div>
-                               <div class="col-12" >
-                                 <label for="title" class="col-12 control-label">Patente:</label>
-                                 <input type="text" class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
-                               </div>
-                               <div class="col-12" >
-                                 <label for="title" class="col-12 control-label">Estado:</label>
-                                 <select class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
-                                    <option value="">Todas</option>
-                                    <option value="">En proceso</option>
-                                    <option value="">Por pagar</option>
-                                    <option value="">Pagado</option>
-                                 </select>
-                               </div>
-                               <div class="col-12" >
-                                 <label for="title" class="col-12 control-label">Trabajador:</label>
-                                 <select class="form-control form-control-sm" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
-                                    <option value="">Todos</option>
-                                    <option value="">Johnna</option>
-                                 </select>
-                               </div>
+                            <form id="formulario_buscar_ordenes" name="formulario_buscar_ordenes" method="post">
+
+                                 <div class="col-12" >
+                                     <label for="title" class="col-12 control-label">Codigo:</label>
+                                    <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_codigo_orden_buscar" name="txt_codigo_orden_buscar">
+                                 </div>
+                                 <div class="col-12" >
+                                     <label for="title" class="col-12 control-label">Desde la fecha:</label>
+                                    <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_inicio_buscar" name="txt_fecha_inicio_buscar">
+                                 </div>
+                                 <div class="col-12" >
+                                     <label for="title" class="col-12 control-label">Hasta la fecha:</label>
+                                     <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_fin_buscar" name="txt_fecha_fin_buscar">
+                                 </div>
+                                 <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Cliente:</label>
+                                   <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                                 </div>
+                                 <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Patente:</label>
+                                   <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_patente_buscar" name="txt_patente_buscar">
+                                 </div>
+                                 <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Estado:</label>
+                                   <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
+                                      <option value="0">Todas</option>
+                                      <option value="2">En proceso</option>
+                                      <option value="3">Por pagar</option>
+                                      <option value="4">Pagado</option>
+                                   </select>
+                                 </div>
+                                 <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Trabajador:</label>
+                                   <select class="form-control form-control-sm" onchange="listarOrden()"  id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
+                                      <option value="">Todos</option>
+                                      <option value="18319075">Johnna</option>
+                                   </select>
+                                 </div>
+
+                             </form>
 
                           </div>
 

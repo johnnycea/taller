@@ -3,11 +3,21 @@ require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/OrdenTrabajo.php';
 
+$Funciones = new Funciones();
+
+//variables busqueda
+$codigo = $Funciones->limpiarNumeroEntero($_REQUEST["txt_codigo_orden_buscar"]);
+$fecha_inicio = $Funciones->limpiarTexto($_REQUEST["txt_fecha_inicio_buscar"]);
+$fecha_fin = $Funciones->limpiarTexto($_REQUEST["txt_fecha_fin_buscar"]);
+$cliente = $Funciones->limpiarTexto($_REQUEST["txt_rut_cliente_buscar"]);
+$patente = $Funciones->limpiarTexto($_REQUEST["txt_patente_buscar"]);
+$estado = $Funciones->limpiarNumeroEntero($_REQUEST["txt_estado_orden_buscar"]);
+$trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
+
 
   echo '
   <table class="table table-dark table-sm table-striped table-hover">
      <thead class="" align=center>
-
         <th>Codigo</th>
         <th>Fecha</th>
         <th>Cliente</th>
@@ -19,7 +29,7 @@ require_once '../../clases/OrdenTrabajo.php';
 
 
        $OrdenTrabajo = new OrdenTrabajo();
-       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo();
+       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$cliente,$patente,$estado,$trabajador);
 
          while($filas = $listadoOrdenTrabajo->fetch_array()){
 
@@ -36,7 +46,7 @@ require_once '../../clases/OrdenTrabajo.php';
 
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>
-                             <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
+                           <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
                     </tr>';
          }

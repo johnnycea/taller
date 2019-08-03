@@ -95,27 +95,6 @@ class OrdenTrabajo{
     return $resultado_consulta;
  }
 
- function obtenerPedido($texto_buscar,$condiciones){
-     $conexion = new Conexion();
-     $conexion = $conexion->conectar();
-
-     if($texto_buscar=="" || $texto_buscar==" "){
-       $consulta= "select * from tb_pedidos ".$condiciones."";
-     }else{
-       $consulta= "select * from tb_pedidos
-                   where id_pedido like '%".$texto_buscar."%'
-                   or id_venta like '%".$texto_buscar."%'
-                   or rut_cliente like '%".$texto_buscar."%'
-                   or estado_pedido like '%".$texto_buscar."%'
-                   or id_usuario_repartidor like '%".$texto_buscar."%'";
-     }
-     $resultado= $conexion->query($consulta);
-     if($resultado){
-        return $resultado;
-     }else{
-       return false;
-     }
- }
 
  public function crearDetalleOrden(){
    $conexion = new Conexion();
@@ -139,12 +118,28 @@ class OrdenTrabajo{
     return $resultado_consulta;
  }
 
- public function mostrarOrdenesTrabajo(){
+ public function mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$cliente,$patente,$estado,$trabajador){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $consulta ="select * from vista_orden";
-    // echo $consulta;
+    $condiciones="";
+
+    $condiciones = ($codigo!="") ? $condiciones." and (id_orden = ".$codigo.")" : $condiciones;
+    $condiciones = ($fecha_inicio!="" and $fecha_fin!="") ? $condiciones." and (fecha_recepcion between ".$fecha_inicio." and ".$fecha_fin.")" : $condiciones;
+    $condiciones = ($cliente!="") ? $condiciones." and (cliente = ".$cliente.")" : $condiciones;
+    $condiciones = ($patente!="") ? $condiciones." and (patente = '".$patente."')" : $condiciones;
+    $condiciones = ($estado!="") ? $condiciones." and (id_estado = ".$estado.")" : $condiciones;
+    $condiciones = ($trabajador!="") ? $condiciones." and (trabajador = ".$trabajador.")" : $condiciones;
+
+    $consulta ="select * from vista_orden where id_estado <> 1 ";
+
+    if($condiciones!=""){
+        $consulta = $consulta.$condiciones;
+    }
+
+
+
+    echo $consulta;
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
  }
@@ -185,22 +180,6 @@ class OrdenTrabajo{
    // echo $consulta;
    return $resultado;
  }
-
-   public function modificarProveedor(){
-       $conexion = new Conexion();
-       $conexion = $conexion->conectar();
-
-       $consulta="update tb_proveedores SET
-       razon_social = '".$this->razon_social."',
-       direccion = '".$this->direccion."',
-       telefono = '".$this->telefono."',
-       giro = '".$this->giro."',
-       correo = '".$this->correo."'
-        WHERE (rut_proveedor = '".$this->rut_proveedor."');";
-
-       $resultado= $conexion->query($consulta);
-       return $resultado;
-   }
 
 
    public function eliminarDetalleOrden(){
