@@ -223,3 +223,10 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 			}
 			});
 			}
+
+			function imprimeComprobante(id_orden) {
+				var id_orden = $("#txt_id_orden").val()
+				// alert(nombre);
+				// alert(apellidos);
+					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=YES");
+			}
