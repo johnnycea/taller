@@ -81,48 +81,47 @@ require_once '../../clases/Vehiculo.php';
   <h1>Orden de trabajo <?php echo $id_orden; ?></h1>
 
   <p>----------------------------</p>
-  <table border="1">
+  <table border="1" align="center"  width="100%">
   <caption>Cliente</caption>
-  <tr width="100%">
+  <tr>
     <td width="100%">
       <label for="">Rut Cliente: </label>
       <label for=""><?php echo $rut_cliente; ?> </label>
 
-  <br>
   <label for="">Nombre: </label>
   <label for=""><?php echo $nombre; ?> </label>
-  <br>
+
   <label for="">Teléfono: </label>
   <label for=""><?php echo $telefono; ?> </label>
-  <br>
+<br>
   <label for="">Dirección: </label>
   <label for=""><?php echo $direccion; ?> </label>
-  <br>
+
   <label for="">Comuna: </label>
   <label for=""><?php echo $comuna; ?> </label>
   <br>
-  <label for="">Giro: </label>
-  <label for=""><?php echo $giro; ?> </label>
+  <!-- <label for="">Giro: </label>
+  <label for=""><?php //echo $giro; ?> </label> -->
   <br>
     </td>
   </tr>
   	</table>
 <br>
-  <table border="1">
+  <table border="1" align="center"  width="100%">
         <caption>Patente</caption>
         <tr width="100%">
           <td width="100%">
               <label for=""><?php echo $patente; ?> </label>
-              <br>
+
               <label for="">Marca: </label>
               <label for=""><?php echo $marca; ?> </label>
-              <br>
+
               <label for="">Modelo: </label>
               <label for=""><?php echo $modelo ?> </label>
               <br>
               <label for="">Año: </label>
               <label for=""><?php echo $anio ?> </label>
-              <br>
+
               <label for="">Kilometraje: </label>
               <label for=""><?php echo $kilometraje ?> </label>
               <br>
