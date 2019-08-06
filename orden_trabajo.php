@@ -119,7 +119,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                         <h5><i class="fas fa-file-alt"></i> Ordenes de Trabajo</h5>
                       </div>
                       <div class="col-3 " >
-                        <button type="button" onclick="" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
+                        <button type="button" onclick="boton_nueva_orden()" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" id="btn_nueva_orden">Crear nueva Orden</button>
                       </div>
 
                     </div>
@@ -394,8 +394,25 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
 
                                                 <div class="col-12">
-                                                  <button type="button" onclick="cambiarEstadoOrden(2)" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Confirmar ingreso orden</button>
-                                                  <button type="button"  onclick="imprimeComprobante()" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Imprimir</button>
+                                                  <button type="button" id="btn_confirmar_orden" onclick="cambiarEstadoOrden(2)" class="btn btn-success col-12 btn-block"><i class="fas fa-check-circle"></i> Confirmar ingreso orden</button>
+
+                                                  <div class="container">
+                                                    <div class="row">
+
+                                                        <div class="col-12 col-md-6">
+                                                          <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
+                                                            <option value="2">En Proceso</option>
+                                                            <option value="3">Pendiente de Pago</option>
+                                                            <option value="4">Pagada</option>
+                                                          </select>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-6">
+                                                          <button type="button"  class="btn btn-success btn-block" id="btn_imprimir_orden" onclick="imprimeComprobante()" ><i class="fas fa-check-circle"></i> Imprimir</button>
+                                                        </div>
+
+                                                    </div>
+                                                  </div>
 
                                                 </div>
 

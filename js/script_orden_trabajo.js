@@ -1,3 +1,8 @@
+function boton_nueva_orden(){
+	$('#btn_confirmar_orden').removeClass('d-none');
+	$('#select_estado_orden').addClass('d-none');
+	$('#btn_imprimir_orden').addClass('d-none');
+};
 
 $(document).ready(listarOrden);
 
@@ -77,6 +82,7 @@ function cargarModificarOrden(id){
 	var txt_id_estado = $("#columna_estado_"+id).html();
 
 
+
 	//carga la informacion recibida en el modal
 	$('#txt_id_orden').val(txt_id_orden);
 	$('#txt_descripcion').val(txt_descripcion);
@@ -87,7 +93,13 @@ function cargarModificarOrden(id){
 	$('#txt_patente').keyup();
 	$('#txt_rut_cliente').val(txt_rut_cliente);
 	$('#txt_rut_cliente').blur();
-	$('#txt_id_estado').val(txt_id_estado);
+
+
+	$('#select_estado_orden').val(txt_id_estado);
+
+	$('#btn_confirmar_orden').addClass("d-none");
+	$('#select_estado_orden').removeClass('d-none');
+	$('#btn_imprimir_orden').removeClass('d-none');
 
 }
 
