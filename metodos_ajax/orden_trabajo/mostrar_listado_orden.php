@@ -11,7 +11,7 @@ $fecha_inicio = $Funciones->limpiarTexto($_REQUEST["txt_fecha_inicio_buscar"]);
 $fecha_fin = $Funciones->limpiarTexto($_REQUEST["txt_fecha_fin_buscar"]);
 $cliente = $Funciones->limpiarTexto($_REQUEST["txt_rut_cliente_buscar"]);
 $patente = $Funciones->limpiarTexto($_REQUEST["txt_patente_buscar"]);
-$estado = $Funciones->limpiarNumeroEntero($_REQUEST["txt_estado_orden_buscar"]);
+$estado = $Funciones->limpiarTexto($_REQUEST["txt_estado_orden_buscar"]);
 $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
 

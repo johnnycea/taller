@@ -6,6 +6,42 @@ require_once '../../clases/Cliente.php';
 require_once '../../clases/Vehiculo.php';
  ?>
 
+ <?php
+
+   $id_orden = $_REQUEST['id_orden'];
+
+   $Orden = new OrdenTrabajo();
+   $Orden->setIdOrden($id_orden);
+   $consultaOrden = $Orden->obtenerOrdenTrabajo();
+
+   $resultado_orden = $consultaOrden->fetch_array();
+   $rut_cliente = $resultado_orden['rut_cliente'];
+   $patente = $resultado_orden['patente'];
+   $kilometraje = $resultado_orden['kilometraje'];
+
+   $Cliente = new Cliente();
+   $Cliente->setRutCliente($rut_cliente);
+   $consultaCliente = $Cliente->obtenerCliente();
+
+   $resultado_cliente = $consultaCliente->fetch_array();
+   $nombre = $resultado_cliente['nombre'];
+   $direccion = $resultado_cliente['direccion'];
+   $comuna = $resultado_cliente['comuna'];
+   $giro = $resultado_cliente['giro'];
+   $telefono = $resultado_cliente['telefono'];
+
+   $Vehiculo = new Vehiculo();
+   $Vehiculo->setPatente($patente);
+   $consultaVehiculo = $Vehiculo->obtenerVehiculo();
+
+   $resultado_vehiculo = $consultaVehiculo->fetch_array();
+   $marca = $resultado_vehiculo['marca'];
+   $modelo = $resultado_vehiculo['modelo'];
+   $anio = $resultado_vehiculo['anio'];
+   // echo "vehiculo".$patente .$marca .$modelo .$anio;
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,62 +51,36 @@ require_once '../../clases/Vehiculo.php';
   <title>Boucher</title>
 </head>
 <body>
+  <div class="container">
+<div style=" float: left;">
+  <img class="card-img" src="../../img/logo-inguz.jpg" alt="" style="max-width: 300px; max-height: 300px;">
+</div>
 
-  <h1>José Manuel Infante Poduje</h1>
-  <h1>R.U.T: 7.816.171-K</h1>
-  <h1>Taller Electromecánico</h1>
-  <h1>Nueva Rancagua: N°0125</h1>
-  <h1>Fono: 713558 ANGOL</h1>
+    <div style="display:inline-block">
+      <h2>José Manuel Infante Poduje</h1>
+      <h4>R.U.T: 7.816.171-K</h4>
+      <h4>Taller Electromecánico</h4>
+      <h4>Nueva Rancagua: N°0125</h4>
+      <h4>Fono: 713558 ANGOL</h4>
+    </div>
 
-  <div class="card-head">
+
+      <div style="border: 3px black dashed; float: right;
+            background:red text-align:center;max-width: 350px; border-radius: 10px;">
+      <h1>Orden de trabajo N°<?php echo $id_orden; ?></h1></div>
+
+</div>
+
+
+
+  <!-- <div class="card-head">
        <div clas="col-2">
-             <img class="card-img" src="../../img/logo-inguz.jpg" alt="">
+             <img class="card-img" src="../../img/logo-inguz.jpg" alt="" style="max-width: 300px; max-height: 300px">
        </div>
-  </div>
-
-<?php
-
-  $id_orden = $_REQUEST['id_orden'];
-
-  $Orden = new OrdenTrabajo();
-  $Orden->setIdOrden($id_orden);
-  $consultaOrden = $Orden->obtenerOrdenTrabajo();
-
-  $resultado_orden = $consultaOrden->fetch_array();
-  $rut_cliente = $resultado_orden['rut_cliente'];
-  $patente = $resultado_orden['patente'];
-  $kilometraje = $resultado_orden['kilometraje'];
-
-  $Cliente = new Cliente();
-  $Cliente->setRutCliente($rut_cliente);
-  $consultaCliente = $Cliente->obtenerCliente();
-
-  $resultado_cliente = $consultaCliente->fetch_array();
-  $nombre = $resultado_cliente['nombre'];
-  $direccion = $resultado_cliente['direccion'];
-  $comuna = $resultado_cliente['comuna'];
-  $giro = $resultado_cliente['giro'];
-  $telefono = $resultado_cliente['telefono'];
-
-  $Vehiculo = new Vehiculo();
-  $Vehiculo->setPatente($patente);
-  $consultaVehiculo = $Vehiculo->obtenerVehiculo();
-
-  $resultado_vehiculo = $consultaVehiculo->fetch_array();
-  $marca = $resultado_vehiculo['marca'];
-  $modelo = $resultado_vehiculo['modelo'];
-  $anio = $resultado_vehiculo['anio'];
-  // echo "vehiculo".$patente .$marca .$modelo .$anio;
+  </div> -->
 
 
 
-
-?>
-
-
-  <h1>Orden de trabajo <?php echo $id_orden; ?></h1>
-
-  <p>----------------------------</p>
   <table border="1" align="center"  width="100%">
   <caption>Cliente</caption>
   <tr>

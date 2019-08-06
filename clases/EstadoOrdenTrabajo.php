@@ -1,11 +1,11 @@
 <?php
 require_once 'Conexion.php';
 
-class Estado_movimiento{
+class EstadoOrdenTrabajo{
 
  private $tabla;
- private $id_estado;
- private $descripcion;
+ private $id_estado_orden;
+ private $descripcion_estado_orden;
 
  public function setTabla($parametro){
    $this->tabla = $parametro;
@@ -34,11 +34,12 @@ class Estado_movimiento{
  //
  // }
 
- public function obtenerEstados(){
+ public function obtenerEstadoOrden(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
-    $resultado_consulta = $Conexion->query("select * from tb_estado_movimiento");
+    $resultado_consulta = $Conexion->query("select * from tb_estado_orden where id_estado_orden<>1");
+
     return $resultado_consulta;
 
  }

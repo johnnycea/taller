@@ -154,6 +154,16 @@ class OrdenTrabajo{
     return $resultado_consulta;
  }
 
+ public function obtenerTrabajadores(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $consulta ="select * from vista_trabajador";
+    // echo $consulta;
+    $resultado_consulta = $Conexion->query($consulta);
+    return $resultado_consulta;
+ }
+
  public function ObtenerCodigoNuevaOrden(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();

@@ -4,6 +4,7 @@ require_once 'comun.php';
 require_once './clases/Usuario.php';
 require_once './clases/OrdenTrabajo.php';
 require_once './clases/Trabajador.php';
+require_once './clases/EstadoOrdenTrabajo.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -82,20 +83,42 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                    <label for="title" class="col-12 control-label">Patente:</label>
                                    <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_patente_buscar" name="txt_patente_buscar">
                                  </div>
-                                 <div class="col-12" >
-                                   <label for="title" class="col-12 control-label">Estado:</label>
+                                   <!-- <label for="title" class="col-12 control-label">Estado:</label>
                                    <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
                                       <option value="0">Todas</option>
                                       <option value="2">En proceso</option>
                                       <option value="3">Por pagar</option>
                                       <option value="4">Pagado</option>
-                                   </select>
+                                   </select> -->
+
+                                  <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Estado:</label>
+                                       <select onchange="listarOrden()" class="form-control form-control-sm" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
+                                         <option value="" selected disabled>Todas:</option>
+                                          <?php
+                                              require_once './clases/EstadoOrdenTrabajo.php';
+                                              $tipo_orden= new EstadoOrdenTrabajo();
+                                              $filasTipoOrden= $tipo_orden->obtenerEstadoOrden();
+
+                                              foreach($filasTipoOrden as $tipo){
+                                                  echo '<option value="'.$tipo['id_estado_orden'].'" >'.$tipo['descripcion_estado_orden'].'</option>';
+                                              }
+                                           ?>
+                                      </select>
                                  </div>
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Trabajador:</label>
-                                   <select class="form-control form-control-sm" onchange="listarOrden()"  id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
-                                      <option value="">Todos</option>
-                                      <option value="18319075">Johnna</option>
+                                   <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
+                                     <option value="" selected disabled>Trabajador:</option>
+                                      <?php
+                                          require_once './clases/OrdenTrabajo.php';
+                                          $tipo_orden_trabajador= new OrdenTrabajo();
+                                          $filasTipoTrabajador= $tipo_orden_trabajador->obtenerTrabajadores();
+
+                                          foreach($filasTipoTrabajador as $tipo){
+                                              echo '<option value="'.$tipo['rut'].'" >'.$tipo['nombre'].'</option>';
+                                          }
+                                       ?>
                                    </select>
                                  </div>
 
@@ -130,7 +153,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                      <h1>COSAS QUE HAY QUE HACER</h1>
 
                      <ul>
-                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS</li>
+                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS "LISTO"</li>
                        <li>*EN SECCION BUSCAR: CAMBIAR LOS INPUT DATE POR DATEPICKER</li>
                        <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO PATENTE SOLO SE PERMITAN LETRAS Y NUMEROS (HAY FUNCION EN funciones.js)</li>
                        <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO RUT CLIENTE SOLO SE PERMITAN NUMEROS Y LA "K" (HAY FUNCION EN funciones.js)</li>
@@ -410,10 +433,6 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
   </div>
 <!-- FIN DE MODAL -->
 
-
-<!-- <script type="text/javascript">
-    listarFacturas("");
-</script> -->
 
 </body>
 </html>
