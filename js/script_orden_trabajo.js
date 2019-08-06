@@ -214,9 +214,27 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 			});
 			}
 
-			function imprimeComprobante(id_orden) {
+			function imprimeComprobante() {
 				var id_orden = $("#txt_id_orden").val()
 				// alert(nombre);
 				// alert(apellidos);
 					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=YES");
+			}
+
+			function cambiarEstadoOrden(nuevo_estado) {
+				var id_orden = $("#txt_id_orden").val()
+
+						$.ajax({
+							url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado,
+							method:"POST",
+							success:function(respuesta){
+								 alert(respuesta);
+								 if(respuesta==1){
+									 swal("Guardado","Los datos se han guardado correctamente.","success");
+									 listarDetalleOrden("");
+								 }else{
+									 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+								 }
+								}
+							});
 			}

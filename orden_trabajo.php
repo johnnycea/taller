@@ -85,7 +85,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Estado:</label>
                                    <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
-                                      <option value="0">Todas</option>
+                                      <option value="">Todas</option>
                                       <option value="2">En proceso</option>
                                       <option value="3">Por pagar</option>
                                       <option value="4">Pagado</option>
@@ -389,6 +389,13 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                   listarDetalleOrden();
                                                   </script> -->
+
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                  <button type="button" onclick="cambiarEstadoOrden(2)" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Confirmar ingreso orden</button>
+                                                  <button type="button"  onclick="imprimeComprobante()" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Imprimir</button>
 
                                                 </div>
 
