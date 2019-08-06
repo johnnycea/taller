@@ -55,16 +55,6 @@ require_once '../../clases/OrdenTrabajo.php';
                      </tbody>
                   </table>';
 
-                  echo '
-
-                   <div class="container clearfix">';
-                      if($total!=0){
-                        echo '<button type="button" data-toggle="modal" data-target="#modal_finalizar_orden" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Confirmar ingreso orden</button>';
-                        echo '<button type="button"  onclick="imprimeComprobante('.$filas['id_orden'].')" class="btn btn-success col-12 col-md-4 btn-block"><i class="fas fa-check-circle"></i> Imprimir</button>';
-                      }
-
-                   echo '</div>
-                  ';
 
 
 

@@ -1,3 +1,8 @@
+function boton_nueva_orden(){
+	$('#btn_confirmar_orden').removeClass('d-none');
+	$('#select_estado_orden').addClass('d-none');
+	$('#btn_imprimir_orden').addClass('d-none');
+};
 
 $(document).ready(listarOrden);
 
@@ -77,6 +82,7 @@ function cargarModificarOrden(id){
 	var txt_id_estado = $("#columna_estado_"+id).html();
 
 
+
 	//carga la informacion recibida en el modal
 	$('#txt_id_orden').val(txt_id_orden);
 	$('#txt_descripcion').val(txt_descripcion);
@@ -87,7 +93,13 @@ function cargarModificarOrden(id){
 	$('#txt_patente').keyup();
 	$('#txt_rut_cliente').val(txt_rut_cliente);
 	$('#txt_rut_cliente').blur();
-	$('#txt_id_estado').val(txt_id_estado);
+
+
+	$('#select_estado_orden').val(txt_id_estado);
+
+	$('#btn_confirmar_orden').addClass("d-none");
+	$('#select_estado_orden').removeClass('d-none');
+	$('#btn_imprimir_orden').removeClass('d-none');
 
 }
 
@@ -214,9 +226,30 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 			});
 			}
 
-			function imprimeComprobante(id_orden) {
+			function imprimeComprobante() {
 				var id_orden = $("#txt_id_orden").val()
 				// alert(nombre);
 				// alert(apellidos);
 					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=NOT");
+			}
+
+			function cambiarEstadoOrden(nuevo_estado) {
+				var id_orden = $("#txt_id_orden").val()
+
+        if(nuevo_estado==2){
+           //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
+				}
+						$.ajax({
+							url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado,
+							method:"POST",
+							success:function(respuesta){
+								 alert(respuesta);
+								 if(respuesta==1){
+									 swal("Guardado","Los datos se han guardado correctamente.","success");
+									 listarDetalleOrden("");
+								 }else{
+									 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+								 }
+								}
+							});
 			}

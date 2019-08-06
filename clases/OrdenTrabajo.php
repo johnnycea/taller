@@ -191,6 +191,16 @@ class OrdenTrabajo{
    return $resultado;
  }
 
+ public function cambiarEstadoOrden(){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+
+   $consulta = "update tb_orden_trabajo SET id_estado=".$this->id_estado." WHERE (`id_orden` = '".$this->id_orden."');";
+   $resultado= $conexion->query($consulta);
+   // echo $consulta;
+   return $resultado;
+ }
+
 
    public function eliminarDetalleOrden(){
      $Conexion = new Conexion();

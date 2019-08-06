@@ -85,7 +85,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                  </div>
                                    <!-- <label for="title" class="col-12 control-label">Estado:</label>
                                    <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
-                                      <option value="0">Todas</option>
+                                      <option value="">Todas</option>
                                       <option value="2">En proceso</option>
                                       <option value="3">Por pagar</option>
                                       <option value="4">Pagado</option>
@@ -142,7 +142,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                         <h5><i class="fas fa-file-alt"></i> Ordenes de Trabajo</h5>
                       </div>
                       <div class="col-3 " >
-                        <button type="button" onclick="" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" name="button">Crear nueva Orden</button>
+                        <button type="button" onclick="boton_nueva_orden()" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" id="btn_nueva_orden">Crear nueva Orden</button>
                       </div>
 
                     </div>
@@ -153,12 +153,12 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                      <h1>COSAS QUE HAY QUE HACER</h1>
 
                      <ul>
-                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS "LISTO"</li>
+                       <li>*DARLE FORMATO QUE CORRESPONDE A LA FECHA EJM: 18-09-1992</li>
+                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS</li>
                        <li>*EN SECCION BUSCAR: CAMBIAR LOS INPUT DATE POR DATEPICKER</li>
                        <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO PATENTE SOLO SE PERMITAN LETRAS Y NUMEROS (HAY FUNCION EN funciones.js)</li>
                        <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO RUT CLIENTE SOLO SE PERMITAN NUMEROS Y LA "K" (HAY FUNCION EN funciones.js)</li>
                        <li>*PROGRAMAR LA BUSQUEDA</li>
-                       <li>*CAMBIAR PARA QUE NUNCA SE MUESTREN LAS ORDENES EN ESTADO VACIA</li>
                        <li>*HACER INFORMES</li>
                        <li>*DARLE ESTILO A LA IMPRESION DE LA ORDEN</li>
                      </ul>
@@ -412,6 +412,30 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                   listarDetalleOrden();
                                                   </script> -->
+
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                  <button type="button" id="btn_confirmar_orden" onclick="cambiarEstadoOrden(2)" class="btn btn-success col-12 btn-block"><i class="fas fa-check-circle"></i> Confirmar ingreso orden</button>
+
+                                                  <div class="container">
+                                                    <div class="row">
+
+                                                        <div class="col-12 col-md-6">
+                                                          <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
+                                                            <option value="2">En Proceso</option>
+                                                            <option value="3">Pendiente de Pago</option>
+                                                            <option value="4">Pagada</option>
+                                                          </select>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-6">
+                                                          <button type="button"  class="btn btn-success btn-block" id="btn_imprimir_orden" onclick="imprimeComprobante()" ><i class="fas fa-check-circle"></i> Imprimir</button>
+                                                        </div>
+
+                                                    </div>
+                                                  </div>
 
                                                 </div>
 
