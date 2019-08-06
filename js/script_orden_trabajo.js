@@ -236,6 +236,9 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 			function cambiarEstadoOrden(nuevo_estado) {
 				var id_orden = $("#txt_id_orden").val()
 
+        if(nuevo_estado==2){
+           //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
+				}
 						$.ajax({
 							url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado,
 							method:"POST",
