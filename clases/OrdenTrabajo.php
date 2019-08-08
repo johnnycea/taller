@@ -41,7 +41,7 @@ class OrdenTrabajo{
    $this->patente = $patente;
  }
  public function setRutCliente($rutCliente){
-   $this->rutCliente = $rutCliente;
+   $this->rut_cliente = $rutCliente;
  }
  public function setfechaRecepcion($recepcion){
    $this->recepcion = $recepcion;
@@ -154,16 +154,6 @@ class OrdenTrabajo{
     return $resultado_consulta;
  }
 
- public function obtenerTrabajadores(){
-    $Conexion = new Conexion();
-    $Conexion = $Conexion->conectar();
-
-    $consulta ="select * from vista_trabajador";
-    // echo $consulta;
-    $resultado_consulta = $Conexion->query($consulta);
-    return $resultado_consulta;
- }
-
  public function ObtenerCodigoNuevaOrden(){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
@@ -185,7 +175,16 @@ class OrdenTrabajo{
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "update tb_orden_trabajo SET `descripcion_diagnostico` = '".$this->descripcion_diagnostico."', `kilometraje` = ".$this->kilometraje.", `rut_trabajador` = ".$this->trabajador." WHERE (`id_orden` = '".$this->id_orden."');";
+   $adicionales = "";
+
+   if($this->patente!=""){
+       $adicionales = $adicionales." patente='".$this->patente."', ";
+   }
+   if($this->rut_cliente!=""){
+       $adicionales = $adicionales." rut_cliente=".$this->rut_cliente.", ";
+   }
+
+   $consulta = "update tb_orden_trabajo SET ".$adicionales." `descripcion_diagnostico` = '".$this->descripcion_diagnostico."', `kilometraje` = ".$this->kilometraje.", `rut_trabajador` = ".$this->trabajador." WHERE (`id_orden` = '".$this->id_orden."');";
    $resultado= $conexion->query($consulta);
    // echo $consulta;
    return $resultado;

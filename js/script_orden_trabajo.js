@@ -98,6 +98,7 @@ function cargarModificarOrden(id){
 
 	//carga la informacion recibida en el modal
 	$('#txt_id_orden').val(txt_id_orden);
+	$('#span_codigo_orden').html(txt_id_orden);
 	$('#txt_descripcion').val(txt_descripcion);
 	$('#txt_kilometraje').val(txt_kilometraje);
 	$('#cmb_trabajador').val(txt_trabajador);
@@ -105,7 +106,7 @@ function cargarModificarOrden(id){
 	$('#txt_patente').val(txt_patente);
 	$('#txt_patente').keyup();
 	$('#txt_rut_cliente').val(txt_rut_cliente);
-	$('#txt_rut_cliente').blur();
+	$('#txt_rut_cliente').change();
 
 
 	$('#select_estado_orden').val(txt_id_estado);
@@ -137,16 +138,20 @@ function cargarVehiculo(texto_buscar){
 
 function guardarDatosOrden(){
 
+   var txt_rut_cliente = $("#txt_rut_cliente").val();
+   var txt_patente = $("#txt_patente").val();
+
    var txt_id_orden = $("#txt_id_orden").val();
    var txt_descripcion = $("#txt_descripcion").val();
    var txt_kilometraje = $("#txt_kilometraje").val();
    var cmb_trabajador = $("#cmb_trabajador").val();
 
 		$.ajax({
-			url:"./metodos_ajax/orden_trabajo/guardar_diagnostico.php?txt_descripcion="+txt_descripcion+"&txt_kilometraje="+txt_kilometraje+"&txt_id_orden="+txt_id_orden+"&cmb_trabajador="+cmb_trabajador,
+			url:"./metodos_ajax/orden_trabajo/guardar_diagnostico.php?txt_rut_cliente="+txt_rut_cliente+"&txt_patente="+txt_patente+"&txt_descripcion="+txt_descripcion+"&txt_kilometraje="+txt_kilometraje+"&txt_id_orden="+txt_id_orden+"&cmb_trabajador="+cmb_trabajador,
 			method:"POST",
 			success:function(respuesta){
-				console.log("respuesta actualiza orden :"+respuesta);
+				console.log(respuesta);
+				listarOrden();
 			}
 		});
 }
@@ -255,11 +260,12 @@ function cambiarEstadoOrden(nuevo_estado){
 							url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado,
 							method:"POST",
 							success:function(respuesta){
-								 alert(respuesta);
+								 // alert(respuesta);
 								 if(respuesta==1){
 									 swal("Guardado","Los datos se han guardado correctamente.","success");
 									 listarDetalleOrden("");
 									 mostrarOcultarOpcionesEstado(2);
+									 listarOrden();
 								 }else{
 									 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 								 }

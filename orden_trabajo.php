@@ -164,7 +164,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
     <div class="modal-content fondo_negro">
 
       <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title" id="myModalLabel">Orden de trabajo N° <span><?php echo $numero_orden; ?> </span></h4></h5>
+        <h5 class="modal-title" id="myModalLabel">Orden de trabajo N° <span id="span_codigo_orden"><?php echo $numero_orden; ?> </span></h4></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -187,7 +187,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                      <div class="col-md-6" >
                                          <label for="title" class="col-12 control-label">Rut:</label>
-                                        <input type="text" class="form-control form-control-sm"  placeholder="11222333-0" max="10" onblur="cargarInformacionClientes(this.value)" id="txt_rut_cliente" name="txt_rut_cliente">
+                                        <input type="text" class="form-control form-control-sm"  placeholder="11222333-0" max="10" onblur="guardarDatosOrden()" onchange="cargarInformacionClientes(this.value)" id="txt_rut_cliente" name="txt_rut_cliente">
                                      </div>
 
                                      <div class="col-md-6" >
@@ -243,7 +243,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                   <div class="row">
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Patente:</label>
-                                        <input type="text"  required class="form-control form-control-sm" onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
+                                        <input type="text"  required class="form-control form-control-sm" onblur="guardarDatosOrden()"  onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
@@ -401,7 +401,6 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                         <div class="col-12 col-md-6">
                                                           <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
-                                                            <option value=""></option>
                                                             <option value="2">En Proceso</option>
                                                             <option value="3">Pendiente de Pago</option>
                                                             <option value="4">Pagada</option>
