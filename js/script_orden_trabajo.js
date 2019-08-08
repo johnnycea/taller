@@ -1,10 +1,23 @@
 function boton_nueva_orden(){
-	$('#btn_confirmar_orden').removeClass('d-none');
-	$('#select_estado_orden').addClass('d-none');
-	$('#btn_imprimir_orden').addClass('d-none');
-};
+	 mostrarOcultarOpcionesEstado(1);
+}
 
 $(document).ready(listarOrden);
+
+
+function mostrarOcultarOpcionesEstado(opcion){
+	//opcion 1: ocultar estado e imprimir, mostrar confirmar ingreso
+	//opcion 2: mostrar estado e imprimir, ocultar confirmar ingreso
+	if(opcion==1){
+		$('#btn_confirmar_orden').removeClass('d-none');
+		$('#select_estado_orden').addClass('d-none');
+		$('#btn_imprimir_orden').addClass('d-none');
+	}else if(opcion==2){
+		$('#btn_confirmar_orden').addClass("d-none");
+		$('#select_estado_orden').removeClass('d-none');
+		$('#btn_imprimir_orden').removeClass('d-none');
+	}
+}
 
 function cargarInformacionClientes(texto_buscar){
 
@@ -97,9 +110,8 @@ function cargarModificarOrden(id){
 
 	$('#select_estado_orden').val(txt_id_estado);
 
-	$('#btn_confirmar_orden').addClass("d-none");
-	$('#select_estado_orden').removeClass('d-none');
-	$('#btn_imprimir_orden').removeClass('d-none');
+  mostrarOcultarOpcionesEstado(2);
+
 
 }
 
@@ -195,45 +207,45 @@ function crearDetalleOrden(){
 function eliminarDetalleOrden(id_detalle,id_orden){
 
 	// 	alert("Id_detalle: "+id_detalle+" Id_orden: "+id_orden);
-	swal({
-	title: "¿Eliminar?",
-	text: "El detalle de su orden",
-	type: "warning",
-	showCancelButton: true,
-	confirmButtonColor: "#DD6B55",
-	confirmButtonText: "Eliminar!",
-	cancelButtonText: "Cancelar!",
-	closeOnConfirm: false,
-	closeOnCancel: false },
-	function(isConfirm){
-			if (isConfirm) {
-			$.ajax({
-				url:"./metodos_ajax/orden_trabajo/eliminar_detalle_orden.php?id_detalle="+id_detalle+"&id_orden="+id_orden,
-				method:"POST",
-				success:function(respuesta){
-					 // alert(respuesta);
-					 if(respuesta==1){
-						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarDetalleOrden("");
-					 }else if(respuesta==2){
-						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-					 }
+			swal({
+			title: "¿Eliminar?",
+			text: "El detalle de su orden",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Eliminar!",
+			cancelButtonText: "Cancelar!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+			function(isConfirm){
+					if (isConfirm) {
+					$.ajax({
+						url:"./metodos_ajax/orden_trabajo/eliminar_detalle_orden.php?id_detalle="+id_detalle+"&id_orden="+id_orden,
+						method:"POST",
+						success:function(respuesta){
+							 // alert(respuesta);
+							 if(respuesta==1){
+								 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+								 listarDetalleOrden("");
+							 }else if(respuesta==2){
+								 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+							 }
+							}
+						});
+					} else {
+							swal("Cancelado", "", "error");
 					}
-				});
-			} else {
-					swal("Cancelado", "", "error");
-			}
-			});
+					});
 			}
 
 			function imprimeComprobante() {
 				var id_orden = $("#txt_id_orden").val()
 				// alert(nombre);
 				// alert(apellidos);
-					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=NOT");
+					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=YES");
 			}
 
-			function cambiarEstadoOrden(nuevo_estado) {
+function cambiarEstadoOrden(nuevo_estado){
 				var id_orden = $("#txt_id_orden").val()
 
         if(nuevo_estado==2){
@@ -247,9 +259,10 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 								 if(respuesta==1){
 									 swal("Guardado","Los datos se han guardado correctamente.","success");
 									 listarDetalleOrden("");
+									 mostrarOcultarOpcionesEstado(2);
 								 }else{
 									 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 								 }
 								}
 							});
-			}
+}

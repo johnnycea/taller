@@ -4,7 +4,6 @@ require_once 'comun.php';
 require_once './clases/Usuario.php';
 require_once './clases/OrdenTrabajo.php';
 require_once './clases/Trabajador.php';
-require_once './clases/EstadoOrdenTrabajo.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -83,42 +82,20 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                    <label for="title" class="col-12 control-label">Patente:</label>
                                    <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_patente_buscar" name="txt_patente_buscar">
                                  </div>
-                                   <!-- <label for="title" class="col-12 control-label">Estado:</label>
+                                 <div class="col-12" >
+                                   <label for="title" class="col-12 control-label">Estado:</label>
                                    <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
                                       <option value="">Todas</option>
                                       <option value="2">En proceso</option>
                                       <option value="3">Por pagar</option>
                                       <option value="4">Pagado</option>
-                                   </select> -->
-
-                                  <div class="col-12" >
-                                   <label for="title" class="col-12 control-label">Estado:</label>
-                                       <select onchange="listarOrden()" class="form-control form-control-sm" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
-                                         <option value="" selected disabled>Todas:</option>
-                                          <?php
-                                              require_once './clases/EstadoOrdenTrabajo.php';
-                                              $tipo_orden= new EstadoOrdenTrabajo();
-                                              $filasTipoOrden= $tipo_orden->obtenerEstadoOrden();
-
-                                              foreach($filasTipoOrden as $tipo){
-                                                  echo '<option value="'.$tipo['id_estado_orden'].'" >'.$tipo['descripcion_estado_orden'].'</option>';
-                                              }
-                                           ?>
-                                      </select>
+                                   </select>
                                  </div>
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Trabajador:</label>
-                                   <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
-                                     <option value="" selected disabled>Trabajador:</option>
-                                      <?php
-                                          require_once './clases/OrdenTrabajo.php';
-                                          $tipo_orden_trabajador= new OrdenTrabajo();
-                                          $filasTipoTrabajador= $tipo_orden_trabajador->obtenerTrabajadores();
-
-                                          foreach($filasTipoTrabajador as $tipo){
-                                              echo '<option value="'.$tipo['rut'].'" >'.$tipo['nombre'].'</option>';
-                                          }
-                                       ?>
+                                   <select class="form-control form-control-sm" onchange="listarOrden()"  id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
+                                      <option value="">Todos</option>
+                                      <option value="18319075">Johnna</option>
                                    </select>
                                  </div>
 
@@ -424,6 +401,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                         <div class="col-12 col-md-6">
                                                           <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
+                                                            <option value=""></option>
                                                             <option value="2">En Proceso</option>
                                                             <option value="3">Pendiente de Pago</option>
                                                             <option value="4">Pagada</option>
@@ -457,6 +435,10 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
   </div>
 <!-- FIN DE MODAL -->
 
+
+<!-- <script type="text/javascript">
+    listarFacturas("");
+</script> -->
 
 </body>
 </html>
