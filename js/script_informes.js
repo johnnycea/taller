@@ -14,9 +14,9 @@ function generarInforme(){
 function mostrarOcultarOpciones(select_tipo_informe){
 
    if(select_tipo_informe==1){
-		 $("#contenedor_opciones_informe_detallado").addClass("d-none");
+		 $("#contenedor_selector_cliente").removeClass("d-none");
 	 }else if(select_tipo_informe==2){
-		 $("#contenedor_opciones_informe_detallado").removeClass("d-none");
+		 $("#contenedor_selector_cliente").addClass("d-none");
 	 }
 
 }

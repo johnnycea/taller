@@ -20,22 +20,12 @@ $OrdenTrabajo->setTipoDetalle($cmb_tipo_detalle_orden);
 $OrdenTrabajo->setValorUnitario($txt_valor_unitario_detalle);
 $OrdenTrabajo->setCantidad($txt_cantidad_detalle_orden);
 
-// if($txt_id_factura=="" || $txt_id_factura==" "){
-//Si no tiene id de factura se debe crear nuevo factura
+
    if($OrdenTrabajo->crearDetalleOrden()){
       echo "1";
    }else{
      echo "2";
    }
-// }else{
-// //si tiene id se modifca
-//   if($Factura->modificarFactura()){
-//     echo "1";
-//   }else{
-//     echo "2";
-//   }
-//
-// }
 
 
 ?>
