@@ -58,7 +58,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                        <div class="form-group col-12" id="contenedor_selector_cliente">
                           <label for="title" class="col-12 control-label">Cliente:</label>
-                          <input type="text" value="" class="form-control"  placeholder="Rut cliente" name="txt_rut_cliente" id="txt_rut_cliente">
+                          <input type="text" value="" class="form-control"  placeholder="Rut Opcional" name="txt_rut_cliente" id="txt_rut_cliente">
                        </div>
 
                        <div class="form-group col-12">

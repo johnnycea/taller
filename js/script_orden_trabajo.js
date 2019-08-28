@@ -10,12 +10,14 @@ function mostrarOcultarOpcionesEstado(opcion){
 	//opcion 2: mostrar estado e imprimir, ocultar confirmar ingreso
 	if(opcion==1){
 		$('#btn_confirmar_orden').removeClass('d-none');
-		$('#select_estado_orden').addClass('d-none');
-		$('#btn_imprimir_orden').addClass('d-none');
+		$('#contenedor_opciones_orden').addClass('d-none');
+		// $('#select_estado_orden').addClass('d-none');
+		// $('#btn_imprimir_orden').addClass('d-none');
 	}else if(opcion==2){
 		$('#btn_confirmar_orden').addClass("d-none");
-		$('#select_estado_orden').removeClass('d-none');
-		$('#btn_imprimir_orden').removeClass('d-none');
+		$('#contenedor_opciones_orden').removeClass('d-none');
+		// $('#select_estado_orden').removeClass('d-none');
+		// $('#btn_imprimir_orden').removeClass('d-none');
 	}
 }
 

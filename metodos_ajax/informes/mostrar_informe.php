@@ -38,7 +38,7 @@ if($tipo_informe==1){//informe general
            <th>Fecha</th>
            <th>Cliente</th>
            <th>Iva</th>
-           <th>Valor</th>
+           <th>Valor+Iva</th>
         </thead>
         <tbody>';
 
@@ -49,7 +49,7 @@ if($tipo_informe==1){//informe general
                   <td>'.$filas['id_orden'].'</td>
                   <td>'.$filas['fecha_recepcion'].'</td>
                   <td>'.$filas['nombre'].'</td>
-                  <td>%'.$filas['iva_venta'].'</td>
+                  <td>'; echo ($filas['iva_venta']>0) ? "Si" : "No";  echo '</td>
                   <td>$'.number_format($filas['valor'],0,",",".").'</td>
                 </tr>
              ';
@@ -71,7 +71,47 @@ if($tipo_informe==1){//informe general
 
 }else if($tipo_informe==2){//
 
+  $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."' and id_estado = 3 ";
 
+  $resultado_consulta = $Conexion->query($consulta);
+
+
+  echo '
+  <table class="table table-stripped table-bordered table-sm ">
+     <thead>
+        <th>Nº OT</th>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Iva</th>
+        <th>Valor+Iva</th>
+     </thead>
+     <tbody>';
+
+     $total=0;
+      while($filas = $resultado_consulta->fetch_array()){
+          echo '
+             <tr>
+               <td>'.$filas['id_orden'].'</td>
+               <td>'.$filas['fecha_recepcion'].'</td>
+               <td>'.$filas['nombre'].'</td>
+               <td>'; echo ($filas['iva_venta']>0) ? "Si" : "No";  echo '</td>
+               <td>$'.number_format($filas['valor'],0,",",".").'</td>
+             </tr>
+          ';
+
+          $total+=$filas['valor'];
+      }
+
+      echo '
+         <tr>
+           <td colspan="4">Total</td>
+           <td>$'.number_format($total,0,",",".").'</td>
+         </tr>
+      ';
+
+ echo '</tbody>
+  </table>
+  ';
 
 }
 
