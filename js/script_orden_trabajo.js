@@ -1,5 +1,11 @@
 function boton_nueva_orden(){
+
+   listarDetalleOrden();
 	 mostrarOcultarOpcionesEstado(1);
+	 $("#txt_fecha_pago").val("");
+	 $("#txt_rut_cliente").val("");
+	 $("#txt_patente").val("");
+
 }
 
 $(document).ready(listarOrden);
@@ -11,13 +17,9 @@ function mostrarOcultarOpcionesEstado(opcion){
 	if(opcion==1){
 		$('#btn_confirmar_orden').removeClass('d-none');
 		$('#contenedor_opciones_orden').addClass('d-none');
-		// $('#select_estado_orden').addClass('d-none');
-		// $('#btn_imprimir_orden').addClass('d-none');
 	}else if(opcion==2){
 		$('#btn_confirmar_orden').addClass("d-none");
 		$('#contenedor_opciones_orden').removeClass('d-none');
-		// $('#select_estado_orden').removeClass('d-none');
-		// $('#btn_imprimir_orden').removeClass('d-none');
 	}
 }
 
@@ -95,6 +97,7 @@ function cargarModificarOrden(id){
   var txt_patente = $("#columna_patente_"+id).html();
 	var txt_rut_cliente = $("#columna_rut_cliente_"+id).html();
 	var txt_id_estado = $("#columna_estado_"+id).html();
+	var txt_fecha_pago = $("#columna_fecha_pago_"+id).html();
 
 
 
@@ -110,8 +113,10 @@ function cargarModificarOrden(id){
 	$('#txt_rut_cliente').val(txt_rut_cliente);
 	$('#txt_rut_cliente').change();
 
+	$('#txt_fecha_pago').val(txt_fecha_pago);
 
 	$('#select_estado_orden').val(txt_id_estado);
+   mostrarOcultarFechaPago();
 
   mostrarOcultarOpcionesEstado(2);
 
@@ -161,6 +166,7 @@ function guardarDatosOrden(){
 
 function listarOrden(){
 
+   contenedorCargando("#contenedor_listado_orden");
 		$.ajax({
 			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php",
 			method:"POST",
@@ -174,6 +180,8 @@ function listarOrden(){
 }
 
 function listarDetalleOrden(){
+
+	contenedorCargando("#contenedor_detalle_orden");
 
 	var id_orden = $("#txt_id_orden").val();
 
@@ -202,6 +210,25 @@ function crearDetalleOrden(){
 					 if(respuesta==1){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 // $("#modal_orden").modal('hide');
+						 listarDetalleOrden("");
+					 }else if(respuesta==2){
+						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+					 }
+				}
+			});
+	}
+
+function cambiarIva(iva){
+
+	var id_orden = $("#txt_id_orden").val();
+
+			$.ajax({
+				url:"./metodos_ajax/orden_trabajo/cambiar_iva.php?id_orden="+id_orden+"&iva="+iva,
+				method:"POST",
+				success:function(respuesta){
+					// alert(respuesta);
+					 if(respuesta==1){
+						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 listarDetalleOrden("");
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
@@ -252,25 +279,62 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 					 window.open("./metodos_ajax/orden_trabajo/imprimir_orden_trabajo.php?id_orden="+id_orden, "Impimir Boucher" , "width=800,height=600,scrollbars=YES");
 			}
 
+
+function mostrarOcultarFechaPago() {
+	var estado_actual = $("#select_estado_orden").val();
+
+  if(estado_actual==4){
+      $("#contenedor_fecha_pago").removeClass("d-none");
+	}else{
+		  $("#contenedor_fecha_pago").addClass("d-none");
+	}
+}
+
 function cambiarEstadoOrden(nuevo_estado){
-				var id_orden = $("#txt_id_orden").val()
+	if(nuevo_estado==4){
+		$("#select_estado_orden").val(4);//para cuando se guarde en onblur de fecha
+	}
+	mostrarOcultarFechaPago();
+
+				var id_orden = $("#txt_id_orden").val();
+				var fecha_pago = $("#txt_fecha_pago").val();
 
         if(nuevo_estado==2){
            //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
+					 if($("#txt_rut_cliente").val()==""){
+						 swal("Debe ingresar Cliente","","info");
+						 return false;
+					 }else if($("#txt_patente").val()==""){
+						 swal("Debe ingresar Patente","","info");
+						 return false;
+					 }
+
 				}
-						$.ajax({
-							url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado,
-							method:"POST",
-							success:function(respuesta){
-								 // alert(respuesta);
-								 if(respuesta==1){
-									 swal("Guardado","Los datos se han guardado correctamente.","success");
-									 listarDetalleOrden("");
-									 mostrarOcultarOpcionesEstado(2);
-									 listarOrden();
-								 }else{
-									 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-								 }
-								}
-							});
+
+						if(nuevo_estado==4 && (fecha_pago=="" || fecha_pago==" ")){
+								swal("Indique la fecha de pago","","info");
+								$("#select_estado_orden").val(3);
+
+						}else{
+
+
+								$.ajax({
+									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago,
+									method:"POST",
+									success:function(respuesta){
+										// alert(respuesta);
+										if(respuesta==1){
+											swal("Guardado","Los datos se han guardado correctamente.","success");
+											listarDetalleOrden("");
+											mostrarOcultarOpcionesEstado(2);
+											listarOrden();
+										}else{
+											swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+										}
+									}
+								});
+
+						}
+
+
 }

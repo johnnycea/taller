@@ -36,15 +36,18 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
                echo '<tr align=center>
                        <td><span id="columna_id_orden_'.$filas['id_orden'].'" >'.$filas['id_orden'].'</span></td>
                        <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$filas['fecha_recepcion'].'</span></td>
+
                            <span class="d-none" id="columna_descripcion_'.$filas['id_orden'].'" >'.$filas['descripcion_diagnostico'].'</span>
                            <span class="d-none" id="columna_kilometraje_'.$filas['id_orden'].'" >'.$filas['kilometraje'].'</span>
                            <span class="d-none" id="columna_trabajador_'.$filas['id_orden'].'" >'.$filas['trabajador'].'</span>
                            <span class="d-none" id="columna_rut_cliente_'.$filas['id_orden'].'" >'.$filas['cliente'].'</span>
+
                        <td><span id="columna_nombre_'.$filas['id_orden'].'" >'.$filas['nombre'].' </span></td>
                        <td><span id="columna_vehiculo'.$filas['id_orden'].'" >'.$filas['patente'].' '.$filas['marca'].' '.$filas['modelo'].'</span></td>
                            <span class="d-none" id="columna_patente_'.$filas['id_orden'].'" >'.$filas['patente'].'</span></td>
 
                            <span class="d-none" id="columna_estado_'.$filas['id_orden'].'" >'.$filas['id_estado'].'</span></td>
+                           <span class="d-none" id="columna_fecha_pago_'.$filas['id_orden'].'" >'.$filas['fecha_pago'].'</span></td>
 
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>

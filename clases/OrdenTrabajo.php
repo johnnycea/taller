@@ -16,6 +16,7 @@ class OrdenTrabajo{
  private $porcentaje_descuento;
  private $usuario_creador;
  private $trabajador;
+ private $fecha_pago;
 
  // detalle OrdenTrabajo
 
@@ -66,6 +67,9 @@ class OrdenTrabajo{
  }
  public function setTrabajador($parametro){
    $this->trabajador = $parametro;
+ }
+ public function setFechaPago($parametro){
+   $this->fecha_pago = $parametro;
  }
 
 // set Detalle Orden de trabajo
@@ -194,7 +198,23 @@ class OrdenTrabajo{
    $conexion = new Conexion();
    $conexion = $conexion->conectar();
 
-   $consulta = "update tb_orden_trabajo SET id_estado=".$this->id_estado." WHERE (`id_orden` = '".$this->id_orden."');";
+   $consulta = "update tb_orden_trabajo SET
+                id_estado=".$this->id_estado.",
+                fecha_pago='".$this->fecha_pago."'
+                WHERE (`id_orden` = '".$this->id_orden."');";
+   $resultado= $conexion->query($consulta);
+   // echo $consulta;
+   return $resultado;
+ }
+
+ public function cambiarIva(){
+   $conexion = new Conexion();
+   $conexion = $conexion->conectar();
+
+   $consulta = "update tb_orden_trabajo SET
+                iva_venta=".$this->iva_venta."
+                WHERE (`id_orden` = '".$this->id_orden."');";
+
    $resultado= $conexion->query($consulta);
    // echo $consulta;
    return $resultado;

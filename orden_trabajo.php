@@ -397,7 +397,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                 <div class="col-12 ">
 
-                                                  <div id="contenedor_opciones_orden" class="card bg-dark text-white">
+                                                  <div id="contenedor_opciones_orden" class="card bg-dark text-white d-none">
                                                         <div class="card-header">
                                                           <h5><i class="fas fa-file-alt"></i> Opciones</h5>
                                                         </div>
@@ -405,21 +405,25 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                             <div class="row">
 
-                                                                    <div class="col-12">
-                                                                      <label for="estado">Estado de Orden:</label>
-                                                                      <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
-                                                                        <option value="2">En Proceso</option>
-                                                                        <option value="3">Pendiente de Pago</option>
-                                                                        <option value="4">Pagada</option>
-                                                                      </select>
+                                                                    <div class="col-md-6">
+                                                                        <div class="col-12">
+                                                                          <label for="estado">Estado de Orden:</label>
+                                                                          <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
+                                                                            <option value="2">En Proceso</option>
+                                                                            <option value="3">Pendiente de Pago</option>
+                                                                            <option value="4">Pagada</option>
+                                                                          </select>
+                                                                        </div>
+
+                                                                        <div id="contenedor_fecha_pago" class="col-12">
+                                                                          <label for="estado">Fecha de Pago:</label>
+                                                                          <input type="date" class="form-control" onblur="cambiarEstadoOrden(4)" name="txt_fecha_pago" id="txt_fecha_pago" value="">
+                                                                        </div>
+
                                                                     </div>
 
-                                                                    <div class="col-12">
-                                                                      <label for="estado">Fecha de Pago:</label>
-                                                                      <input type="date" class="form-control" name="txt_fecha_pago" id="" value="">
-                                                                    </div>
-
-                                                                    <div class="col-12">
+                                                                    <div class="col-md-6">
+                                                                      <label for="estado">&nbsp;</label>
                                                                       <button type="button"  class="btn btn-success btn-block" id="btn_imprimir_orden" onclick="imprimeComprobante()" ><i class="fas fa-check-circle"></i> Imprimir</button>
                                                                     </div>
 

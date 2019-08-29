@@ -29,6 +29,8 @@ require_once '../../clases/OrdenTrabajo.php';
                   $total_mano_obra = 0;
                   $total_repuestos = 0;
                   $iva = 0;
+                  $checkbox_iva ="";
+                  $neto = 0;
                   $total = 0;
                     while($filas = $listadoOrdenTrabajo->fetch_array()){
 
@@ -47,7 +49,8 @@ require_once '../../clases/OrdenTrabajo.php';
                                $total_mano_obra = ($filas['id_tipo_detalle']==1) ? $total_mano_obra+$filas['valor_total'] : $total_mano_obra;
                                $total_repuestos = ($filas['id_tipo_detalle']==2) ? $total_repuestos+$filas['valor_total'] : $total_repuestos;
 
-                               $total += $filas['valor_total'];
+                               $neto += $filas['valor_total'];
+                               $checkbox_iva = $filas['iva_venta'];
                     }
 
                     echo '
@@ -55,7 +58,10 @@ require_once '../../clases/OrdenTrabajo.php';
                      </tbody>
                   </table>';
 
-                  $iva = ($total*0.19);
+                  $checkbox_iva = ($checkbox_iva=="19") ? "checked" : "";
+
+                  $iva = ($checkbox_iva=="checked") ? ($neto*0.19) : 0;
+                  $total = ($checkbox_iva=="checked") ? ($neto+$iva) : $neto;
 
               echo '
                   <div class="row">
@@ -73,15 +79,20 @@ require_once '../../clases/OrdenTrabajo.php';
                             </tr>
                             <tr class="">
                                 <td colspan="4" ><strong>Sub total</strong></td>
-                                <td><strong>$'.number_format($total,0,',','.').'</strong></td>
+                                <td><strong>$'.number_format($neto,0,',','.').'</strong></td>
                             </tr>
                             <tr class="">
-                                <td colspan="4" ><strong>IVA</strong></td>
+                                <td colspan="4" >
+                                  <div class="form-check">
+                                    <input type="checkbox" '.$checkbox_iva.' onChange="cambiarIva(this.checked)" class="form-check-input" id="checkbox_iva">
+                                    <label class="form-check-label" for="checkbox_iva">IVA</label>
+                                  </div>
+                                </td>
                                 <td><strong>$'.number_format($iva,0,',','.').'</strong></td>
                             </tr>
                             <tr class="bg-danger text-white">
                                 <td colspan="4" ><strong>Total a pagar</strong></td>
-                                <td><strong>$'.number_format(($total+$iva),0,',','.').'</strong></td>
+                                <td><strong>$'.number_format($total,0,',','.').'</strong></td>
                             </tr>
 
 
@@ -89,8 +100,6 @@ require_once '../../clases/OrdenTrabajo.php';
                       </table>
                     </div>
                   </div>';
-
-
 
 
  ?>
