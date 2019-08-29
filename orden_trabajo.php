@@ -135,10 +135,6 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                   <div class="card-body fondo_gris">
 
                      <div id='contenedor_listado_orden' class="table-responsive"></div>
-                     <h1>COSAS QUE HAY QUE HACER</h1>
-                     <ul>
-                       <li>*DARLE ESTILO A LA IMPRESION DE LA ORDEN</li>
-                     </ul>
 
                   </div>
               </div>
