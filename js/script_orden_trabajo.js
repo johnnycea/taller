@@ -235,7 +235,8 @@ function cambiarIva(iva){
 					 }
 				}
 			});
-	}
+			
+}
 
 
 function eliminarDetalleOrden(id_detalle,id_orden){

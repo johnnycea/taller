@@ -143,7 +143,7 @@ class OrdenTrabajo{
 
 
 
-    echo $consulta;
+    // echo $consulta;
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
  }
