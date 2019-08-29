@@ -20,6 +20,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
      <thead class="" align=center>
         <th>Codigo</th>
         <th>Fecha</th>
+        <th>Hora</th>
         <th>Cliente</th>
         <th>Vehiculo</th>
         <th>Estado</th>
@@ -33,9 +34,14 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
          while($filas = $listadoOrdenTrabajo->fetch_array()){
 
+           $fecha = date_create($filas['fecha_recepcion']);
+           $fecha_recepcion = date_format($fecha, 'd-m-Y');
+           $hora_recepcion = date_format($fecha, 'H:i');
+
                echo '<tr align=center>
                        <td><span id="columna_id_orden_'.$filas['id_orden'].'" >'.$filas['id_orden'].'</span></td>
-                       <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$filas['fecha_recepcion'].'</span></td>
+                       <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$fecha_recepcion.'</span></td>
+                       <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$hora_recepcion.'</span></td>
 
                            <span class="d-none" id="columna_descripcion_'.$filas['id_orden'].'" >'.$filas['descripcion_diagnostico'].'</span>
                            <span class="d-none" id="columna_kilometraje_'.$filas['id_orden'].'" >'.$filas['kilometraje'].'</span>

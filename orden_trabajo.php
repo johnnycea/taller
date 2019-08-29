@@ -95,7 +95,15 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                    <label for="title" class="col-12 control-label">Trabajador:</label>
                                    <select class="form-control form-control-sm" onchange="listarOrden()"  id="txt_rut_trabajador_buscar" name="txt_rut_trabajador_buscar">
                                       <option value="">Todos</option>
-                                      <option value="18319075">Johnna</option>
+                                      <?php
+                                          require_once './clases/Usuario.php';
+                                          $trabajadores= new Usuario();
+                                          $filasTrabajadores= $trabajadores->obtener_Trabajadores();
+
+                                          foreach($filasTrabajadores as $trabajador){
+                                              echo '<option value="'.$trabajador['rut'].'" >'.$trabajador['nombre'].'</option>';
+                                          }
+                                       ?>
                                    </select>
                                  </div>
 
@@ -128,15 +136,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                      <div id='contenedor_listado_orden' class="table-responsive"></div>
                      <h1>COSAS QUE HAY QUE HACER</h1>
-
                      <ul>
-                       <li>*DARLE FORMATO QUE CORRESPONDE A LA FECHA EJM: 18-09-1992</li>
-                       <li>*EN SECCION BUSCAR: CARGAR SELECT ESTADO Y TRABAJADORES DESDE BASE DE DATOS</li>
-                       <li>*EN SECCION BUSCAR: CAMBIAR LOS INPUT DATE POR DATEPICKER</li>
-                       <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO PATENTE SOLO SE PERMITAN LETRAS Y NUMEROS (HAY FUNCION EN funciones.js)</li>
-                       <li>*EN SECCION BUSCAR: HACER QUE EN CAMPO RUT CLIENTE SOLO SE PERMITAN NUMEROS Y LA "K" (HAY FUNCION EN funciones.js)</li>
-                       <li>*PROGRAMAR LA BUSQUEDA</li>
-                       <li>*HACER INFORMES</li>
                        <li>*DARLE ESTILO A LA IMPRESION DE LA ORDEN</li>
                      </ul>
 
