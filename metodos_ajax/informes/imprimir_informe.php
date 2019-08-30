@@ -1,7 +1,20 @@
 <?php
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Boucher</title>
+</head>
+<body>
+
+
+<?php
 
 $funciones = new Funciones();
 
@@ -11,9 +24,6 @@ $tipo_informe = $funciones->limpiarNumeroEntero($_REQUEST['select_tipo_informe']
 $cliente = $funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
 
 
-echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.','.$cliente.');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
-
-echo '<div><hr></div>';
 $Conexion = new Conexion();
 $Conexion = $Conexion->conectar();
 
@@ -34,7 +44,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
 
      echo '
-     <table class="table table-stripped table-bordered table-sm ">
+     <table border="1" class="table table-stripped table-bordered table-sm ">
         <thead class="bg-dark text-white">
            <th>Nº OT</th>
            <th>Fecha</th>
@@ -85,7 +95,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
 
   echo '
-  <table class="table table-stripped  table-bordered table-sm ">
+  <table border="1" class="table table-stripped  table-bordered table-sm ">
      <thead class="bg-dark text-white">
         <th>Nº OT</th>
         <th>Fecha Ingreso</th>
@@ -140,3 +150,18 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
 
  ?>
+
+
+<script type="text/javascript">
+
+  function printHTML() {
+    if (window.print) {
+      window.print();
+    }
+  }
+
+  printHTML();
+</script>
+
+</body>
+</html>
