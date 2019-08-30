@@ -20,3 +20,10 @@ function mostrarOcultarOpciones(select_tipo_informe){
 	 }
 
 }
+
+function imprimeComprobante(fecha_inicio,fecha_fin,tipo_informe,cliente) {
+
+		 window.open("./metodos_ajax/ventas/imprimir_comprobante_venta.php?fecha_inicio="+fecha_inicio+"&fecha_fin="+fecha_fin+"&tipo_informe="+tipo_informe+"&cliente="+cliente,
+		 							"Impimir Boucher" ,
+									"width=800,height=600,scrollbars=YES");
+}

@@ -11,7 +11,9 @@ $tipo_informe = $funciones->limpiarNumeroEntero($_REQUEST['select_tipo_informe']
 $cliente = $funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
 
 
+echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante('.$fecha_inicio.','.$fecha_fin.','.$tipo_informe.','.$cliente.')" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
 
+echo '<div><hr></div>';
 $Conexion = new Conexion();
 $Conexion = $Conexion->conectar();
 
@@ -33,7 +35,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
      echo '
      <table class="table table-stripped table-bordered table-sm ">
-        <thead>
+        <thead class="bg-dark text-white">
            <th>Nº OT</th>
            <th>Fecha</th>
            <th>Cliente</th>
@@ -62,7 +64,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
          }
 
          echo '
-            <tr>
+         <tr class="table-info">
               <td colspan="4">Total</td>
               <td>$'.number_format($total,0,",",".").'</td>
             </tr>
@@ -83,8 +85,8 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
 
   echo '
-  <table class="table table-stripped table-bordered table-sm ">
-     <thead>
+  <table class="table table-stripped  table-bordered table-sm ">
+     <thead class="bg-dark text-white">
         <th>Nº OT</th>
         <th>Fecha Ingreso</th>
         <th>Cliente</th>
@@ -124,7 +126,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
       }
 
       echo '
-         <tr>
+         <tr class="table-info">
            <td colspan="8">Total</td>
            <td>$'.number_format($total,0,",",".").'</td>
          </tr>
