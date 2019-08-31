@@ -2,6 +2,14 @@
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 
+?>
+
+<div class="">
+    <img id="logo" src="./img/logo-inguz.jpg" alt="">
+</div>
+
+<?php
+
 
 $funciones = new Funciones();
 

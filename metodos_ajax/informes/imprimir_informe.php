@@ -10,6 +10,26 @@ require_once '../../clases/Funciones.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Boucher</title>
+
+
+  <style>
+      @media print {
+        @page {
+          margin: 0;
+        }
+        body {
+          margin: 2cm;
+        }
+
+        #logo{
+            width: 200px;
+            height: 100px;
+            background-image: url("./img/logo-inguz.jpg");
+         }
+
+      }
+  </style>
+
 </head>
 <body>
 
@@ -31,8 +51,7 @@ $Conexion = $Conexion->conectar();
 if($tipo_informe==1){//ORDENES POR PAGAR
 
      $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."' and id_estado = 3 ";
-
-     if($cliente!=""){
+     if($cliente!="" and $cliente!=" " and $cliente=!"undefined"){
 
        $posicion_guion = strpos($cliente,"-");
        $solo_rut = substr($cliente,0,$posicion_guion);
@@ -42,8 +61,8 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
      $resultado_consulta = $Conexion->query($consulta);
 
-
      echo '
+     <center>
      <table border="1" class="table table-stripped table-bordered table-sm ">
         <thead class="bg-dark text-white">
            <th>Nº OT</th>
@@ -82,6 +101,8 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
     echo '</tbody>
      </table>
+     </center>
+
      ';
 
 
@@ -95,6 +116,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
 
   echo '
+  <center>
   <table border="1" class="table table-stripped  table-bordered table-sm ">
      <thead class="bg-dark text-white">
         <th>Nº OT</th>
@@ -144,6 +166,8 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
  echo '</tbody>
   </table>
+  </center>
+
   ';
 
 }
