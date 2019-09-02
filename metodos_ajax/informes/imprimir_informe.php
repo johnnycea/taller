@@ -24,15 +24,76 @@ require_once '../../clases/Funciones.php';
         #logo{
             width: 200px;
             height: 100px;
-            background-image: url("./img/logo-inguz.jpg");
+            float:left;
+
          }
 
+        #contenedor_texto{
+            width: auto;
+            height: 100px;
+            float:left;
+
+
+         }
+         .texto{
+           display: block;
+         }
+         .contenedor_tabla{
+           display: block;
+         }
+         #tabla_informe{
+           width: 100%;
+          border-collapse: collapse;
+         }
+
+
       }
+
+      #logo{
+          width: 200px;
+          height: 100px;
+          float:left;
+
+       }
+       #contenedor_texto{
+         margin-top: 20px;
+           width: auto;
+           height: 100px;
+           float:left;
+
+
+        }
+        .texto{
+          display: block;
+        }
+        .contenedor_tabla{
+          display: block;
+        }
+        #tabla_informe{
+          width: 100%;
+          border-collapse: collapse;
+        }
+
   </style>
 
 </head>
 <body>
 
+<img id="logo" src="../../img/logo-inguz.jpg" alt="">
+<div id="contenedor_texto">
+  <label class="texto" for="">INGUZ</label>
+  <label class="texto" for="">Electricidad Automotríz</label>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div id="contenedor_tabla">
 
 <?php
 
@@ -47,12 +108,11 @@ $cliente = $funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
 $Conexion = new Conexion();
 $Conexion = $Conexion->conectar();
 
-
 if($tipo_informe==1){//ORDENES POR PAGAR
 
      $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."' and id_estado = 3 ";
-     if($cliente!="" and $cliente!=" " and $cliente=!"undefined"){
 
+     if($cliente!="" || $cliente!=" " || $cliente=!"undefined"){
        $posicion_guion = strpos($cliente,"-");
        $solo_rut = substr($cliente,0,$posicion_guion);
 
@@ -61,9 +121,28 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
      $resultado_consulta = $Conexion->query($consulta);
 
+     $fecha_inicio_label = date_create($fecha_inicio);
+     $fecha_inicio_label = date_format($fecha_inicio_label, 'd-m-Y');
+
+     $fecha_fin_label = date_create($fecha_fin);
+     $fecha_fin_label = date_format($fecha_fin_label, 'd-m-Y');
+
      echo '
      <center>
-     <table border="1" class="table table-stripped table-bordered table-sm ">
+      <h4 > Ordenes Por Pagar desde el '.$fecha_inicio_label.' hasta '.$fecha_fin.'</h4>
+     </center>';
+
+    if($cliente!="" || $cliente!=" " || $cliente=!"undefined"){
+       echo '
+       <center>
+        <h4 > Rut Cliente: '.$cliente.'</h4>
+       </center>';
+     }
+
+     echo '
+     <center>
+
+     <table border="1" id="tabla_informe" class="table table-stripped table-bordered table-sm ">
         <thead class="bg-dark text-white">
            <th>Nº OT</th>
            <th>Fecha</th>
@@ -80,7 +159,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
            $fecha = date_format($fecha, 'd-m-Y');
 
              echo '
-                <tr>
+                <tr >
                   <td>'.$filas['id_orden'].'</td>
                   <td>'.$fecha.'</td>
                   <td>'.$filas['nombre'].'</td>
@@ -115,9 +194,21 @@ if($tipo_informe==1){//ORDENES POR PAGAR
   $resultado_consulta = $Conexion->query($consulta);
 
 
+  $fecha_inicio_label = date_create($fecha_inicio);
+  $fecha_inicio_label = date_format($fecha_inicio_label, 'd-m-Y');
+
+  $fecha_fin_label = date_create($fecha_fin);
+  $fecha_fin_label = date_format($fecha_fin_label, 'd-m-Y');
+
   echo '
+
+    <center>
+      <h4 > Ingresos desde el '.$fecha_inicio_label.' hasta '.$fecha_fin_label.'</h4>
+    </center>
+
+
   <center>
-  <table border="1" class="table table-stripped  table-bordered table-sm ">
+  <table border="1" id="tabla_informe" class="table table-stripped  table-bordered table-sm ">
      <thead class="bg-dark text-white">
         <th>Nº OT</th>
         <th>Fecha Ingreso</th>
@@ -175,6 +266,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
  ?>
 
+</div>
 
 <script type="text/javascript">
 

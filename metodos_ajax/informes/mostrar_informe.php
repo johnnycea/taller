@@ -4,9 +4,9 @@ require_once '../../clases/Funciones.php';
 
 ?>
 
-<div class="">
-    <img id="logo" src="./img/logo-inguz.jpg" alt="">
-</div>
+<!-- <div class="">
+    <img id="logo" style="height:100px; width:50px;" src="./img/logo-inguz.jpg" alt="">
+</div> -->
 
 <?php
 
@@ -19,9 +19,8 @@ $tipo_informe = $funciones->limpiarNumeroEntero($_REQUEST['select_tipo_informe']
 $cliente = $funciones->limpiarTexto($_REQUEST['txt_rut_cliente']);
 
 
-echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.','.$cliente.');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
 
-echo '<div><hr></div>';
+
 $Conexion = new Conexion();
 $Conexion = $Conexion->conectar();
 
@@ -40,6 +39,10 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
      $resultado_consulta = $Conexion->query($consulta);
 
+     if($resultado_consulta->num_rows>0){
+       echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
+       echo '<div><hr></div>';
+     }
 
      echo '
      <table class="table table-stripped table-bordered table-sm ">
@@ -91,6 +94,10 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 
   $resultado_consulta = $Conexion->query($consulta);
 
+  if($resultado_consulta->num_rows>0){
+    echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
+    echo '<div><hr></div>';
+  }
 
   echo '
   <table class="table table-stripped  table-bordered table-sm ">

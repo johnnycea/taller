@@ -55,6 +55,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
                            <span class="d-none" id="columna_estado_'.$filas['id_orden'].'" >'.$filas['id_estado'].'</span></td>
                            <span class="d-none" id="columna_fecha_pago_'.$filas['id_orden'].'" >'.$filas['fecha_pago'].'</span></td>
+                           <span class="d-none" id="columna_fecha_entrega_'.$filas['id_orden'].'" >'.$filas['fecha_entrega'].'</span></td>
 
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>

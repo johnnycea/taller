@@ -411,6 +411,11 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                           </select>
                                                                         </div>
 
+                                                                        <div id="contenedor_fecha_entrega" class="col-12">
+                                                                          <label for="estado">Fecha de Entrega:</label>
+                                                                          <input type="date" class="form-control" onblur="cambiarEstadoOrden(3)" name="txt_fecha_entrega" id="txt_fecha_entrega" value="">
+                                                                        </div>
+
                                                                         <div id="contenedor_fecha_pago" class="col-12">
                                                                           <label for="estado">Fecha de Pago:</label>
                                                                           <input type="date" class="form-control" onblur="cambiarEstadoOrden(4)" name="txt_fecha_pago" id="txt_fecha_pago" value="">
