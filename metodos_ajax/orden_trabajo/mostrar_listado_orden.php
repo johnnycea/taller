@@ -14,6 +14,8 @@ $patente = $Funciones->limpiarTexto($_REQUEST["txt_patente_buscar"]);
 $estado = $Funciones->limpiarTexto($_REQUEST["txt_estado_orden_buscar"]);
 $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
+ $posicion_guion = strpos($cliente,"-");
+ $soloRut = substr($cliente,0,$posicion_guion);
 
   echo '
   <table class="table table-dark table-sm table-striped table-hover">
@@ -30,7 +32,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
 
        $OrdenTrabajo = new OrdenTrabajo();
-       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$cliente,$patente,$estado,$trabajador);
+       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$soloRut,$patente,$estado,$trabajador);
 
          while($filas = $listadoOrdenTrabajo->fetch_array()){
 

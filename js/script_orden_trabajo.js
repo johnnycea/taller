@@ -168,6 +168,29 @@ function guardarDatosOrden(){
 
 function listarOrden(){
 
+var fecha_inicio_buscar = $("#txt_fecha_inicio_buscar").val();
+
+if(fecha_inicio_buscar==""){
+  
+}else{
+
+  var hoy = new Date();
+  var dd = hoy.getDate();
+  var mm = hoy.getMonth()+1;
+  var yyyy = hoy.getFullYear();
+
+  if(mm<10){
+    mm = "0"+mm;
+  }
+  if(dd<10){
+    dd = "0"+dd;
+  }
+
+  var fecha_actual = yyyy+"-"+mm+"-"+dd;
+
+  $("#txt_fecha_fin_buscar").val(fecha_actual)
+}
+
    contenedorCargando("#contenedor_listado_orden");
 		$.ajax({
 			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php",

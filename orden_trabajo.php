@@ -76,7 +76,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                  </div>
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Cliente:</label>
-                                   <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
+                                   <input type="text" class="form-control form-control-sm" placeholder="Rut Cliente" onchange="listarOrden()" id="txt_rut_cliente_buscar" name="txt_rut_cliente_buscar">
                                  </div>
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Patente:</label>
