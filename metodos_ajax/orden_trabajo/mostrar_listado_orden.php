@@ -27,6 +27,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
         <th>Vehiculo</th>
         <th>Estado</th>
         <th>Modificar</th>
+        <th>Eliminar</th>
      </thead>
      <tbody>';
 
@@ -62,7 +63,11 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
                        <td>
                            <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
-                    </tr>';
+                       <td>
+                       <button class="btn btn-danger btn-block" onclick="eliminarOrdenTrabajo('.$filas['id_orden'].')" ><i class="fa fa-trash-alt"></i></button>
+                       </td>
+                      </tr>';
+
          }
 
     echo '

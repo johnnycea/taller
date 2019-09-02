@@ -111,11 +111,11 @@ function cargarMenuConfiguraciones(){
 
   echo'<hr>';
 
-  if($url=="unidadMedidad.php"){
-      echo '<a href="./unidadMedidad.php" class="active btn btn-info col-12">Unidad de medida </a>';
-  }else{
-      echo '<a href="./unidadMedidad.php" class="btn btn-info col-12">Unidad de medida </a>';
-  }
+  // if($url=="unidadMedidad.php"){
+  //     echo '<a href="./unidadMedidad.php" class="active btn btn-info col-12">Unidad de medida </a>';
+  // }else{
+  //     echo '<a href="./unidadMedidad.php" class="btn btn-info col-12">Unidad de medida </a>';
+  // }
 
   //    echo'<hr>';
   //
