@@ -235,7 +235,7 @@ function cambiarIva(iva){
 					 }
 				}
 			});
-			
+
 }
 
 
@@ -272,6 +272,40 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 					}
 					});
 			}
+
+      function eliminarOrdenTrabajo(id_orden){
+
+      	// 	alert("Id_detalle: "+id_detalle+" Id_orden: "+id_orden);
+      			swal({
+      			title: "¿Eliminar?",
+      			text: "Orden",
+      			type: "warning",
+      			showCancelButton: true,
+      			confirmButtonColor: "#DD6B55",
+      			confirmButtonText: "Eliminar!",
+      			cancelButtonText: "Cancelar!",
+      			closeOnConfirm: false,
+      			closeOnCancel: false },
+      			function(isConfirm){
+      					if (isConfirm) {
+      					$.ajax({
+      						url:"./metodos_ajax/orden_trabajo/eliminar_orden.php?id_orden="+id_orden,
+      						method:"POST",
+      						success:function(respuesta){
+      							 alert(respuesta);
+      							 if(respuesta==1){
+      								 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+      								 listarOrden("");
+      							 }else if(respuesta==2){
+      								 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+      							 }
+      							}
+      						});
+      					} else {
+      							swal("Cancelado", "", "error");
+      					}
+      					});
+      			}
 
 			function imprimeComprobante() {
 				var id_orden = $("#txt_id_orden").val()

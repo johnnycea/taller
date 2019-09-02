@@ -154,15 +154,6 @@ class Usuario{
     return $resultado;
   }
 
-  public function consultaUsuariosPorInstitucion(){
-    $conexion = new Conexion();
-    $conexion = $conexion->conectar();
-
-    $consulta="select * from tb_usuarios where institucion = ".$this->institucion;
-
-    $resultado= $conexion->query($consulta);
-    return $resultado;
-  }
 
   //
   public function validarRut($rut){

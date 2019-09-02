@@ -236,5 +236,23 @@ class OrdenTrabajo{
 
    }
 
+   public function eliminarOrdenTrabajo(){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+
+     $consulta = "update tb_orden_trabajo SET `id_estado` = '5' WHERE (`id_orden` = ".$this->id_orden.");";
+
+     // update tb_orden_trabajo SET `id_estado` = '5' WHERE (`id_orden` = '17');
+
+     // echo $consulta;
+     if($Conexion->query($consulta)){
+         return true;
+     }else{
+         echo $consulta;
+         // return false;
+     }
+
+   }
+
  }
  ?>
