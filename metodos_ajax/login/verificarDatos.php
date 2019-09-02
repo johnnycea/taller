@@ -3,8 +3,6 @@ require_once '../../clases/Usuario.php';
 require_once '../../clases/Funciones.php';
 
 
-
-
 $Usuario = new Usuario();
 $Funciones = new Funciones();
 
@@ -30,6 +28,7 @@ $usuario= $Funciones->limpiarTexto($usuario);
 
                       if($Usuario->comprobarUsuario()){
                             echo "1";//correcto
+
                       }else{
                             echo "2";//incorrecto
                       }

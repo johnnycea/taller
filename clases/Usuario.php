@@ -1,5 +1,6 @@
 <?php
 require_once 'Conexion.php';
+require_once 'RegistroActividad.php';
 
 class Usuario{
 
@@ -144,16 +145,6 @@ class Usuario{
     return $resultado;
   }
 
-  public function consultaUsuariosPorColegio(){
-    $conexion = new Conexion();
-    $conexion = $conexion->conectar();
-
-    $consulta="select * from tb_usuarios where colegio = ".$this->colegio;
-
-    $resultado= $conexion->query($consulta);
-    return $resultado;
-  }
-
 
   //
   public function validarRut($rut){
@@ -207,14 +198,6 @@ class Usuario{
 
  }
 
- public function registrarLogIngreso($rut,$estado){
-
-   $conexion = new Conexion();
-   $conexion= $conexion->conectar();
-   $conexion->query("insert into tb_log_ingreso(rut,ip,estado) values('".$rut."','".$this->obtenerIpReal()."','".$estado."');");
-
- }
-
  public function encriptarClave($clave){
    // Generamos un salt aleatoreo, de 22 caracteres para Bcrypt
    $salt = substr(base64_encode(openssl_random_pseudo_bytes('30')), 0, 22);
@@ -257,21 +240,37 @@ class Usuario{
                     $_SESSION['run']=$this->run;
                     $_SESSION['nombre']=$columnas['nombre'];
 
-                    // ABRO NUEVA CONEXION E INGRESO EL ESTADO DEL INICIO DE SESION
-                    $this->registrarLogIngreso($this->run,"ingreso_correcto");
+                    //registro de actividad
+                    @session_start();
+                    $registro = new RegistroActividad();
+                    $registro->setRutUsuario($_SESSION['run']);
+                    $registro->setNombreUsuario($_SESSION['nombre']);
+                    $registro->setAccion("Ingreso exitoso al sistema.");
+                    $registro->setDetalleAccion("");
+                    $registro->setIdOrden(0);
+                    $registro->guardarRegistroActividad();
+                    //fin registro actividad
+
                     return true;
 
               }else{
 
-                // ABRO NUEVA CONEXION E INGRESO EL ESTADO DEL INICIO DE SESION
-                $this->registrarLogIngreso($this->run,"clave_incorrecta");
+                //registro de actividad
+                @session_start();
+                $registro = new RegistroActividad();
+                $registro->setRutUsuario($this->run);
+                $registro->setNombreUsuario("");
+                $registro->setAccion("Intento fallido de ingreso al sistema.");
+                $registro->setDetalleAccion("");
+                $registro->setIdOrden(0);
+                $registro->guardarRegistroActividad();
+                //fin registro actividad
+
 
                  return false;
               }
 
       }else{
-            // ABRO NUEVA CONEXION E INGRESO EL ESTADO DEL INICIO DE SESION
-            $this->registrarLogIngreso($this->run,"usuario_incorrecto");
 
             return false;
       }
