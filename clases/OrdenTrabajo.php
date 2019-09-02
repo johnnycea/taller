@@ -9,7 +9,6 @@ class OrdenTrabajo{
  private $patente;
  private $rut_cliente;
  private $fecha_recepcion;
- private $fecha_entrega;
  private $id_estado;
  private $id_tipo_facturacion;
  private $iva_venta;
@@ -17,6 +16,7 @@ class OrdenTrabajo{
  private $usuario_creador;
  private $trabajador;
  private $fecha_pago;
+ private $fecha_entrega;
 
  // detalle OrdenTrabajo
 
@@ -47,9 +47,6 @@ class OrdenTrabajo{
  public function setfechaRecepcion($recepcion){
    $this->recepcion = $recepcion;
  }
- public function setfechaEntrega($entrega){
-   $this->entrega = $entrega;
- }
  public function setIdEstado($id_estado){
    $this->id_estado = $id_estado;
  }
@@ -70,6 +67,9 @@ class OrdenTrabajo{
  }
  public function setFechaPago($parametro){
    $this->fecha_pago = $parametro;
+ }
+ public function setFechaEntrega($parametro){
+   $this->fecha_entrega = $parametro;
  }
 
 // set Detalle Orden de trabajo
@@ -200,7 +200,8 @@ class OrdenTrabajo{
 
    $consulta = "update tb_orden_trabajo SET
                 id_estado=".$this->id_estado.",
-                fecha_pago='".$this->fecha_pago."'
+                fecha_pago='".$this->fecha_pago."',
+                fecha_entrega='".$this->fecha_entrega."'
                 WHERE (`id_orden` = '".$this->id_orden."');";
    $resultado= $conexion->query($consulta);
    // echo $consulta;

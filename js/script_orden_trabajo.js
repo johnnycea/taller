@@ -98,6 +98,7 @@ function cargarModificarOrden(id){
 	var txt_rut_cliente = $("#columna_rut_cliente_"+id).html();
 	var txt_id_estado = $("#columna_estado_"+id).html();
 	var txt_fecha_pago = $("#columna_fecha_pago_"+id).html();
+	var txt_fecha_entrega = $("#columna_fecha_entrega_"+id).html();
 
 
 
@@ -114,9 +115,10 @@ function cargarModificarOrden(id){
 	$('#txt_rut_cliente').change();
 
 	$('#txt_fecha_pago').val(txt_fecha_pago);
+	$('#txt_fecha_entrega').val(txt_fecha_entrega);
 
 	$('#select_estado_orden').val(txt_id_estado);
-   mostrarOcultarFechaPago();
+   mostrarOcultarFechasEstado();
 
   mostrarOcultarOpcionesEstado(2);
 
@@ -235,7 +237,7 @@ function cambiarIva(iva){
 					 }
 				}
 			});
-			
+
 }
 
 
@@ -281,24 +283,34 @@ function eliminarDetalleOrden(id_detalle,id_orden){
 			}
 
 
-function mostrarOcultarFechaPago() {
+function mostrarOcultarFechasEstado() {
 	var estado_actual = $("#select_estado_orden").val();
 
   if(estado_actual==4){
       $("#contenedor_fecha_pago").removeClass("d-none");
+      $("#contenedor_fecha_entrega").addClass("d-none");
+	}else if(estado_actual==3){
+    $("#contenedor_fecha_pago").addClass("d-none");
+    $("#contenedor_fecha_entrega").removeClass("d-none");
 	}else{
-		  $("#contenedor_fecha_pago").addClass("d-none");
-	}
+    $("#contenedor_fecha_pago").addClass("d-none");
+    $("#contenedor_fecha_entrega").addClass("d-none");
+  }
+
 }
 
 function cambiarEstadoOrden(nuevo_estado){
 	if(nuevo_estado==4){
 		$("#select_estado_orden").val(4);//para cuando se guarde en onblur de fecha
 	}
-	mostrarOcultarFechaPago();
+	if(nuevo_estado==3){
+		$("#select_estado_orden").val(3);//para cuando se guarde en onblur de fecha
+	}
+	mostrarOcultarFechasEstado();
 
 				var id_orden = $("#txt_id_orden").val();
 				var fecha_pago = $("#txt_fecha_pago").val();
+				var fecha_entrega = $("#txt_fecha_entrega").val();
 
         if(nuevo_estado==2){
            //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
@@ -316,11 +328,14 @@ function cambiarEstadoOrden(nuevo_estado){
 								swal("Indique la fecha de pago","","info");
 								$("#select_estado_orden").val(3);
 
-						}else{
+						}else if(nuevo_estado==3 && (fecha_entrega=="" || fecha_entrega==" ")){
+              swal("Indique la fecha de entrega","","info");
+              $("#select_estado_orden").val(2);
+            }else{
 
 
 								$.ajax({
-									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago,
+									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago+"&fecha_entrega="+fecha_entrega,
 									method:"POST",
 									success:function(respuesta){
 										// alert(respuesta);
