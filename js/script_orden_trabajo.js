@@ -171,7 +171,7 @@ function listarOrden(){
 var fecha_inicio_buscar = $("#txt_fecha_inicio_buscar").val();
 
 if(fecha_inicio_buscar==""){
-  
+
 }else{
 
   var hoy = new Date();
@@ -371,10 +371,11 @@ function cambiarEstadoOrden(nuevo_estado){
 
         if(nuevo_estado==2){
            //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
-					 if($("#txt_rut_cliente").val()==""){
-						 swal("Debe ingresar Cliente","","info");
-						 return false;
-					 }else if($("#txt_patente").val()==""){
+					 // if($("#txt_rut_cliente").val()==""){
+						//  swal("Debe ingresar Cliente","","info");
+						//  return false;
+					 // }else
+           if($("#txt_patente").val()==""){
 						 swal("Debe ingresar Patente","","info");
 						 return false;
 					 }

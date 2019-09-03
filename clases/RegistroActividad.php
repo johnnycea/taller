@@ -43,6 +43,7 @@ class RegistroActividad{
     $Conexion = $Conexion->conectar();
 
     $resultado_consulta = $Conexion->query("select * from tb_registro_actividad where id_orden = ".$this->id_orden);
+    // echo $resultado_consulta;
     return $resultado_consulta;
  }
 
