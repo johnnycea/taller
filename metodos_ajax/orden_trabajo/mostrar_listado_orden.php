@@ -2,6 +2,7 @@
 require_once '../../clases/Conexion.php';
 require_once '../../clases/Funciones.php';
 require_once '../../clases/OrdenTrabajo.php';
+// require_once '../../clases/RegistroActividad.php';
 
 $Funciones = new Funciones();
 
@@ -65,6 +66,9 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
                        </td>
                        <td>
                        <button class="btn btn-danger btn-block" onclick="eliminarOrdenTrabajo('.$filas['id_orden'].')" ><i class="fa fa-trash-alt"></i></button>
+                       </td>
+                       <td>
+                       <button onclick="cargarRegistroActividad('.$filas['id_orden'].')" data-target="#modal_registro" data-toggle="modal" class="col-12 btn btn-success "> <i class="fa fa-edit"></i> </button>
                        </td>
                       </tr>';
 

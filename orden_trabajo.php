@@ -4,6 +4,7 @@ require_once 'comun.php';
 require_once './clases/Usuario.php';
 require_once './clases/OrdenTrabajo.php';
 require_once './clases/Trabajador.php';
+require_once './clases/RegistroActividad.php';
 comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
@@ -37,6 +38,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
    <?php cargarHead(); ?>
 
   <script src="./js/script_orden_trabajo.js"></script>
+  <script src="./js/script_registro_actividad.js"></script>
 
 </head>
 <body>
@@ -453,6 +455,46 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
     </div>
     </div>
   </div>
+</div>
+<!-- FIN DE MODAL -->
+
+<!-- MODAL ORDEN-->
+<div class="modal fade " id="modal_registro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" >
+  <div class="modal-content fondo_negro">
+
+    <div class="modal-header bg-dark text-white">
+      <h5 class="modal-title" id="myModalLabel">Registro Actividad</h4></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+         <div class="row">
+                    <div class="col-12">
+
+                            <div style="margin-top:10px;" class="card bg-dark text-white">
+
+                                  <div class="card-body fondo_gris">
+
+                                        <div class="row">
+
+                                            <div class="col-12">
+
+                                                <div id='contenedor_listado_registro' class="table-responsive">
+                                                </div>
+
+
+                                              </div>
+
+                                        </div>
+                                   </div>
+                              </div>
+                      </div>
+              </div>
+
+  </div>
+  </div>
+</div>
+</div>
 <!-- FIN DE MODAL -->
 
 
