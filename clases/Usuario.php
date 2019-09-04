@@ -94,7 +94,7 @@ class Usuario{
 
     $consulta;
 
-    $resultado= $conexion->query("select * from tb_orden_trabajo where rut_usuario=".$this->run);
+    $resultado= $conexion->query("select * from tb_orden_trabajo where rut_cliente=".$this->run);
     //consulta si el usuario tiene actividades registradas
       if($resultado->num_rows>0){
           //si entra aqui, se cambia el estado a eliminado

@@ -125,7 +125,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                 <div class="form-group col-12" >
 
                     <label for="title" class="col-12 control-label">Privilegios de usuario</label>
-                    <select required class="form-control" name="select_privilegio_usuario" id="select_privilegio_usuario">
+                    <select required class="form-control" onChange="mostrarOcultarClaves(this.value);" name="select_privilegio_usuario" id="select_privilegio_usuario">
                       <?php
                           $Privilegio = new Privilegio();
                           $listaPrivilegios = $Privilegio->obtenerPrivilegios();
@@ -149,7 +149,7 @@ $usuario= $usuario->obtenerUsuarioActual();
 
                 <div class="form-group" >
                   <div class="col-12">
-                    <button class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
+                    <button id="btn_guardar_usuario" class="btn btn-success btn-block" type="submit" name="button">Guardar</button>
                   </div>
                 </div>
 

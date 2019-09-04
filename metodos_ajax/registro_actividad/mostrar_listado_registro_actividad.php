@@ -26,9 +26,12 @@ require_once '../../clases/RegistroActividad.php';
 
          while($filas = $listadoRegistroActividad->fetch_array()){
 
+           $fecha = date_create($filas['hora_registro']);
+           $fecha = date_format($fecha, 'H:m d-m-Y');
+
           echo '<tr>
-                      
-                       <td><span id="columna_hora_registro_'.$filas['id_registro'].'" >'.$filas['hora_registro'].'</span></td>
+
+                       <td><span id="columna_hora_registro_'.$filas['id_registro'].'" >'.$fecha.'</span></td>
                        <td><span id="columna_accion_'.$filas['id_registro'].'" >'.$filas['accion'].'</span></td>
                        <td><span id="columna_detalle_accion_'.$filas['id_registro'].'" >'.$filas['detalle_accion'].'</span></td>
                        <td><span id="columna_rut_usuario_'.$filas['id_registro'].'" >'.$filas['rut_usuario'].'</span></td>

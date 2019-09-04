@@ -4,6 +4,14 @@ require_once '../../clases/Funciones.php';
 require_once '../../clases/OrdenTrabajo.php';
 // require_once '../../clases/RegistroActividad.php';
 
+
+//consultar usuario logeado
+require_once '../../clases/Usuario.php';
+$usuario= new Usuario();
+$usuario= $usuario->obtenerUsuarioActual();
+$tipo_usuario_actual = $usuario['tipo_usuario'];
+
+
 $Funciones = new Funciones();
 
 //variables busqueda
@@ -42,6 +50,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
            $fecha_recepcion = date_format($fecha, 'd-m-Y');
            $hora_recepcion = date_format($fecha, 'H:i');
 
+
                echo '<tr align=center>
                        <td><span id="columna_id_orden_'.$filas['id_orden'].'" >'.$filas['id_orden'].'</span></td>
                        <td><span id="columna_fecha_recepcion_'.$filas['id_orden'].'" >'.$fecha_recepcion.'</span></td>
@@ -62,14 +71,21 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>
-                           <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-warning "> <i class="fa fa-edit"></i> </button>
+                           <button onclick="cargarModificarOrden('.$filas['id_orden'].')" data-target="#modal_orden" data-toggle="modal" class="col-12 btn btn-sm btn-warning "> <i class="fa fa-edit"></i> </button>
                        </td>
                        <td>
-                       <button class="btn btn-danger btn-block" onclick="eliminarOrdenTrabajo('.$filas['id_orden'].')" ><i class="fa fa-trash-alt"></i></button>
-                       </td>
-                       <td>
-                       <button onclick="cargarRegistroActividad('.$filas['id_orden'].')" data-target="#modal_registro" data-toggle="modal" class="col-12 btn btn-success "> <i class="fa fa-edit"></i> </button>
-                       </td>
+                       <button class="btn btn-sm btn-danger btn-block" onclick="eliminarOrdenTrabajo('.$filas['id_orden'].')" ><i class="fa fa-trash-alt"></i></button>
+                       </td>';
+
+
+                       if($tipo_usuario_actual==1){
+                           echo '
+                           <td>
+                              <button onclick="cargarRegistroActividad('.$filas['id_orden'].')" data-target="#modal_registro" data-toggle="modal" class="col-12 btn btn-sm btn-success "> <i class="fa fa-history" aria-hidden="true"></i> </button>
+                           </td>';
+                       }
+
+                       echo '
                       </tr>';
 
          }

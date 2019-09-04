@@ -1,4 +1,6 @@
 <?php
+require_once("./clases/Usuario.php");
+
 function comprobarSession(){
   @session_start();
   if(isset($_SESSION['run']) and isset($_SESSION['nombre'])){
@@ -206,6 +208,8 @@ function cargarMenuPrincipal(){
  border-radius: 5px;
 
 }
+
+
 </style>
 
 <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-image: url('img/madera1.jpg');"> -->
@@ -224,62 +228,70 @@ function cargarMenuPrincipal(){
 
      <?php
 
+     $Usuario = new Usuario();
+     $usuario= $Usuario->obtenerUsuarioActual();
+     $tipo_usuario_actual = $usuario['tipo_usuario'];
+
+
      $url= basename($_SERVER['PHP_SELF']);
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="orden_trabajo.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./orden_trabajo.php"><i class="fas fa-shopping-cart"></i> Orden</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./orden_trabajo.php"><i class="fas fa-shopping-cart"></i> Orden</span></a>';
-                  }
-            echo '</li>';
-            //UN LINK
 
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="cliente.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
-                  }
-            echo '</li>';
+      if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
+        //UN LINK
+        echo '<li class="nav-item">';
+              if($url=="orden_trabajo.php"){
+                echo '<a class="nav-link estilo_opciones_menu active" href="./orden_trabajo.php"><i class="fas fa-shopping-cart"></i> Orden</span></a>';
+              }else{
+                echo '<a class="nav-link estilo_opciones_menu  " href="./orden_trabajo.php"><i class="fas fa-shopping-cart"></i> Orden</span></a>';
+              }
+        echo '</li>';
+      }
 
-            //UN LINK
-            // echo '<li class="nav-item">';
-            //       if($url=="proveedores.php"){
-            //         echo '<a class="nav-link estilo_opciones_menu active" href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
-            //       }else{
-            //         echo '<a class="nav-link estilo_opciones_menu active " href="./proveedores.php"><i class="fas fa-users"></i> Proveedores</span></a>';
-            //       }
-            // echo '</li>';
+      if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
+        //UN LINK
+        echo '<li class="nav-item">';
+              if($url=="cliente.php"){
+                echo '<a class="nav-link estilo_opciones_menu active" href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
+              }else{
+                echo '<a class="nav-link estilo_opciones_menu  " href="./cliente.php"><i class="fas fa-address-card"></i> Clientes</span></a>';
+              }
+        echo '</li>';
+      }
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="vehiculo.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./vehiculo.php"><i class="fas fa-car"></i> Vehiculos</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./vehiculo.php"><i class="fas fa-car"></i> Vehiculos</span></a>';
-                  }
-            echo '</li>';
+      if($tipo_usuario_actual==1 || $tipo_usuario_actual==2){
+        //UN LINK
+        echo '<li class="nav-item">';
+              if($url=="vehiculo.php"){
+                echo '<a class="nav-link estilo_opciones_menu active" href="./vehiculo.php"><i class="fas fa-car"></i> Vehiculos</span></a>';
+              }else{
+                echo '<a class="nav-link estilo_opciones_menu  " href="./vehiculo.php"><i class="fas fa-car"></i> Vehiculos</span></a>';
+              }
+        echo '</li>';
+      }
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="informes.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active " href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
-                  }
-            echo '</li>';
+      if($tipo_usuario_actual==1 ){
+        //UN LINK
+        echo '<li class="nav-item">';
+              if($url=="informes.php"){
+                echo '<a class="nav-link estilo_opciones_menu active" href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
+              }else{
+                echo '<a class="nav-link estilo_opciones_menu  " href="./informes.php"><i class="fas fa-chart-pie"></i> Informes</span></a>';
+              }
+        echo '</li>';
+      }
 
-            //UN LINK
-            echo '<li class="nav-item">';
-                  if($url=="configuraciones.php"){
-                    echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
-                  }else{
-                    echo '<a class="nav-link estilo_opciones_menu active  laed" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
-                  }
-            echo '</li>';
+      if($tipo_usuario_actual==1 ){
+        //UN LINK
+        echo '<li class="nav-item">';
+              if($url=="configuraciones.php"){
+                echo '<a class="nav-link estilo_opciones_menu active" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
+              }else{
+                echo '<a class="nav-link estilo_opciones_menu   laed" href="./configuraciones.php"><i class="fas fa-cog"></i> Configuraciones</span></a>';
+              }
+        echo '</li>';
+      }
+
+
 
      ?>
 

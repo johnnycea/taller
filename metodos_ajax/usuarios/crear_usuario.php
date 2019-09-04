@@ -13,7 +13,13 @@ $correo = $Funciones->limpiarTexto($_REQUEST['txt_correo_usuario']);
 $estado = $Funciones->limpiarTexto($_REQUEST['select_estado_usuario']);
 $privilegio = $Funciones->limpiarTexto($_REQUEST['select_privilegio_usuario']);
 
-$clave = $Funciones->limpiarTexto($_REQUEST['txt_contrasenia_usuario']);
+$clave;
+
+if($privilegio==3){
+  $clave = "";
+}else{
+  $clave = $Funciones->limpiarTexto($_REQUEST['txt_contrasenia_usuario']);
+}
 
 $Usuario = new Usuario();
 $Usuario->setRun($rut);
@@ -26,6 +32,18 @@ $Usuario->setClave($clave);
 
 if($Usuario->crearUsuario()){
    echo "1";
+
+   //registro de actividad
+   @session_start();
+   $registro = new RegistroActividad();
+   $registro->setRutUsuario($_SESSION['run']);
+   $registro->setNombreUsuario($_SESSION['nombre']);
+   $registro->setAccion("Crea Usuario");
+   $registro->setDetalleAccion('Crea al Usuario: '.$rut."; ".$nombre);
+   $registro->setIdOrden(0);
+   $registro->guardarRegistroActividad();
+   //fin registro actividad
+
 }else{
    echo "2";
 }

@@ -1,7 +1,9 @@
-listarUsuarios();
+$(document).ready(listarUsuarios);
+// listarUsuarios();
 
 function listarUsuarios(){
 
+	contenedorCargando("#contenedor_listado_usuarios");
 
 		$.ajax({
 			url:"./metodos_ajax/usuarios/mostrar_usuarios.php",
@@ -12,12 +14,25 @@ function listarUsuarios(){
 		});
 }
 
+function mostrarOcultarClaves(tipo){
+	if(tipo==3){
+			cargarFormularioClaves("nada");
+	}else{
+			cargarFormularioClaves("nuevo");
+	}
+}
+
 function guardarUsuario(){
 
 	var clave1 = $("#txt_contrasenia_usuario").val();
 	var clave2 = $("#txt_confirme_contrasenia_usuario").val();
 
+
+
   if(clave1==clave2){
+
+
+		botonCargando($("#btn_guardar_usuario"),1);
 			$.ajax({
 				url:"./metodos_ajax/usuarios/crear_usuario.php",
 				method:"POST",
@@ -32,6 +47,9 @@ function guardarUsuario(){
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
+
+					 botonCargando($("#btn_guardar_usuario"),2);
+
 				}
 			});
 	}else{
@@ -132,6 +150,8 @@ if($("#txt_contrasenia_usuario").length>0){
 
 function eliminarUsuario(id){
 
+	botonCargando($("#btn_eliminar_usuario_"+id),1);
+
 			$.ajax({
 				url:"./metodos_ajax/usuarios/eliminar_usuario.php?id="+id,
 				method:"POST",
@@ -143,6 +163,10 @@ function eliminarUsuario(id){
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
+
+					 botonCargando($("#btn_eliminar_usuario_"+id),2);
+
+
 				}
 			});
 

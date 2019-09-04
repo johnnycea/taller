@@ -1,6 +1,7 @@
 <?php
 require_once '../../clases/Funciones.php';
 require_once '../../clases/OrdenTrabajo.php';
+require_once '../../clases/RegistroActividad.php';
 
 $Funciones = new Funciones();
 
@@ -19,6 +20,26 @@ $OrdenTrabajo->setFechaEntrega($fecha_entrega);
 
    if($OrdenTrabajo->cambiarEstadoOrden()){
       echo "1";
+
+      //registro de actividad
+      @session_start();
+      $registro = new RegistroActividad();
+      $registro->setRutUsuario($_SESSION['run']);
+      $registro->setNombreUsuario($_SESSION['nombre']);
+      if($nuevo_estado==2){
+        $registro->setAccion("Ingresa Orden");
+        $registro->setDetalleAccion('Cambia a "En Proceso"');
+      }else if($nuevo_estado==3){
+        $registro->setAccion("Modifica estado Orden");
+        $registro->setDetalleAccion('Cambia a "Por Pagar"');
+      }else if($nuevo_estado==3){
+        $registro->setAccion("Modifica estado Orden");
+        $registro->setDetalleAccion('Cambia a "Pagado"');
+      }
+      $registro->setIdOrden($txt_id_orden);
+      $registro->guardarRegistroActividad();
+      //fin registro actividad
+
    }else{
       echo "2";
    }

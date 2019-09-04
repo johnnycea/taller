@@ -27,7 +27,14 @@ $usuario= $Funciones->limpiarTexto($usuario);
                       $Usuario->setClave($contrasena);
 
                       if($Usuario->comprobarUsuario()){
-                            echo "1";//correcto
+
+                          $usuario= $Usuario->obtenerUsuarioActual();
+                          $tipo_usuario_actual = $usuario['tipo_usuario'];
+                          if($tipo_usuario_actual==3){
+                             echo "2";
+                          }else{
+                             echo "1";//correcto
+                          }
 
                       }else{
                             echo "2";//incorrecto

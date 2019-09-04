@@ -41,7 +41,7 @@ $listado_usuarios = $Usuario->listarUsuariosActivosInactivos();
                    <span class="d-none" id="txt_privilegio_'.$contador.'" >'.$filas['tipo_usuario'].'</span>
                    <td class="">
                       <button onclick="cargarDatosModificar('.$contador.');" data-toggle="modal" data-target="#modal_usuario" type="button" class="btn btn-block btn-warning" name="button">Editar</button>
-                      <button onclick="eliminarUsuario('.$filas['rut'].')" type="button" class="btn btn-block btn-danger" name="button">Eliminar</button>
+                      <button onclick="eliminarUsuario('.$filas['rut'].')" id="btn_eliminar_usuario_'.$filas['rut'].'" type="button" class="btn btn-block btn-danger" name="button">Eliminar</button>
                    </td>
                  </tr>';
 
