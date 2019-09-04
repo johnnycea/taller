@@ -1,15 +1,29 @@
-// listarRegistro();
+listarRegistro();
 
-function cargarRegistroActividad(id_orden){
+// function cargarRegistroActividad(id_orden){
+//
+// 	contenedorCargando("#contenedor_listado_registro");
+//
+// 		$.ajax({
+// 			url:"./metodos_ajax/registro_actividad/mostrar_listado_registro_actividad.php?id_orden="+id_orden,
+// 			method:"POST",
+// 			success:function(respuesta){
+// 				// alert(respuesta);
+// 				 $("#contenedor_listado_registro").html(respuesta);
+// 			}
+// 		});
+// }
 
-	contenedorCargando("#contenedor_listado_registro");
+function listarRegistro(id_orden){
+
+	// var id_orden = $("#txt_id_orden").val();
 
 		$.ajax({
-			url:"./metodos_ajax/registro_actividad/mostrar_listado_registro_actividad.php?id_orden="+id_orden,
+      url:"./metodos_ajax/registro_actividad/mostrar_listado_todos_registro.php?id_orden="+id_orden,
 			method:"POST",
 			success:function(respuesta){
-				// alert(respuesta);
-				 $("#contenedor_listado_registro").html(respuesta);
+				 // alert(respuesta);
+				 $("#contenedor_listado_registro_actividad").html(respuesta);
 			}
 		});
 }

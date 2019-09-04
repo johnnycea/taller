@@ -47,6 +47,15 @@ class RegistroActividad{
     return $resultado_consulta;
  }
 
+ public function obtenerRegistrosActividades(){
+    $Conexion = new Conexion();
+    $Conexion = $Conexion->conectar();
+
+    $resultado_consulta = $Conexion->query("select * from tb_registro_actividad order by hora_registro desc;");
+    // echo $resultado_consulta;
+    return $resultado_consulta;
+ }
+
 
 
 }

@@ -221,6 +221,22 @@ function listarDetalleOrden(){
 }
 
 
+
+function cargarRegistroActividad(id_orden){
+
+	contenedorCargando("#contenedor_listado_registro");
+
+		$.ajax({
+			url:"./metodos_ajax/registro_actividad/mostrar_listado_registro_actividad.php?id_orden="+id_orden,
+			method:"POST",
+			success:function(respuesta){
+				// alert(respuesta);
+				 $("#contenedor_listado_registro").html(respuesta);
+			}
+		});
+}
+
+
 function crearDetalleOrden(){
 	// var txt_id_orden = $("#txt_id_orden").val();
 	// var txt_id_detalle = $("#txt_id_detalle").val();
