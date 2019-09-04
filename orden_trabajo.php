@@ -48,7 +48,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
        <div class="row">
 
-          <div class="col-3">
+          <div class="col-12 col-md-3">
 
                 <div class="container">
 
@@ -118,7 +118,8 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
             </div>
 
-            <div class="col-9">
+
+            <div class="col-12 col-md-9">
               <div class="card bg-dark text-white">
                   <div class="card-header">
                     <div class="row">
@@ -126,7 +127,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                       <div class="col-9">
                         <h5><i class="fas fa-file-alt"></i> Ordenes de Trabajo</h5>
                       </div>
-                      <div class="col-3 " >
+                      <div class="col-12 col-md-3 " >
                         <button type="button" onclick="boton_nueva_orden()" class="btn btn-block btn-info" data-target="#modal_orden" data-toggle="modal" id="btn_nueva_orden">Crear nueva Orden</button>
                       </div>
 
@@ -169,7 +170,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
            <div class="row">
 
-              <div class="col-5">
+              <div class="col-12 col-md-5">
 
                   <div class="card bg-dark text-white">
                       <div class="card-header">
@@ -228,7 +229,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
              </div>
 
-              <div class="col-3">
+              <div class="col-12 col-md-3">
 
                       <div class="card bg-dark text-white">
                             <div class="card-header">
@@ -264,7 +265,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                 </div>
 
 
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
 
                           <div  class="card bg-dark text-white">
                                 <div class="card-header">
