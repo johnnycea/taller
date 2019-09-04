@@ -236,12 +236,27 @@ class OrdenTrabajo{
      }
 
    }
-
-   public function eliminarOrdenTrabajo(){
+   public function consultarExisteDetalleOrden(){
      $Conexion = new Conexion();
      $Conexion = $Conexion->conectar();
+     $consulta = "select id_orden from tb_detalle_orden where id_orden =".$this->id_orden;
+     // echo $consulta;
+     $resultado_consulta = $Conexion->query($consulta);
+     return $resultado_consulta;
 
-     $consulta = "update tb_orden_trabajo SET `id_estado` = '5' WHERE (`id_orden` = ".$this->id_orden.");";
+   }
+
+   public function eliminarOrdenTrabajo($tipo){
+     $Conexion = new Conexion();
+     $Conexion = $Conexion->conectar();
+     $consulta;
+     if($tipo==1){
+
+       $consulta = "update tb_orden_trabajo SET `id_estado` = '5' WHERE (`id_orden` = ".$this->id_orden.");";
+     }else{
+       $consulta = "delete from tb_orden_trabajo WHERE (`id_orden` = ".$this->id_orden.");";
+
+     }
 
      // update tb_orden_trabajo SET `id_estado` = '5' WHERE (`id_orden` = '17');
 
