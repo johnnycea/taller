@@ -40,7 +40,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
      $resultado_consulta = $Conexion->query($consulta);
 
      if($resultado_consulta->num_rows>0){
-       echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
+       echo '<button class="btn btn-warning btn-block col-12 col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
        echo '<div><hr></div>';
      }
 
@@ -95,7 +95,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
   $resultado_consulta = $Conexion->query($consulta);
 
   if($resultado_consulta->num_rows>0){
-    echo '<button class="btn btn-warning btn-block col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
+    echo '<button class="btn btn-warning btn-block col-12 col-md-4 offset-md-4" onclick="imprimeComprobante(\''.$fecha_inicio.'\',\''.$fecha_fin.'\','.$tipo_informe.',\''.$cliente.'\');" >Imprimir <i class="fa fa-print" aria-hidden="true"></i></button>';
     echo '<div><hr></div>';
   }
 
