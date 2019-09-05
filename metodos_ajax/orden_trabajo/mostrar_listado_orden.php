@@ -29,7 +29,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
   echo '
   <table class="table table-dark table-sm table-striped table-hover">
      <thead class="" align=center>
-        <th>Codigo</th>
+        <th>Número de orden</th>
         <th>Fecha</th>
         <th>Hora</th>
         <th>Cliente</th>

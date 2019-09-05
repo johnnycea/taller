@@ -74,13 +74,13 @@ $usuario= $usuario->obtenerUsuarioActual();
                           <div class="form-group col-12 col-md-6" >
 
                                  <label for="title" class="col-12 control-label">Marca:</label>
-                                 <input type="text" required class="form-control" name="txt_marca" id="txt_marca" value="">
+                                 <input type="text" class="form-control" name="txt_marca" id="txt_marca" value="">
 
                           </div>
                           <div class="form-group col-12 col-md-6" >
 
                                  <label for="title" class="col-12 control-label">Modelo:</label>
-                                 <input type="text" required class="form-control" name="txt_modelo" id="txt_modelo" value="">
+                                 <input type="text" class="form-control" name="txt_modelo" id="txt_modelo" value="">
 
                           </div>
                           <div class="form-group col-12 col-md-6" >

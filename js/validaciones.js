@@ -8,6 +8,24 @@ function contenedorCargando(contenedor){
 }
 
 
+function obtenerFechaActual(){
+  var hoy = new Date();
+  var dd = hoy.getDate();
+  var mm = hoy.getMonth()+1;
+  var yyyy = hoy.getFullYear();
+
+  if(mm<10){
+    mm = "0"+mm;
+  }
+  if(dd<10){
+    dd = "0"+dd;
+  }
+
+  var fecha_actual = yyyy+"-"+mm+"-"+dd;
+
+  return fecha_actual;
+}
+
 function botonCargando(boton,opcion){
 	//1: Cargando
 	//2: Normal

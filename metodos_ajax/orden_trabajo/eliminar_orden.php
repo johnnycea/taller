@@ -2,6 +2,7 @@
 
 require_once '../../clases/Funciones.php';
 require_once '../../clases/OrdenTrabajo.php';
+require_once '../../clases/RegistroActividad.php';
 
 $Funciones = new Funciones();
 
@@ -15,6 +16,7 @@ $OrdenTrabajo->setIdOrden($id_orden);
  if($resultado_comprobacion->num_rows>0){//si tiene detalle orden no eliminamos el registro, solo cambiamos el estado
      if($OrdenTrabajo->eliminarOrdenTrabajo(1)){
         echo "1";
+
      }else{
         echo "2";
      }
@@ -26,6 +28,15 @@ $OrdenTrabajo->setIdOrden($id_orden);
      }
  }
 
-
+ //registro de actividad
+ @session_start();
+ $registro = new RegistroActividad();
+ $registro->setRutUsuario($_SESSION['run']);
+ $registro->setNombreUsuario($_SESSION['nombre']);
+ $registro->setAccion("Elimina orden");
+ $registro->setDetalleAccion('Elimina la orden N: '.$id_orden);
+ $registro->setIdOrden($id_orden);
+ $registro->guardarRegistroActividad();
+ //fin registro actividad
 
 ?>

@@ -4,7 +4,18 @@ function boton_nueva_orden(){
 	 mostrarOcultarOpcionesEstado(1);
 	 $("#txt_fecha_pago").val("");
 	 $("#txt_rut_cliente").val("");
+	 $("#txt_nombre").val("");
+	 $("#txt_telefono").val("");
+	 $("#txt_comuna").val("");
+	 $("#txt_direccion").val("");
+	 $("#txt_giro").val("");
 	 $("#txt_patente").val("");
+	 $("#txt_marca").val("");
+	 $("#txt_modelo").val("");
+	 $("#txt_anio").val("");
+	 $("#txt_descripcion").val("");
+	 $("#txt_kilometraje").val("");
+	 $("#cmb_trabajador").val("");
 
 }
 
@@ -333,7 +344,7 @@ function eliminarDetalleOrden(id_detalle,id_orden){
       						url:"./metodos_ajax/orden_trabajo/eliminar_orden.php?id_orden="+id_orden,
       						method:"POST",
       						success:function(respuesta){
-      							 alert(respuesta);
+      							 // alert(respuesta);
       							 if(respuesta==1){
       								 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
       								 listarOrden("");
@@ -395,18 +406,23 @@ function cambiarEstadoOrden(nuevo_estado){
 						 swal("Debe ingresar Patente","","info");
 						 return false;
 					 }
-
 				}
 
 						if(nuevo_estado==4 && (fecha_pago=="" || fecha_pago==" ")){
-								swal("Indique la fecha de pago","","info");
-								$("#select_estado_orden").val(3);
+								// swal("Indique la fecha de pago","","info");
+								// $("#select_estado_orden").val(3);
+
+                $("#txt_fecha_pago").val(obtenerFechaActual());
+                fecha_pago = obtenerFechaActual();
 
 						}else if(nuevo_estado==3 && (fecha_entrega=="" || fecha_entrega==" ")){
-              swal("Indique la fecha de entrega","","info");
-              $("#select_estado_orden").val(2);
-            }else{
+              // swal("Indique la fecha de entrega","","info");
+              // $("#select_estado_orden").val(2);
 
+              $("#txt_fecha_entrega").val(obtenerFechaActual());
+              fecha_entrega = obtenerFechaActual();
+
+            }
 
 								$.ajax({
 									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago+"&fecha_entrega="+fecha_entrega,
@@ -424,7 +440,6 @@ function cambiarEstadoOrden(nuevo_estado){
 									}
 								});
 
-						}
 
 
 }

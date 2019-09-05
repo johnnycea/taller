@@ -97,8 +97,7 @@ class OrdenTrabajo{
 
     $resultado_consulta = $Conexion->query("select * from tb_orden_trabajo where id_estado = 1 order by fecha_recepcion desc limit 1");
     return $resultado_consulta;
- }
-
+ } 
 
  public function crearDetalleOrden(){
    $conexion = new Conexion();
@@ -135,7 +134,7 @@ class OrdenTrabajo{
     $condiciones = ($estado!="") ? $condiciones." and (id_estado = ".$estado.")" : $condiciones;
     $condiciones = ($trabajador!="") ? $condiciones." and (trabajador = ".$trabajador.")" : $condiciones;
 
-    $consulta ="select * from vista_orden where id_estado <> 1 ";
+    $consulta ="select * from vista_orden where id_estado <> 1 and id_estado <> 5 ";
 
     if($condiciones!=""){
         $consulta = $consulta.$condiciones;
