@@ -10,7 +10,6 @@ require_once '../../clases/OrdenTrabajo.php';
                   <th style="width:30px;"></th>
                   <th>Tipo</th>
                   <th>Item</th>
-                  <th>Cantidad</th>
                   <th>Valor</th>
                   <th>Total</th>
                 </thead>
@@ -41,7 +40,7 @@ require_once '../../clases/OrdenTrabajo.php';
                                   </td>
                                   <td><span id="columna_tipo_detalle_" >'.$filas['tipo_detalle'].'</span></td>
                                   <td><span id="columna_descripcion_detalle_'.$filas['id_detalle'].'">'.$filas['descripcion'].'</span></td>
-                                  <td><span id="columna_cantidad_" >'.$filas['cantidad'].'</span></td>
+                                  <span class="d-none" id="columna_cantidad_" >'.$filas['cantidad'].'</span>
                                   <td><span id="columna_valor_'.$filas['id_detalle'].'" >$'.number_format($filas['valor'],0,",",".").'</span></td>
                                   <td><span id="columna_valor_total_'.$filas['id_detalle'].'" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
                                </tr>';

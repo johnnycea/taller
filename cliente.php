@@ -69,44 +69,29 @@ $usuario= $usuario->obtenerUsuarioActual();
                                  <input type="text"  required class="form-control" name="txt_rut_cliente" id="txt_rut_cliente" value="">
                           </div>
 
-                          <!-- <div class="form-group col-4" >
-                                 <label for="title" class="col-12 control-label">Dv:</label>
-                                 <input type="text"  required class="form-control" name="txt_dv" id="txt_dv" value="">
-                          </div> -->
-
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Nombre:</label>
-                            <input type="text"  required class="form-control" name="txt_nombre" id="txt_nombre" value="">
+                            <input type="text" class="form-control" name="txt_nombre" id="txt_nombre" value="">
                           </div>
-
-                          <!-- <div class="form-group col-12 col-md-6" >
-                            <label for="title" class="col-12 control-label">Apellidos:</label>
-                            <input type="text" required class="form-control" name="txt_apellidos" id="txt_apellidos" value="">
-                          </div> -->
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Direccion:</label>
-                            <input type="text" required class="form-control" name="txt_direccion" id="txt_direccion" value="">
+                            <input type="text" class="form-control" name="txt_direccion" id="txt_direccion" value="">
                           </div>
-
-                          <!-- <div class="form-group col-12 col-md-6" >
-                            <label for="title" class="col-12 control-label">Número:</label>
-                            <input type="text" required class="form-control" name="txt_numero" id="txt_numero" value="">
-                          </div> -->
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Comuna:</label>
-                            <input type="text" required class="form-control" name="txt_comuna" id="txt_comuna" value="">
+                            <input type="text" class="form-control" name="txt_comuna" id="txt_comuna" value="">
                           </div>
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Giro:</label>
-                            <input type="text" required class="form-control" name="txt_giro" id="txt_giro" value="">
+                            <input type="text" class="form-control" name="txt_giro" id="txt_giro" value="">
                           </div>
 
                           <div class="form-group col-12 col-md-6" >
                             <label for="title" class="col-12 control-label">Telefono:</label>
-                            <input type="text" required class="form-control" name="txt_telefono" id="txt_telefono" value="">
+                            <input type="text" class="form-control" name="txt_telefono" id="txt_telefono" value="">
                           </div>
 
                       </div>

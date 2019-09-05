@@ -65,7 +65,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                             <form id="formulario_buscar_ordenes" name="formulario_buscar_ordenes" method="post">
 
                                  <div class="col-12" >
-                                     <label for="title" class="col-12 control-label">Codigo:</label>
+                                     <label for="title" class="col-12 control-label">Número de orden:</label>
                                     <input type="text" class="form-control form-control-sm" onchange="listarOrden()" id="txt_codigo_orden_buscar" name="txt_codigo_orden_buscar">
                                  </div>
                                  <div class="col-12" >
@@ -242,7 +242,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                   <div class="row">
                                       <div class=" col-md-12" >
                                         <label for="title" class="col-12 control-label">Patente:</label>
-                                        <input type="text"  required class="form-control form-control-sm" onblur="guardarDatosOrden()"  onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
+                                        <input type="text"  maxlength="6" required class="form-control form-control-sm" onblur="guardarDatosOrden()"  onkeypress="return soloLetrasNumeros(event);" onkeyup="cargarVehiculo(this.value)" name="txt_patente" id="txt_patente" value="">
                                       </div>
 
                                       <div class=" col-md-12" >
@@ -361,10 +361,10 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                             <input type="number"  required class="form-control form-control-sm" name="txt_valor_unitario_detalle" id="txt_valor_unitario_detalle" value="0">
                                                                           </div>
 
-                                                                          <div class=" col-md-3" >
+                                                                          <!-- <div class=" col-md-3" >
                                                                             <label for="title" class="col-12 control-label">Cantidad:</label>
                                                                             <input type="number"  required class="form-control form-control-sm" name="txt_cantidad_detalle_orden" id="txt_cantidad_detalle_orden" value="0">
-                                                                          </div>
+                                                                          </div> -->
 
                                                                           <div class=" col-md-2" >
                                                                             <label for="title" class="col-12 control-label">&nbsp;</label>
