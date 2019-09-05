@@ -1,10 +1,18 @@
+
+var cantidad_registros = 1;//1 pagina va a mostrar 30 registros
 listarVehiculo();
+
+
+function cambiarCantidadRegistros(){
+	cantidad_registros = cantidad_registros+1;
+	listarVehiculo();
+}
 
 function listarVehiculo(texto_buscar){
 
 
 		$.ajax({
-			url:"./metodos_ajax/vehiculo/mostrar_listado_vehiculo.php?texto_buscar="+texto_buscar,
+			url:"./metodos_ajax/vehiculo/mostrar_listado_vehiculo.php?texto_buscar="+texto_buscar+"&cantidad_registros="+cantidad_registros,
 			method:"POST",
 			success:function(respuesta){
 				// alert(respuesta);

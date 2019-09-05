@@ -22,9 +22,10 @@ require_once '../../clases/Vehiculo.php';
 
        $Funciones = new Funciones();
        $texto_buscar = $Funciones->limpiarTexto($_REQUEST['texto_buscar']);
+       $cantidad_registros = $Funciones->limpiarNumeroEntero($_REQUEST['cantidad_registros']);
 
        $Vehiculo = new Vehiculo();
-       $listadoVehiculo = $Vehiculo->obtenerVehiculos($texto_buscar); //$texto_buscar," where id_estado=1 or id_estado=2 "
+       $listadoVehiculo = $Vehiculo->obtenerVehiculos($texto_buscar,$cantidad_registros); //$texto_buscar," where id_estado=1 or id_estado=2 "
 
          while($filas = $listadoVehiculo->fetch_array()){
 
@@ -47,7 +48,11 @@ require_once '../../clases/Vehiculo.php';
 
     echo '
      </tbody>
-  </table>';
+  </table>
+
+  <button class="btn btn-block btn-warning" onclick="cambiarCantidadRegistros()">Mostrar Mas</button>
+
+  ';
 
   // <a href="./modificar_empresa.php?id_empresa='.$filas['id_empresa'].'" class="btn btn-outline-primary">Editar</a>
 

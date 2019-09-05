@@ -21,11 +21,12 @@ class Vehiculo{
    $this->anio = $parametro;
  }
 
- function obtenerVehiculos(){
+ function obtenerVehiculos($texto_buscar,$cantidad_registros){
      $conexion = new Conexion();
      $conexion = $conexion->conectar();
 
-       $consulta= "select * from tb_vehiculos";
+       $cantidad_registros = ($cantidad_registros*30);
+       $consulta= "select * from tb_vehiculos limit ".$cantidad_registros;
 
      $resultado= $conexion->query($consulta);
      if($resultado){

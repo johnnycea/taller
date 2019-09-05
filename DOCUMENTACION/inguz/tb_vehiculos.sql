@@ -432,7 +432,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LH9826'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TD9677', 'CHEVROLET', 'LUV', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('PN2651', 'FORD', 'CARGO', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DL6112', 'TOYOTA', 'COROLLA', 1989);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXXXX', 'FORD', '5000', 1985);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('657540', 'KIA', 'KIA', 1997);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('FU3568', 'FORD', '6610', 1985);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TV9621', 'HYUNDAI', 'H12.3', 2000);
@@ -1107,7 +1106,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('PF1055'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YE3377', 'SUZUKI', 'IGNIS', 2005);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SZ4757', 'DAEWOO', 'RACER', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('JA6631', 'VARIOS ', 'MAQUINARIA AGRICOLA', 1999);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXX', 'VARIOS ', 'VARIOS ', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SB1685', 'NISSAN', 'TERRANO', 2005);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SH9996', 'CHEVROLET', 'LUV ', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WK7326', 'FORD', 'CARGO', 1999);
@@ -2129,7 +2127,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RC8678'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XS3013', 'FIAT ', 'PALIO', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('AF5735', 'SUBARU ', 'LEONE', 1983);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RF1418', 'CHEVROLET ', 'LUV', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SS8216', 'HIUNDAI', 'TITAN', 1990);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TW9447', 'HIUNDAY', 'FURGON', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KE7568', 'MITSUBISHI', 'L200', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SL1631', 'TOYOTA', 'HILUX', 1998);
@@ -2910,7 +2911,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('EF5403'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DA3875', 'SUBARU', 'LOYALE', 1994);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WZ7040', 'HYUNDAI', 'GETZ', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VY7417', 'NISSAN', 'JEEP', 1995);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DF6758', 'TOYOTA', 'HILUX', 1993);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KZ7254', 'PEUGEOT', '205', 1993);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VG5467', 'PEUGEOT', 'PARTNER', 2005);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('PV6723', 'V WAGGEN', 'VENTO', 1997);
@@ -2919,7 +2923,9 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XN4502'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XS3342', 'TOYOTA', 'HILUX', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LZ5513', 'TOYOTA', 'TERCEL', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('UA4914', 'MAZDA', 'CTA.', 2000);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BFDX26', 'SSANGYONG', 'ACTYON', 2008);
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NA1949', 'OPEL', 'CORSA', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XE5902', 'MERCEDEZ', 'CAMION', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BBTV88', 'VOLKSWAGEN', 'CAMION', 2007);
@@ -3021,7 +3027,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DB7702'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YY7173', 'DODGE', 'DAKOTA', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('AG2253', 'SUZUKI', 'ST90', 1982);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BPZR55', 'TOYOTA', 'TERCEL', 2009);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('MAZDA', 'AUTO', 'VARIOS', 2000);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XZ9415', 'CHEVROLET', 'CORSA', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NV9157', 'TOYOTA', 'HIACE', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KIA ARR', 'KIA', 'ARRANQUE', 2000);
@@ -3489,7 +3498,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZC3873'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LX4320', 'TOYOTA', 'TERCEL', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ST8611', 'DAEWOO', 'LANOS', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WS8686', 'HYUNDAI', 'GAS', 2008);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZG3517', 'CHEVROLET', 'CORSA', 2000);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SY9414', 'TOYOTA', 'STARLET', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('HC9072', 'LADA', 'NIVA', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TB8472', 'CITROEN', 'FURGON', 1997);
@@ -3619,7 +3631,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZG7126'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DT2959', 'TOYOTA', 'HILUX', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LJ9177', 'CHEVROLET', 'LUV', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YT3154', 'HIUNDAY', 'TERRACAN', 2007);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('HX1631', 'TOYOTA', 'COROLLA', 1990);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RP9065', 'MITSUBISHI', 'L200', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('Z3883', 'HYUNDAI', 'FURGON', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BRIGADA', 'CAMION DE BRIGADA', 'DE INCENDIOS', 2010);
@@ -3782,7 +3797,12 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RN8336'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BCGB42', 'HYUNDAI', 'H100', 2009);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NU9412', 'FIAT', 'FIORINO', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('GC2311', 'TOYOTA', 'LAND CRUISER', 1990);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XBA508', 'CARRO', 'CARRO', 2000);
+
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RF6756', 'LADA', 'NIVA', 1997);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VK3726', 'NISSAN', 'D21', 2003);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RZ4557', 'CHEVROLET', 'LUV', 1998);
@@ -3995,7 +4015,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RT 1968
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WH6314', 'TOYOTA', 'YARIS', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TJ8160', 'TOYOTA', 'YARIS', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BGLC95', 'CHEVROLET', 'CORSA', 2009);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXXX', 'HYUNDAI', 'H1', 2010);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VS5926', 'FIAT ', 'FIORINO', 2004);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('34', 'BUS MBENZ', 'XX', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CFHJ21', 'ZOTYE', 'HUNTER', 2010);
@@ -4046,7 +4065,11 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('UX4257'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BF3621', 'ZUZUKI', 'ST90', 1980);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZG3577', 'TOYOTA ', 'ECO', 2006);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WD8305', 'NISSAN', 'TERRANO', 2006);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXX', 'TRACTOR', 'TRACTOR', 1990);
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TX6286', 'CHRVROLET', 'CORSA', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LV3655', 'SUBARU', 'STAEITION', 2006);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DZ4761', 'NISSAN', 'J18', 1992);
@@ -4184,7 +4207,12 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SG8015'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TD1091', 'KIA ', 'AVELLA', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VR6850', 'TOYOTA', 'HILUX', 2003);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SH5057', 'FORD', 'CURRIA', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BZLX23', 'WOLSBAGUEN', 'GOLF', 2009);
+
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NF 6433', 'MERCEDEZ', 'MS812', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VY1681', 'TOYOTA ', 'YARIS', 2003);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LG9030', 'LADA', 'NIVA', 1995);
@@ -4254,7 +4282,11 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TR2080'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ET3860', 'TOYOTA', 'HILUX', 1900);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TD2911', 'FIAT', 'PUNTO', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BZRX54', 'HIUNDAY', 'ACENT', 2009);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BBFY36', 'CHEVROLET', 'DIESSEL', 2009);
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KH3771', 'SUZUKI', 'SWIFT', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RZ5993', 'SUBARU', 'LEGACY', 1997);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DBCP28', 'MAZDA', '6', 2011);
@@ -4268,7 +4300,10 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BVBV28'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KU2760', 'MITSUBISHI', 'MONTERO', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WC4084', 'NISSAN', 'TERRANO', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BYRR96', 'NISSAN', 'TERRANO', 2009);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SB2299', 'DAEWOO', 'STATION', 1994);
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VF1198', 'DAEWOO', 'NUVIRA', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TJ2876', 'HIUNDAY', 'SANTAMO', 1997);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NR5645', 'MERCEDES ', 'BENS', 1999);
@@ -4354,7 +4389,12 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RF8066'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XG8933', 'SUZUKI', 'VITARA', 2004);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LH2630', 'NISSAN', 'D21', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CF8851', 'TOYOTA', 'TERCEL', 1991);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WX3146', 'CHEVROLET', 'DIMAX', 2008);
+
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YN2362', 'FORD', 'KA', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VD3801', 'FORD', 'ESCAPE', 2002);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BVDG20', 'HIUNDAY', 'H100', 2009);
@@ -4678,9 +4718,11 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KA1120'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CH5074', 'BMW', '500', 1980);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WW6666', 'LAMBORGUINI ', 'DIABLO', 2015);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RX1522', 'FORD', 'EXPLORED SPORT', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RX1522', 'FORD', 'EXPLORTED SPORT', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BFDW79', 'KIA ', 'FRONTIER 2', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XC6941', 'TOYOTA COLECTIVO', 'ECO', 1998);
+
+
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CDTV12', 'KIA', 'CAREN', 2010);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RS8726', 'DAHIATSU', 'TERIOS', 2005);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VZ5573', 'MAZDA', 'CTA', 2007);
@@ -4712,18 +4754,21 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LF3120'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LN9233', 'MITSUBISHI', 'L200', 1994);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('IH1581', 'NISSAN', 'TERRANO', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VV4278', 'TOYOTA', 'YARIS', 2004);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NJ2397', 'CHEVROLET', 'LUV', 1997);
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZB9750', 'NISSAN', 'TERRANO', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BCFS11', 'NISSAN', 'TERRANO', 2008);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SZ4205', 'SUBARU', 'LEGACY', 1997);
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XF5194', 'NISSAN', 'D21', 1995);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XZ9800', 'NISSAN', 'TERRANO', 2005);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LV2661', 'HONDA', 'CIVIC', 1993);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YR4423', 'CHEVROLET', 'S10', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KZ3831', 'SUBARU', 'IMPREZA', 1994);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('KF7175', 'TOYOTA', 'HIACE', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('EZ4030', 'CHEVROLET', 'LUV', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('EZ4030', 'CHEVROLET', 'LUV', 1998);
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('UT5776', 'HYUNDAI', 'TERRACAN', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CJZV74', 'CITROEN', 'PICASSO', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CBJX61', 'HYUNDAI', 'ACCENT', 2008);
@@ -4732,8 +4777,8 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YA6373'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('HK3285', 'CHEVROLET', 'CAPRISSE', 1999);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CF8306', 'HONDA', 'CIVIC', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BULL76', 'TOYOTA', 'YARIS', 2000);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WS8945', 'TOYOTA ', 'HI LUX DGAB', 1998);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VK3337', 'FORD', 'FIESTA', 2000);
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XC6943', 'KIA', 'BESTA', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XY9586', 'MERCEDES', 'ACCELO', 2004);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YZ1993', 'KIA', 'RIO', 2005);
@@ -4805,7 +4850,9 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SJ4804'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('TX3328', 'MITSUBISHI', 'L200', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WS8935', 'FORD', 'CTA.', 2009);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('FP7728', 'SUBARU', 'LOYALE', 1987);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CWCY24', 'CHEVROLET', 'COMBO', 2011);
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZA6240', 'KIA', 'MORNING', 2010);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BWYZ53', 'CHERY', 'JEEP', 2010);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WS9237', 'CITROEN', 'C1', 2010);
@@ -4892,7 +4939,9 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BYYV93'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DVHF63', 'CHEVROLET', 'COMBO', 2010);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('UD4990', 'TOYOTA', 'YARIS', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BDFV25', 'MITSUBISHI', 'IQUIQUE', 2000);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YT1718', 'FORD', 'FOCUS', 2000);
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XR4869', 'HYUNDAI', 'H100', 2000);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LP4847', 'NISSAN ', 'TERRANO', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('YN3670', 'PEUGEOT ', 'BOXER', 2000);
@@ -5347,7 +5396,9 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CXHW42'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LH6354', 'SUZUKI', 'VITARA', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VC1464', 'MAZDA', 'OT', 99);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('LL5871', 'CHEVROLET', 'LUV', 99);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RZ7149', 'SUSUKI', 'NOMADE', 99);
+
+
+
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('RW5545', 'CHEVROLET', 'CORSA', 99);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BBDY13', 'MITSUBICHI', 'L 200', 99);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('SP4919', 'NISSAN', 'D 21', 98);
@@ -5768,8 +5819,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZC9579'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('PE7144', 'HONDA', 'CIVIC', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('EC7839', 'TOYOTA', 'TERCEL', 1990);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BVSG97', 'CHEVROLET', 'AVEO LT', 2008);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXXXXX', 'ARRANQUE', 'MOTOR', 1990);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXXXX', 'ARRANQUE', 'MOTOR', 1990);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NZ6439', 'TOYOTA', 'TERCEL', 1996);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BDTV74', 'SUBARU', 'LEGACY', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('VA5433', 'FORD ', 'EXPLORER', 2005);
@@ -6528,7 +6577,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BCBG71'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZK6432', 'HYUNDAI', 'H100', 2012);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BWPX35', 'TOYOTA ', 'YARIS', 2013);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BLCK77', 'HYUNDAI', 'TUCSON', 2012);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXXXX', 'HAMER', 'HAMER', 2020);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('WA7087', 'MERCEDES BENZ', 'GLS500', 2008);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('CXXP51', 'HYUNDAI', 'ACENT', 2012);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DP KG 42', 'CHERRY', 'OT', 2013);
@@ -6825,7 +6873,6 @@ INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DYBV90'
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BZLG48', 'DAIHATSU ', 'TERIOS', 2009);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('DFLS58', 'VOSWABEN', 'AMAROK', 2012);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XY5111', 'TOYOTA', 'YARIS SPORT', 2008);
-INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('XXXX', 'NISSAN', 'TERRANO', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('BGGD25', 'SUSUKI', 'GRAN NOMADE', 2007);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('NINGUNA', 'PEUGEOT', 'PEUGEOT', 1998);
 INSERT INTO tb_vehiculos (`patente`, `marca`, `modelo`, `anio`) VALUES ('ZG3052', 'HYUNDAI', 'ACCENT', 2007);
