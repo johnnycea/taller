@@ -1,3 +1,5 @@
+var cantidad_registros = 1;//1 pagina va a mostrar 30 registros
+
 function boton_nueva_orden(){
 
    listarDetalleOrden();
@@ -19,7 +21,11 @@ function boton_nueva_orden(){
 
 }
 
-$(document).ready(listarOrden);
+$(document).ready(function(){
+    $("#txt_fecha_inicio_buscar").val(obtenerFechaActual());
+    $("#txt_fecha_fin_buscar").val(obtenerFechaActual());
+    listarOrden();
+});
 
 
 function mostrarOcultarOpcionesEstado(opcion){
@@ -183,6 +189,11 @@ function guardarDatosOrden(){
 }
 
 
+function cambiarCantidadRegistros(){
+	cantidad_registros = cantidad_registros+1;
+	listarOrden();
+}
+
 function listarOrden(){
 
 var fecha_inicio_buscar = $("#txt_fecha_inicio_buscar").val();
@@ -212,7 +223,7 @@ if(fecha_inicio_buscar==""){
 		$.ajax({
 			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php",
 			method:"POST",
-			data: $("#formulario_buscar_ordenes").serialize(),
+			data: $("#formulario_buscar_ordenes").serialize()+"&cantidad_registros="+cantidad_registros,
 			success:function(respuesta){
 
 				 $("#contenedor_listado_orden").html(respuesta);

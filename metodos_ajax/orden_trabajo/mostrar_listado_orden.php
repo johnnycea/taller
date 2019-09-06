@@ -22,6 +22,8 @@ $cliente = $Funciones->limpiarTexto($_REQUEST["txt_rut_cliente_buscar"]);
 $patente = $Funciones->limpiarTexto($_REQUEST["txt_patente_buscar"]);
 $estado = $Funciones->limpiarTexto($_REQUEST["txt_estado_orden_buscar"]);
 $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
+$cantidad_registros = $Funciones->limpiarNumeroEntero($_REQUEST['cantidad_registros']);
+// echo $cantidad_registros;
 
  $posicion_guion = strpos($cliente,"-");
  $soloRut = substr($cliente,0,$posicion_guion);
@@ -42,7 +44,7 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
 
 
        $OrdenTrabajo = new OrdenTrabajo();
-       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$soloRut,$patente,$estado,$trabajador);
+       $listadoOrdenTrabajo = $OrdenTrabajo->mostrarOrdenesTrabajo($cantidad_registros,$codigo,$fecha_inicio,$fecha_fin,$soloRut,$patente,$estado,$trabajador);
 
          while($filas = $listadoOrdenTrabajo->fetch_array()){
 
@@ -88,13 +90,17 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
                        }
 
                        echo '
-                      </tr>';
+                       </tr>';
+            }
 
-         }
+       echo '
+        </tbody>
+     </table>';
 
-    echo '
-     </tbody>
-  </table>';
+
+ if($listadoOrdenTrabajo->num_rows>30){
+        echo '<button class="btn btn-block btn-warning" onclick="cambiarCantidadRegistros()">Mostrar Mas</button>';
+ }
 
 
  ?>

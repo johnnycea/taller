@@ -129,7 +129,7 @@ class OrdenTrabajo{
     return $resultado_consulta;
  }
 
- public function mostrarOrdenesTrabajo($codigo,$fecha_inicio,$fecha_fin,$cliente,$patente,$estado,$trabajador){
+ public function mostrarOrdenesTrabajo($cantidad_registros,$codigo,$fecha_inicio,$fecha_fin,$cliente,$patente,$estado,$trabajador){
     $Conexion = new Conexion();
     $Conexion = $Conexion->conectar();
 
@@ -142,13 +142,15 @@ class OrdenTrabajo{
     $condiciones = ($estado!="") ? $condiciones." and (id_estado = ".$estado.")" : $condiciones;
     $condiciones = ($trabajador!="") ? $condiciones." and (trabajador = ".$trabajador.")" : $condiciones;
 
-    $consulta ="select * from vista_orden where id_estado <> 1 and id_estado <> 5 ";
+    $cantidad_registros = ($cantidad_registros*30);
+    $consulta ="select * from vista_orden where id_estado <> 1 and id_estado <> 5";
 
     if($condiciones!=""){
         $consulta = $consulta.$condiciones;
     }
 
 
+     $consulta=$consulta." limit ".$cantidad_registros;
 
     // echo $consulta;
     $resultado_consulta = $Conexion->query($consulta);

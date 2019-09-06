@@ -1,10 +1,16 @@
-listarCliente("");
+var cantidad_registros = 1;//1 pagina va a mostrar 30 registros
+listarCliente();
 
+
+function cambiarCantidadRegistros(){
+	cantidad_registros = cantidad_registros+1;
+	listarCliente();
+}
 function listarCliente(texto_buscar){
 
 
 		$.ajax({
-			url:"./metodos_ajax/clientes/mostrar_listado_cliente.php?texto_buscar="+texto_buscar,
+			url:"./metodos_ajax/clientes/mostrar_listado_cliente.php?texto_buscar="+texto_buscar+"&cantidad_registros="+cantidad_registros,
 			method:"POST",
 			success:function(respuesta){
 				// alert(respuesta);

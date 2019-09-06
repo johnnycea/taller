@@ -19,10 +19,10 @@ require_once '../../clases/Cliente.php';
 
                   $Funciones = new Funciones();
                   $texto_buscar = $Funciones->limpiarTexto($_REQUEST['texto_buscar']);
-                  // $id_creado = $Funciones->limpiarNumeroEntero($_REQUEST['id_creado']);
+                  $cantidad_registros = $Funciones->limpiarNumeroEntero($_REQUEST['cantidad_registros']);
 
                   $Clientes = new Cliente();
-                  $listadoCliente = $Clientes->obtenerClientes($texto_buscar); //$texto_buscar," where id_estado=1 or id_estado=2 "
+                  $listadoCliente = $Clientes->obtenerClientes($texto_buscar,$cantidad_registros); //$texto_buscar," where id_estado=1 or id_estado=2 "
 
                     while($filas = $listadoCliente->fetch_array()){
 
@@ -37,12 +37,17 @@ require_once '../../clases/Cliente.php';
 
                                   <td><button class="btn btn-warning btn-block" onclick="cargarInformacionClientes('.$filas['rut_cliente'].')" data-target="#modal_cliente" data-toggle="modal"  ><i class="far fa-edit"></i></button></td>
                                   <td><button class="btn btn-danger btn-block" onclick="eliminarCliente('.$filas['rut_cliente'].')" ><i class="fa fa-trash-alt"></i></button></td>
-                               </tr>';
-                    }
+                                  </tr>';
+                       }
 
-                    echo '
-                     </tbody>
-                  </table>';
+                  echo '
+                   </tbody>
+                </table>
+
+                <button class="btn btn-block btn-warning" onclick="cambiarCantidadRegistros()">Mostrar Mas</button>
+
+                ';
+
 
 
 
