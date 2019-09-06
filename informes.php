@@ -52,6 +52,7 @@ $usuario= $usuario->obtenerUsuarioActual();
                           <label for="title" class="col-12 control-label">Tipo Informe:</label>
                           <select class="form-control" onchange="mostrarOcultarOpciones(this.value)" name="select_tipo_informe" id="select_tipo_informe">
                             <option value="1">Ordenes Por Pagar</option>
+                            <option value="3">Ordenes Facturadas</option>
                             <option value="2">Ingresos</option>
                           </select>
                        </div>
