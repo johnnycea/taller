@@ -29,9 +29,9 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
   echo '
   <table class="table table-dark table-sm table-striped table-hover">
      <thead class="" align=center>
-        <th>Número de orden</th>
-        <th>Fecha</th>
+        <th>Nº Orden</th>
         <th>Hora</th>
+        <th>Fecha</th>
         <th>Cliente</th>
         <th>Vehiculo</th>
         <th>Estado</th>
@@ -68,6 +68,8 @@ $trabajador = $Funciones->limpiarTexto($_REQUEST["txt_rut_trabajador_buscar"]);
                            <span class="d-none" id="columna_estado_'.$filas['id_orden'].'" >'.$filas['id_estado'].'</span></td>
                            <span class="d-none" id="columna_fecha_pago_'.$filas['id_orden'].'" >'.$filas['fecha_pago'].'</span></td>
                            <span class="d-none" id="columna_fecha_entrega_'.$filas['id_orden'].'" >'.$filas['fecha_entrega'].'</span></td>
+                           <span class="d-none" id="columna_fecha_facturacion_'.$filas['id_orden'].'" >'.$filas['fecha_facturacion'].'</span></td>
+                           <span class="d-none" id="columna_tipo_pago_'.$filas['id_orden'].'" >'.$filas['tipo_pago'].'</span></td>
 
                        <td><span id="columna_descripcion_estado_'.$filas['id_orden'].'" >'.$filas['estado'].'</span></td>
                        <td>

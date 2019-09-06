@@ -10,12 +10,14 @@ $txt_id_orden = $Funciones->limpiarNumeroEntero($_REQUEST['id_orden']);
 $nuevo_estado = $Funciones->limpiarNumeroEntero($_REQUEST['nuevo_estado']);
 $fecha_pago = $Funciones->limpiarTexto($_REQUEST['fecha_pago']);
 $fecha_entrega = $Funciones->limpiarTexto($_REQUEST['fecha_entrega']);
+$fecha_facturacion = $Funciones->limpiarTexto($_REQUEST['fecha_facturacion']);
 
 $OrdenTrabajo = new OrdenTrabajo();
 $OrdenTrabajo->setIdOrden($txt_id_orden);
 $OrdenTrabajo->setIdEstado($nuevo_estado);
 $OrdenTrabajo->setFechaPago($fecha_pago);
 $OrdenTrabajo->setFechaEntrega($fecha_entrega);
+$OrdenTrabajo->setFechaFacturacion($fecha_facturacion);
 
 
    if($OrdenTrabajo->cambiarEstadoOrden()){
@@ -32,7 +34,10 @@ $OrdenTrabajo->setFechaEntrega($fecha_entrega);
       }else if($nuevo_estado==3){
         $registro->setAccion("Modifica estado Orden");
         $registro->setDetalleAccion('Cambia a "Por Pagar"');
-      }else if($nuevo_estado==3){
+      }else if($nuevo_estado==4){
+        $registro->setAccion("Modifica estado Orden");
+        $registro->setDetalleAccion('Cambia a "Pagado"');
+      }else if($nuevo_estado==6){
         $registro->setAccion("Modifica estado Orden");
         $registro->setDetalleAccion('Cambia a "Pagado"');
       }

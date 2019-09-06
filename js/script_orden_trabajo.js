@@ -110,6 +110,8 @@ function cargarModificarOrden(id){
 	var txt_id_estado = $("#columna_estado_"+id).html();
 	var txt_fecha_pago = $("#columna_fecha_pago_"+id).html();
 	var txt_fecha_entrega = $("#columna_fecha_entrega_"+id).html();
+	var txt_fecha_facturacion = $("#columna_fecha_facturacion_"+id).html();
+	var txt_tipo_pago = $("#columna_tipo_pago_"+id).html();
 
 
 
@@ -127,6 +129,8 @@ function cargarModificarOrden(id){
 
 	$('#txt_fecha_pago').val(txt_fecha_pago);
 	$('#txt_fecha_entrega').val(txt_fecha_entrega);
+	$('#txt_fecha_facturacion').val(txt_fecha_facturacion);
+	$('#select_tipo_pago').val(txt_tipo_pago);
 
 	$('#select_estado_orden').val(txt_id_estado);
    mostrarOcultarFechasEstado();
@@ -166,8 +170,10 @@ function guardarDatosOrden(){
    var txt_kilometraje = $("#txt_kilometraje").val();
    var cmb_trabajador = $("#cmb_trabajador").val();
 
+   var cmb_tipo_pago = $("#select_tipo_pago").val();
+
 		$.ajax({
-			url:"./metodos_ajax/orden_trabajo/guardar_diagnostico.php?txt_rut_cliente="+txt_rut_cliente+"&txt_patente="+txt_patente+"&txt_descripcion="+txt_descripcion+"&txt_kilometraje="+txt_kilometraje+"&txt_id_orden="+txt_id_orden+"&cmb_trabajador="+cmb_trabajador,
+			url:"./metodos_ajax/orden_trabajo/guardar_diagnostico.php?txt_rut_cliente="+txt_rut_cliente+"&txt_patente="+txt_patente+"&txt_descripcion="+txt_descripcion+"&txt_kilometraje="+txt_kilometraje+"&txt_id_orden="+txt_id_orden+"&cmb_trabajador="+cmb_trabajador+"&cmb_tipo_pago="+cmb_tipo_pago,
 			method:"POST",
 			success:function(respuesta){
 				console.log(respuesta);
@@ -373,12 +379,20 @@ function mostrarOcultarFechasEstado() {
   if(estado_actual==4){
       $("#contenedor_fecha_pago").removeClass("d-none");
       $("#contenedor_fecha_entrega").addClass("d-none");
+      $("#contenedor_fecha_facturacion").addClass("d-none");
 	}else if(estado_actual==3){
     $("#contenedor_fecha_pago").addClass("d-none");
     $("#contenedor_fecha_entrega").removeClass("d-none");
+    $("#contenedor_fecha_facturacion").addClass("d-none");
+	}else if(estado_actual==6){
+    $("#contenedor_fecha_pago").addClass("d-none");
+    $("#contenedor_fecha_entrega").addClass("d-none");
+    $("#contenedor_fecha_facturacion").removeClass("d-none");
 	}else{
     $("#contenedor_fecha_pago").addClass("d-none");
     $("#contenedor_fecha_entrega").addClass("d-none");
+    $("#contenedor_fecha_facturacion").addClass("d-none");
+
   }
 
 }
@@ -390,11 +404,15 @@ function cambiarEstadoOrden(nuevo_estado){
 	if(nuevo_estado==3){
 		$("#select_estado_orden").val(3);//para cuando se guarde en onblur de fecha
 	}
+	if(nuevo_estado==6){
+		$("#select_estado_orden").val(6);//para cuando se guarde en onblur de fecha
+	}
 	mostrarOcultarFechasEstado();
 
 				var id_orden = $("#txt_id_orden").val();
 				var fecha_pago = $("#txt_fecha_pago").val();
 				var fecha_entrega = $("#txt_fecha_entrega").val();
+				var fecha_facturacion = $("#txt_fecha_facturacion").val();
 
         if(nuevo_estado==2){
            //VERIFICAR QUE SE HAYA INGRESADO PATENTE Y RUT
@@ -422,10 +440,17 @@ function cambiarEstadoOrden(nuevo_estado){
               $("#txt_fecha_entrega").val(obtenerFechaActual());
               fecha_entrega = obtenerFechaActual();
 
+            }else if(nuevo_estado==6 && (fecha_facturacion=="" || fecha_facturacion==" ")){
+              // swal("Indique la fecha de entrega","","info");
+              // $("#select_estado_orden").val(2);
+
+              $("#txt_fecha_facturacion").val(obtenerFechaActual());
+              fecha_facturacion = obtenerFechaActual();
+
             }
 
 								$.ajax({
-									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago+"&fecha_entrega="+fecha_entrega,
+									url:"./metodos_ajax/orden_trabajo/cambiar_estado_orden.php?id_orden="+id_orden+"&nuevo_estado="+nuevo_estado+"&fecha_pago="+fecha_pago+"&fecha_entrega="+fecha_entrega+"&fecha_facturacion="+fecha_facturacion,
 									method:"POST",
 									success:function(respuesta){
 										// alert(respuesta);

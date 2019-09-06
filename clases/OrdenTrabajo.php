@@ -17,6 +17,8 @@ class OrdenTrabajo{
  private $trabajador;
  private $fecha_pago;
  private $fecha_entrega;
+ private $fecha_facturacion;
+ private $tipo_pago;
 
  // detalle OrdenTrabajo
 
@@ -71,6 +73,12 @@ class OrdenTrabajo{
  public function setFechaEntrega($parametro){
    $this->fecha_entrega = $parametro;
  }
+ public function setFechaFacturacion($parametro){
+   $this->fecha_facturacion = $parametro;
+ }
+ public function setTipoPago($parametro){
+   $this->tipo_pago = $parametro;
+ }
 
 // set Detalle Orden de trabajo
  public function setIdDetalle($parametro){
@@ -97,7 +105,7 @@ class OrdenTrabajo{
 
     $resultado_consulta = $Conexion->query("select * from tb_orden_trabajo where id_estado = 1 order by fecha_recepcion desc limit 1");
     return $resultado_consulta;
- } 
+ }
 
  public function crearDetalleOrden(){
    $conexion = new Conexion();
@@ -187,7 +195,13 @@ class OrdenTrabajo{
        $adicionales = $adicionales." rut_cliente=".$this->rut_cliente.", ";
    }
 
-   $consulta = "update tb_orden_trabajo SET ".$adicionales." `descripcion_diagnostico` = '".$this->descripcion_diagnostico."', `kilometraje` = ".$this->kilometraje.", `rut_trabajador` = ".$this->trabajador." WHERE (`id_orden` = '".$this->id_orden."');";
+   $consulta = "update tb_orden_trabajo SET ".$adicionales."
+               `descripcion_diagnostico` = '".$this->descripcion_diagnostico."',
+               `kilometraje` = ".$this->kilometraje.",
+               `rut_trabajador` = ".$this->trabajador.",
+               `tipo_pago` = ".$this->tipo_pago."
+               WHERE (`id_orden` = '".$this->id_orden."');";
+
    $resultado= $conexion->query($consulta);
    // echo $consulta;
    return $resultado;
@@ -200,7 +214,8 @@ class OrdenTrabajo{
    $consulta = "update tb_orden_trabajo SET
                 id_estado=".$this->id_estado.",
                 fecha_pago='".$this->fecha_pago."',
-                fecha_entrega='".$this->fecha_entrega."'
+                fecha_entrega='".$this->fecha_entrega."',
+                fecha_facturacion='".$this->fecha_facturacion."'
                 WHERE (`id_orden` = '".$this->id_orden."');";
    $resultado= $conexion->query($consulta);
    // echo $consulta;

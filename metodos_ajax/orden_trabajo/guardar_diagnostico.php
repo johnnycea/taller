@@ -16,6 +16,7 @@ $txt_id_orden = $Funciones->limpiarTexto($_REQUEST['txt_id_orden']);
 $txt_descripcion = $Funciones->limpiarTexto($_REQUEST['txt_descripcion']);
 $txt_kilometraje = $Funciones->limpiarNumeroEntero($_REQUEST['txt_kilometraje']);
 $cmb_trabajador = $Funciones->limpiarNumeroEntero($_REQUEST['cmb_trabajador']);
+$cmb_tipo_pago = $Funciones->limpiarNumeroEntero($_REQUEST['cmb_tipo_pago']);
 
 //if operador ternario
 $txt_kilometraje = ($txt_kilometraje=="") ? 0 : $txt_kilometraje;
@@ -30,6 +31,7 @@ $OrdenTrabajo->setIdOrden($txt_id_orden);
 $OrdenTrabajo->setDescripcionDiagnostico($txt_descripcion);
 $OrdenTrabajo->setKilometraje($txt_kilometraje);
 $OrdenTrabajo->setTrabajador($cmb_trabajador);
+$OrdenTrabajo->setTipoPago($cmb_tipo_pago);
 
 
 

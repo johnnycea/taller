@@ -89,7 +89,8 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                    <select class="form-control form-control-sm" onchange="listarOrden()" id="txt_estado_orden_buscar" name="txt_estado_orden_buscar">
                                       <option value="">Todas</option>
                                       <option value="2">En proceso</option>
-                                      <option value="3">Por pagar</option>
+                                      <option value="3">Entregado</option>
+                                      <option value="6">Facturado</option>
                                       <option value="4">Pagado</option>
                                    </select>
                                  </div>
@@ -404,12 +405,13 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                             <div class="row">
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-12 col-md-4">
                                                                         <div class="col-12">
                                                                           <label for="estado">Estado de Orden:</label>
                                                                           <select class="form-control" onchange="cambiarEstadoOrden(this.value)" id="select_estado_orden" name="select_estado_orden">
                                                                             <option value="2">En Proceso</option>
-                                                                            <option value="3">Pendiente de Pago</option>
+                                                                            <option value="3">Entregado</option>
+                                                                            <option value="6">Facturada</option>
                                                                             <option value="4">Pagada</option>
                                                                           </select>
                                                                         </div>
@@ -419,6 +421,11 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                           <input type="date" class="form-control" onblur="cambiarEstadoOrden(3)" name="txt_fecha_entrega" id="txt_fecha_entrega" value="">
                                                                         </div>
 
+                                                                        <div id="contenedor_fecha_facturacion" class="col-12">
+                                                                          <label for="estado">Fecha facturación:</label>
+                                                                          <input type="date" class="form-control" onblur="cambiarEstadoOrden(6)" name="txt_fecha_facturacion" id="txt_fecha_facturacion" value="">
+                                                                        </div>
+
                                                                         <div id="contenedor_fecha_pago" class="col-12">
                                                                           <label for="estado">Fecha de Pago:</label>
                                                                           <input type="date" class="form-control" onblur="cambiarEstadoOrden(4)" name="txt_fecha_pago" id="txt_fecha_pago" value="">
@@ -426,7 +433,18 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-12 col-md-4">
+                                                                        <div class="col-12">
+                                                                          <label for="estado">Tipo:</label>
+                                                                          <select class="form-control" onchange="guardarDatosOrden()" id="select_tipo_pago" name="select_tipo_pago">
+                                                                            <option value="1">Boleta</option>
+                                                                            <option value="2">Factura</option>
+                                                                          </select>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-12 col-md-4">
                                                                       <label for="estado">&nbsp;</label>
                                                                       <button type="button"  class="btn btn-success btn-block" id="btn_imprimir_orden" onclick="imprimeComprobante()" ><i class="fas fa-check-circle"></i> Imprimir</button>
                                                                     </div>
