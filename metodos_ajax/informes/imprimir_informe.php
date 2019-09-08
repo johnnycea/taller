@@ -60,8 +60,6 @@ require_once '../../clases/Funciones.php';
            width: auto;
            height: 100px;
            float:left;
-
-
         }
         .texto{
           display: block;
