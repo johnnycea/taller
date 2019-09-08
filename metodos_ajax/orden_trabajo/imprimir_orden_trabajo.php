@@ -102,6 +102,20 @@ require_once '../../clases/Vehiculo.php';
              width: 100%;
             border-collapse: collapse;
            }
+           #tabla_resumen_detalle{
+            border-collapse: collapse;
+            float: right;
+           }
+           #tabla_cliente{
+            border-collapse: collapse;
+            float: right;
+           }
+           #tabla_patente{
+            border-collapse: collapse;
+            float: right;
+            border-left-style: none;
+            border-left-width: 0;
+           }
 
 
         }
@@ -177,7 +191,7 @@ require_once '../../clases/Vehiculo.php';
 <br>
 
 <div id="contenedor_clientes">
-    <table border="1" align="center"  width="100%">
+    <table border="1"  id="tabla_cliente"  align="center"  width="100%">
       <caption>Cliente</caption>
       <tr>
         <td >
@@ -204,7 +218,7 @@ require_once '../../clases/Vehiculo.php';
 
 <div id="contenedor_vehiculo">
 
-  <table border="1"  width="100%">
+  <table border="1" id="tabla_patente" width="100%">
         <caption>Vehiculo</caption>
         <tr >
           <td >
@@ -230,37 +244,104 @@ require_once '../../clases/Vehiculo.php';
 
 <br>
 <br>
-<br>
 
 <div id="contenedor_detalle_orden">
 
     <?php
 
-    $DetalleOrden = new OrdenTrabajo();
-    $DetalleOrden->setIdOrden($id_orden);
-    $consultaDetalleOrden = $DetalleOrden->vistaDetalleOrden();
+    echo '<table border="1" id="tabla_detalle_orden">
+      <thead >
+        <th>Tipo</th>
+        <th>Item</th>
+        <th>Valor</th>
+        <th>Total</th>
+      </thead>
+      <tbody>';
 
-      echo ' <table border="1" id="tabla_detalle_orden" >
-          <thead class="thead-dark">
-            <th>Tipo</th>
-            <th>Item</th>
-            <th>Valor</th>
-            <th>Total</th>
-          </thead>
-          <tbody>';
+        $Funciones = new Funciones();
 
-          while($resultado_detalle_orden = $consultaDetalleOrden->fetch_array()){
-               echo '<tr>
-                  <td><span>'.$resultado_detalle_orden['tipo_detalle'].'</span></td>
-                  <td><span>'.$resultado_detalle_orden['descripcion'].'</span></td>
+        $id_orden = $Funciones->limpiarNumeroEntero($_REQUEST['id_orden']);
+       echo '<script> id_orden = '.$id_orden.'; </script>';
 
-                  <td><span>$'.number_format($resultado_detalle_orden['valor'],0,",",".").'</span></td>
-                  <td><span>$'.number_format($resultado_detalle_orden['valor_total'],0,",",".").'</span></td>
+        $OrdenTrabajo = new OrdenTrabajo();
+        $OrdenTrabajo->setIdOrden($id_orden);
+        $listadoOrdenTrabajo = $OrdenTrabajo->vistaDetalleOrden();
 
-               </tr> ';
-           }
-           echo '</tbody>
-             </table>';
+
+        $total_mano_obra = 0;
+        $total_repuestos = 0;
+        $iva = 0;
+        $checkbox_iva ="";
+        $neto = 0;
+        $total = 0;
+          while($filas = $listadoOrdenTrabajo->fetch_array()){
+
+                echo '<tr>
+                        <td><span id="columna_tipo_detalle_" >'.$filas['tipo_detalle'].'</span></td>
+                        <td><span id="columna_descripcion_detalle_'.$filas['id_detalle'].'">'.$filas['descripcion'].'</span></td>
+                        
+                        <td><span id="columna_valor_'.$filas['id_detalle'].'" >$'.number_format($filas['valor'],0,",",".").'</span></td>
+                        <td><span id="columna_valor_total_'.$filas['id_detalle'].'" >$'.number_format($filas['valor_total'],0,",",".").'</span></td>
+                     </tr>';
+
+                     $total_mano_obra = ($filas['id_tipo_detalle']==1) ? $total_mano_obra+$filas['valor_total'] : $total_mano_obra;
+                     $total_repuestos = ($filas['id_tipo_detalle']==2) ? $total_repuestos+$filas['valor_total'] : $total_repuestos;
+
+                     $neto += $filas['valor_total'];
+                     $checkbox_iva = $filas['iva_venta'];
+          }
+
+          echo '
+
+           </tbody>
+        </table>';
+
+        $checkbox_iva = ($checkbox_iva=="19") ? "checked" : "";
+
+        $iva = ($checkbox_iva=="checked") ? ($neto*0.19) : 0;
+        $total = ($checkbox_iva=="checked") ? ($neto+$iva) : $neto;
+
+    echo '
+
+
+    <br>
+    <br>
+
+        <div class="row">
+          <div class="col-md-4 offset-md-8">
+            <table border="1" id="tabla_resumen_detalle">
+              <tbody>
+
+                  <tr class="">
+                      <td colspan="4" ><strong>Mano de obra</strong></td>
+                      <td><strong>$'.number_format($total_mano_obra,0,',','.').'</strong></td>
+                  </tr>
+                  <tr class="">
+                      <td colspan="4" ><strong>Repuestos</strong></td>
+                      <td><strong>$'.number_format($total_repuestos,0,',','.').'</strong></td>
+                  </tr>
+                  <tr class="">
+                      <td colspan="4" ><strong>Sub total</strong></td>
+                      <td><strong>$'.number_format($neto,0,',','.').'</strong></td>
+                  </tr>
+                  <tr class="">
+                      <td colspan="4" >
+                        <div class="form-check">
+                          <label class="form-check-label" for="checkbox_iva">IVA</label>
+                        </div>
+                      </td>
+                      <td><strong>$'.number_format($iva,0,',','.').'</strong></td>
+                  </tr>
+                  <tr class="bg-danger text-white">
+                      <td colspan="4" ><strong>Total a pagar</strong></td>
+                      <td><strong>$'.number_format($total,0,',','.').'</strong></td>
+                  </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>';
      ?>
 </div>
 
