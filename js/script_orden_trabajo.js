@@ -276,6 +276,8 @@ function crearDetalleOrden(){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 // $("#modal_orden").modal('hide');
 						 listarDetalleOrden("");
+             $("#formulario_modal_detalle_orden")[0].reset();
+
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
