@@ -27,7 +27,7 @@ $Conexion = $Conexion->conectar();
 
 if($tipo_informe==1){//ORDENES POR PAGAR
 
-     $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."' and id_estado = 3 ";
+     $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59' and id_estado = 3 ";
 
      if($cliente!=""){
 
@@ -89,7 +89,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 }else if($tipo_informe==2){//ingresos
 
   $consulta = "select * from vista_orden
-                where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."'
+                where fecha_pago between  '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59'
                 and id_estado = 4 ";
 
   $resultado_consulta = $Conexion->query($consulta);
@@ -155,7 +155,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 }else if($tipo_informe==3){//ingresos
 
   $consulta = "select * from vista_orden
-                where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."'
+                where fecha_facturacion between '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59'
                 and id_estado = 6 ";
 
   $resultado_consulta = $Conexion->query($consulta);
