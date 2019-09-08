@@ -262,7 +262,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
   ';
 
 
-}else if($tipo_informe==3){//ingresos
+}else if($tipo_informe==3){//Facturacion
 
 
     $consulta = "select * from vista_orden
@@ -283,7 +283,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
         <th>Nº OT</th>
         <th>Fecha Ingreso</th>
         <th>Cliente</th>
-        <th>Fecha Pago</th>
+        <th>Fecha Facturación</th>
         <th>Repuestos</th>
         <th>Mano de Obra</th>
         <th>Neto</th>
@@ -298,7 +298,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
         $fecha_ingreso = date_create($filas['fecha_recepcion']);
         $fecha_ingreso = date_format($fecha_ingreso, 'd-m-Y');
 
-        $fecha_pago = date_create($filas['fecha_pago']);
+        $fecha_pago = date_create($filas['fecha_facturacion']);
         $fecha_pago = date_format($fecha_pago, 'd-m-Y');
 
           echo '

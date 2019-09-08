@@ -8,6 +8,7 @@ function cambiarCantidadRegistros(){
 }
 function listarCliente(texto_buscar){
 
+	contenedorCargando("#contenedor_listado_cliente");
 
 		$.ajax({
 			url:"./metodos_ajax/clientes/mostrar_listado_cliente.php?texto_buscar="+texto_buscar+"&cantidad_registros="+cantidad_registros,
