@@ -1,8 +1,10 @@
 var cantidad_registros = 1;//1 pagina va a mostrar 30 registros
 
 function boton_nueva_orden(){
+   consultarNumeroOrden(function(){
+     listarDetalleOrden();
+   });
 
-   listarDetalleOrden();
 	 mostrarOcultarOpcionesEstado(1);
 	 $("#txt_fecha_pago").val("");
 	 $("#txt_rut_cliente").val("");
@@ -19,11 +21,12 @@ function boton_nueva_orden(){
 	 $("#txt_kilometraje").val("");
 	 $("#cmb_trabajador").val("");
 
+
 }
 
 $(document).ready(function(){
-    $("#txt_fecha_inicio_buscar").val(obtenerFechaActual());
-    $("#txt_fecha_fin_buscar").val(obtenerFechaActual());
+    // $("#txt_fecha_inicio_buscar").val(obtenerFechaActual());
+    // $("#txt_fecha_fin_buscar").val(obtenerFechaActual());
     listarOrden();
 });
 
@@ -63,6 +66,22 @@ function cargarInformacionClientes(texto_buscar){
 				 $("#txt_telefono").val(respuesta.telefono);
 			}
 		});
+}
+
+function consultarNumeroOrden(callback){
+
+		$.ajax({
+			url:"./metodos_ajax/orden_trabajo/consultar_numero_orden.php",
+			method:"POST",
+			success:function(respuesta){
+        // alert(respuesta);
+				$("#span_codigo_orden").html(respuesta);
+				$("#txt_id_orden").val(respuesta);
+        callback();
+
+			}
+		});
+
 }
 
 function guardarDatosCliente(){
@@ -196,29 +215,6 @@ function cambiarCantidadRegistros(){
 
 function listarOrden(){
 
-var fecha_inicio_buscar = $("#txt_fecha_inicio_buscar").val();
-
-if(fecha_inicio_buscar==""){
-
-}else{
-
-  var hoy = new Date();
-  var dd = hoy.getDate();
-  var mm = hoy.getMonth()+1;
-  var yyyy = hoy.getFullYear();
-
-  if(mm<10){
-    mm = "0"+mm;
-  }
-  if(dd<10){
-    dd = "0"+dd;
-  }
-
-  var fecha_actual = yyyy+"-"+mm+"-"+dd;
-
-  $("#txt_fecha_fin_buscar").val(fecha_actual)
-}
-
    contenedorCargando("#contenedor_listado_orden");
 		$.ajax({
 			url:"./metodos_ajax/orden_trabajo/mostrar_listado_orden.php",
@@ -280,6 +276,8 @@ function crearDetalleOrden(){
 						 swal("Guardado","Los datos se han guardado correctamente.","success");
 						 // $("#modal_orden").modal('hide');
 						 listarDetalleOrden("");
+             $("#formulario_modal_detalle_orden")[0].reset();
+
 					 }else if(respuesta==2){
 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 					 }
@@ -409,6 +407,8 @@ function mostrarOcultarFechasEstado() {
 }
 
 function cambiarEstadoOrden(nuevo_estado){
+
+
 	if(nuevo_estado==4){
 		$("#select_estado_orden").val(4);//para cuando se guarde en onblur de fecha
 	}
@@ -435,6 +435,8 @@ function cambiarEstadoOrden(nuevo_estado){
 						 swal("Debe ingresar Patente","","info");
 						 return false;
 					 }
+
+           botonCargando($("#btn_confirmar_orden"),1);
 				}
 
 						if(nuevo_estado==4 && (fecha_pago=="" || fecha_pago==" ")){
@@ -470,9 +472,17 @@ function cambiarEstadoOrden(nuevo_estado){
 											listarDetalleOrden("");
 											mostrarOcultarOpcionesEstado(2);
 											listarOrden();
+
+                      if(nuevo_estado==2){
+                        consultarNumeroOrden(function(){});
+                        $('#modal_orden').modal('hide')
+                      }
 										}else{
 											swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
 										}
+
+                    botonCargando($("#btn_confirmar_orden"),2);
+
 									}
 								});
 

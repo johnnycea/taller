@@ -1,5 +1,7 @@
 
 function generarInforme(){
+		contenedorCargando("#contenedor_informe");
+
 		$.ajax({
 			url:"./metodos_ajax/informes/mostrar_informe.php?",
 			data: $("#formulario_informe").serialize(),
@@ -13,7 +15,7 @@ function generarInforme(){
 
 function mostrarOcultarOpciones(select_tipo_informe){
 
-   if(select_tipo_informe==1){
+   if(select_tipo_informe==1 || select_tipo_informe==3){
 		 $("#contenedor_selector_cliente").removeClass("d-none");
 	 }else if(select_tipo_informe==2){
 		 $("#contenedor_selector_cliente").addClass("d-none");

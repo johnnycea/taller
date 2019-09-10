@@ -27,7 +27,7 @@ $Conexion = $Conexion->conectar();
 
 if($tipo_informe==1){//ORDENES POR PAGAR
 
-     $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."' and id_estado = 3 ";
+     $consulta = "select * from vista_orden where fecha_recepcion between '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59' and id_estado = 3 ";
 
      if($cliente!=""){
 
@@ -89,7 +89,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
 }else if($tipo_informe==2){//ingresos
 
   $consulta = "select * from vista_orden
-                where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."'
+                where fecha_pago between  '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59'
                 and id_estado = 4 ";
 
   $resultado_consulta = $Conexion->query($consulta);
@@ -152,11 +152,19 @@ if($tipo_informe==1){//ORDENES POR PAGAR
   ';
 
 
-}else if($tipo_informe==3){//ingresos
+}else if($tipo_informe==3){//ordenes facturadas
 
   $consulta = "select * from vista_orden
-                where fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."'
+                where fecha_facturacion between '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59'
                 and id_estado = 6 ";
+
+  if($cliente!=""){
+
+    $posicion_guion = strpos($cliente,"-");
+    $solo_rut = substr($cliente,0,$posicion_guion);
+
+    $consulta = $consulta." and cliente = ".$solo_rut;
+  }
 
   $resultado_consulta = $Conexion->query($consulta);
 
@@ -171,7 +179,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
         <th>Nº OT</th>
         <th>Fecha Ingreso</th>
         <th>Cliente</th>
-        <th>Fecha Pago</th>
+        <th>Fecha Facturacion</th>
         <th>Repuestos</th>
         <th>Mano de Obra</th>
         <th>Neto</th>
@@ -186,7 +194,7 @@ if($tipo_informe==1){//ORDENES POR PAGAR
         $fecha_ingreso = date_create($filas['fecha_recepcion']);
         $fecha_ingreso = date_format($fecha_ingreso, 'd-m-Y');
 
-        $fecha_pago = date_create($filas['fecha_pago']);
+        $fecha_pago = date_create($filas['fecha_facturacion']);
         $fecha_pago = date_format($fecha_pago, 'd-m-Y');
 
           echo '

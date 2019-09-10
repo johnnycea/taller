@@ -10,6 +10,7 @@ function cambiarCantidadRegistros(){
 
 function listarVehiculo(texto_buscar){
 
+	contenedorCargando("#contenedor_listado_vehiculo");
 
 		$.ajax({
 			url:"./metodos_ajax/vehiculo/mostrar_listado_vehiculo.php?texto_buscar="+texto_buscar+"&cantidad_registros="+cantidad_registros,

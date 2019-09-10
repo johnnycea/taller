@@ -9,20 +9,6 @@ comprobarSession();
 $usuario= new Usuario();
 $usuario= $usuario->obtenerUsuarioActual();
 
-$OrdenTrabajo = new OrdenTrabajo();
-$numero_orden;
-
-$consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
-
- if($consulta_orden->num_rows>0){
-     //recibe el id de esa ORDEN
-     $consulta_orden = $consulta_orden->fetch_array();
-     $numero_orden = $consulta_orden['id_orden'];
- }
- else{
-  $numero_orden = $OrdenTrabajo->ObtenerCodigoNuevaOrden();
- }
-
 ?>
 
 
@@ -61,6 +47,10 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
 
                           <div class="row">
 
+                            <?php
+                                $fecha_actual = date('Y-m-d');
+                             ?>
+
                             <form id="formulario_buscar_ordenes" name="formulario_buscar_ordenes" method="post">
 
                                  <div class="col-12" >
@@ -69,11 +59,11 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                  </div>
                                  <div class="col-12" >
                                      <label for="title" class="col-12 control-label">Desde la fecha:</label>
-                                    <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_inicio_buscar" name="txt_fecha_inicio_buscar">
+                                    <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_inicio_buscar" name="txt_fecha_inicio_buscar" value="<?php echo $fecha_actual; ?>">
                                  </div>
                                  <div class="col-12" >
                                      <label for="title" class="col-12 control-label">Hasta la fecha:</label>
-                                     <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_fin_buscar" name="txt_fecha_fin_buscar">
+                                     <input type="date" class="form-control form-control-sm" onchange="listarOrden()" id="txt_fecha_fin_buscar" name="txt_fecha_fin_buscar" value="<?php echo $fecha_actual; ?>">
                                  </div>
                                  <div class="col-12" >
                                    <label for="title" class="col-12 control-label">Cliente:</label>
@@ -163,7 +153,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
     <div class="modal-content fondo_negro">
 
       <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title" id="myModalLabel">Orden de trabajo N° <span id="span_codigo_orden"><?php echo $numero_orden; ?> </span></h4></h5>
+        <h5 class="modal-title" id="myModalLabel">Orden de trabajo N° <span id="span_codigo_orden"></span></h4></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -333,7 +323,7 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
                                                                   <div class="row">
 
 
-                                                                          <input type="hidden" id="txt_id_orden" name="txt_id_orden" value="<?php echo $numero_orden; ?>">
+                                                                          <input type="hidden" id="txt_id_orden" name="txt_id_orden" value="">
 
                                                                           <div class=" col-md-12" >
                                                                             <label for="title" class="col-12 control-label">Detalle:</label>

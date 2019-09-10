@@ -136,7 +136,7 @@ class OrdenTrabajo{
     $condiciones="";
 
     $condiciones = ($codigo!="") ? $condiciones." and (id_orden = ".$codigo.")" : $condiciones;
-    $condiciones = ($fecha_inicio!="" and $fecha_fin!="") ? $condiciones." and (fecha_recepcion between '".$fecha_inicio."' and '".$fecha_fin."')" : $condiciones;
+    $condiciones = ($fecha_inicio!="" and $fecha_fin!="") ? $condiciones." and (fecha_recepcion between '".$fecha_inicio." 00:00:00' and '".$fecha_fin." 23:59:59')" : $condiciones;
     $condiciones = ($cliente!="") ? $condiciones." and (cliente = ".$cliente.")" : $condiciones;
     $condiciones = ($patente!="") ? $condiciones." and (patente = '".$patente."')" : $condiciones;
     $condiciones = ($estado!="") ? $condiciones." and (id_estado = ".$estado.")" : $condiciones;
