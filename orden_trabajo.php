@@ -38,7 +38,6 @@ $consulta_orden = $OrdenTrabajo->consultarUltimaOrdenPendiente();
    <?php cargarHead(); ?>
 
   <script src="./js/script_orden_trabajo.js"></script>
-  <!-- <script src="./js/script_registro_actividad.js"></script> -->
 
 </head>
 <body>

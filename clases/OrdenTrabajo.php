@@ -152,7 +152,7 @@ class OrdenTrabajo{
 
      $consulta=$consulta." limit ".$cantidad_registros;
 
-    // echo $consulta;
+    echo $consulta;
     $resultado_consulta = $Conexion->query($consulta);
     return $resultado_consulta;
  }

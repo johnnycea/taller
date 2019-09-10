@@ -64,42 +64,54 @@ function cargarInformacionModificarVehiculo(id){
 
 }
 
+function eliminarVehiculo(id){
 
-// function modificarVehiculo(){
+	// 	alert("Id_detalle: "+id_detalle+" Id_orden: "+id_orden);
+			swal({
+			title: "¿Desea eliminar vehiculo?",
+			text: "",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Eliminar!",
+			cancelButtonText: "Cancelar!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+			function(isConfirm){
+					if (isConfirm) {
+						$.ajax({
+							url:"./metodos_ajax/vehiculo/eliminar_vehiculo.php?id="+id,
+							method:"POST",
+							success:function(respuesta){
+							 // alert(respuesta);
+							 if(respuesta==1){
+								 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+								 listarVehiculo("");
+							 }else if(respuesta==2){
+								 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
+							 }
+							}
+						});
+					} else {
+							swal("Cancelado", "", "error");
+					}
+					});
+			}
+
+// function eliminarVehiculo(id){
 //
 // 			$.ajax({
-// 				url:"./metodos_ajax/subvencion/modificar_subvencion.php",
+// 				url:"./metodos_ajax/vehiculo/eliminar_vehiculo.php?id="+id,
 // 				method:"POST",
-// 				data: $("#formulario_modal_subvencion").serialize(),
 // 				success:function(respuesta){
 // 					 // alert(respuesta);
-//
 // 					 if(respuesta==1){
-// 						 swal("Guardado","Los datos se han guardado correctamente.","success");
-// 						 $("#modal_subvencion").modal('hide');
-// 						 listarProveedor();
+// 						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
+// 						 listarVehiculo();
 // 					 }else if(respuesta==2){
 // 						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-// 				   }
+// 					 }
 // 				}
 // 			});
 //
 // }
-
-function eliminarVehiculo(id){
-
-			$.ajax({
-				url:"./metodos_ajax/vehiculo/eliminar_vehiculo.php?id="+id,
-				method:"POST",
-				success:function(respuesta){
-					 // alert(respuesta);
-					 if(respuesta==1){
-						 swal("Eliminado correctamente","Los datos se han guardado correctamente.","success");
-						 listarVehiculo();
-					 }else if(respuesta==2){
-						 swal("Ocurrió un error","Recargue la página e intente nuevamente.","error");
-					 }
-				}
-			});
-
-}

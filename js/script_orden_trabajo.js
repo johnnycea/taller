@@ -225,7 +225,7 @@ if(fecha_inicio_buscar==""){
 			method:"POST",
 			data: $("#formulario_buscar_ordenes").serialize()+"&cantidad_registros="+cantidad_registros,
 			success:function(respuesta){
-
+            alert(respuesta);
 				 $("#contenedor_listado_orden").html(respuesta);
 
 			}
