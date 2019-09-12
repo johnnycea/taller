@@ -1,0 +1,19 @@
+-Permitir exportar respaldo de base de datos.
+-Poner guion automatico en modal orden de trabajo.
+-Guardar con telefono.
+
+-Agregar valor total en mostrar_orden
+
+-Seleccionar la fecha de ingreso (quitar timestamp).
+-Buscar clientes  y vehiculos.
+-No eliminar clientes.
+-Sacar hora mostrar_orden
+
+-Sacar registro actividad
+
+Informes
+
+Informes del mes todas las ordenes pagadas las facturas y boletas
+
+Informe de ordenes impagas
+
